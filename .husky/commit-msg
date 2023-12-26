@@ -3,7 +3,7 @@ const fs = require("fs");
 
 // 커밋 메시지 형식을 정의합니다.
 const commitMessagePattern =
-  /^(Feat|Update|Fix|!BREAKING CHANGE|!HOTFIX|Style|Refactor|Comment|Chore|Docs|Test|Rename|Remove): .{1,50}$/;
+  /^(Feat|Update|Fix|!BREAKING CHANGE|!HOTFIX|Style|Refactor|Comment|Chore|Docs|Test|Rename|Remove): .{1,256}$/;
 
 // 커밋 메시지 파일 경로를 가져옵니다. (Husky 훅 스크립트에서 자동으로 전달됩니다.)
 const commitMessageFilePath = process.argv[2];
