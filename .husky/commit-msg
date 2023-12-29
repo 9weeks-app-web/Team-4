@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const fs = require("fs");
+const fs = require('fs');
 
 // 커밋 메시지 형식을 정의합니다.
 const commitMessagePattern =
@@ -9,7 +9,7 @@ const commitMessagePattern =
 const commitMessageFilePath = process.argv[2];
 
 // 커밋 메시지를 읽어옵니다.
-const commitMessage = fs.readFileSync(commitMessageFilePath, "utf-8").trim();
+const commitMessage = fs.readFileSync(commitMessageFilePath, 'utf-8').trim();
 
 // 커밋 메시지 형식을 검증합니다.
 if (!commitMessagePattern.test(commitMessage)) {

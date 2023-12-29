@@ -1,4 +1,4 @@
-import { User } from "@/types/user";
+import { User } from '@/types/user';
 
 export const users: User[] = [
   {
@@ -46,5 +46,3 @@ export const users: User[] = [
     },
   },
 ];
-
-
