@@ -1,3 +1,10 @@
+export type PortfolioPageCategory =
+  | '전체'
+  | 'UXUI디자인'
+  | '서비스 기획'
+  | '편집 디자인'
+  | '웹 디자인';
+
 export interface Portfolios {
   page: number;
   postList: [
