@@ -9,7 +9,7 @@ import Button2 from './(components)/button/Button2';
 
 const GatheringPage = () => {
   return (
-    <main className="flex flex-col items-center min-h-scree">
+    <main className="flex flex-col items-center min-h-screen">
       <GatheringBannerSection />
       <div className="flex justify-between w-[60%] h-[130px] p-10 my-20 bg-neutral-5 border-1 border-black border-solid">
         <div>
