@@ -1,4 +1,4 @@
-import Button1 from '../../button/Button1';
+import ButtonBasic from '../../button/ButtonBasic';
 
 const GUIDE = [
   {
@@ -30,7 +30,7 @@ const GatheringGuideSection = () => {
           나와 맞는 모임을 어떻게 구할까요?
         </h3>
         <div className="self-end">
-          <Button1 content="더보기 >" />
+          <ButtonBasic content="더보기 >" />
         </div>
       </div>
       <div className="flex gap-4 w-full h-full mt-4">

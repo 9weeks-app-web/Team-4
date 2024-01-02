@@ -1,4 +1,4 @@
-import Button2 from '../../button/Button2';
+import ButtonBasic from '../../button/ButtonBasic';
 
 const GATHERING_FILTERS = [
   {
@@ -56,7 +56,7 @@ const GatheringBannerSection = () => {
               ))}
             </select>
           ))}
-          <Button2 content="모임 만들기" />
+          <ButtonBasic content="모임 만들기" />
         </div>
       </div>
     </section>

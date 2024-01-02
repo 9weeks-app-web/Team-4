@@ -2,13 +2,13 @@
 
 import SingleSection from '../../(components)/section/create/SingleSection';
 import MultipleSection from '../../(components)/section/create/MultipleSection';
+import ImageSection from '../../(components)/section/create/ImageSection';
 import Radio from '../../(components)/input/Radio';
 import ComboBox from '../../(components)/input/ComboBox';
-import ImageSection from '../../(components)/section/create/ImageSection';
 import Counter from '../../(components)/input/Counter';
-import Button1 from '../../(components)/button/Button1';
 import Input from '../../(components)/input/Input';
 import Textarea from '../../(components)/input/Textarea';
+import ButtonBasic from '../../(components)/button/ButtonBasic';
 
 const CreateGatheringPage = () => {
   return (
@@ -117,7 +117,7 @@ const GatheringForm = () => {
           <ComboBox.Select selectName="position" />
         </ComboBox>
         <Counter />
-        <Button1 content="추가" />
+        <ButtonBasic content="추가" />
       </MultipleSection>
       <div className="h-32 border">이런사람을 선호해요!</div>
       <MultipleSection title="기술스택*">
@@ -146,8 +146,8 @@ const GatheringForm = () => {
         <Input placeholder="#키워드를 입력하면 자동으로 활성화됩니다." />
       </SingleSection>
       <div className="flex justify-center gap-10">
-        <Button1 content="임시저장" />
-        <Button1 content="등록하기" />
+        <ButtonBasic content="임시저장" />
+        <ButtonBasic content="등록하기" />
       </div>
     </form>
   );

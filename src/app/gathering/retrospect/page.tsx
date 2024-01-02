@@ -1,7 +1,6 @@
-import Button2 from '../(components)/button/Button2';
-import MainGatheringSection from '../(components)/section/main/MainGatheringSection';
 import RetrospectBannerSection from './(components)/RetrospectBannerSection';
 import RetrospectGridSection from './(components)/RetrospectGridSection';
+import ButtonRound from '../(components)/button/ButtonRound';
 
 const RetrospectPage = () => {
   return (
@@ -13,17 +12,10 @@ const RetrospectPage = () => {
           <p>회고를 작성하고 프로젝트를 마무리 해보세요</p>
         </div>
         <div>
-          <Button2 content="회고 쓰러가기" />
+          <ButtonRound content="회고 쓰러가기" />
         </div>
       </div>
-
       <RetrospectGridSection />
-
-      {/* <DeadlineGatheringSection /> */}
-      {/* <RetrospectSection /> */}
-      {/* <RecommendGatheringSection /> */}
-      {/* <GatheringGuideSection /> */}
-      {/* <Advertisement /> */}
     </main>
   );
 };

@@ -1,4 +1,4 @@
-import Button1 from '../../button/Button1';
+import ButtonBasic from '../../button/ButtonBasic';
 
 const AdvertisementSection = () => {
   return (
@@ -9,7 +9,7 @@ const AdvertisementSection = () => {
           모임 참여 전 내 실력을 높이고 싶다면?
         </h3>
         <div className="self-end">
-          <Button1 content="더보기 >" />
+          <ButtonBasic content="더보기 >" />
         </div>
       </div>
       <div className="h-[300px] mt-4 bg-primary-10">광고 배너 이미지</div>

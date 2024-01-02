@@ -1,5 +1,5 @@
-import Button1 from '../../button/Button1';
 import LargeGatherigCard from '../../card/LargeGatheringCard';
+import ButtonBasic from '../../button/ButtonBasic';
 
 const DeadlineGatheringSection = () => {
   return (
@@ -9,7 +9,7 @@ const DeadlineGatheringSection = () => {
           마감이 임박한 모임들이에요!
         </h3>
         <div className="self-end">
-          <Button1 content={`로그인 후 관심사 추천받기 >`} />
+          <ButtonBasic content={`로그인 후 관심사 추천받기 >`} />
         </div>
       </div>
       <div className="flex gap-4 mt-4 overflow-scroll">

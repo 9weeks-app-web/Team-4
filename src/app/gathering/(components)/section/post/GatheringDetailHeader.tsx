@@ -1,4 +1,4 @@
-import Button2 from '../../button/Button2';
+import ButtonRound from '../../button/ButtonRound';
 
 interface GatheringDetailHeaderProps {
   title: string;
@@ -15,7 +15,7 @@ const GatheringDetailHeader = ({ title, type }: GatheringDetailHeaderProps) => {
           <p>{type}</p>
         </div>
         <div className="">
-          <Button2 content="모집 신청하기" />
+          <ButtonRound content="모집 신청하기" />
         </div>
       </div>
     </>

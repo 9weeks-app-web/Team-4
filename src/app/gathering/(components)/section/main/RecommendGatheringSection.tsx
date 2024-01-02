@@ -1,5 +1,5 @@
 import NormalGatherigCard from '../../card/NormalGatheringCard';
-import Button2 from '../../button/Button2';
+import ButtonRound from '../../button/ButtonRound';
 
 const RecommendGatheringSection = () => {
   return (
@@ -18,7 +18,7 @@ const RecommendGatheringSection = () => {
           로그인 시 관심사에 맞는 프로젝트/ 스터디를 알려드려요
         </p>
         <p>로그인하면 여러분의 관심사에 맞는 프로젝트, 스터디를 추천해드려요</p>
-        <Button2 content="모임 만들기" />
+        <ButtonRound content="모임 만들기" />
       </div>
     </section>
   );

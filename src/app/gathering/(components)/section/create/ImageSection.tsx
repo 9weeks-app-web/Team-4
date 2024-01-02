@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from 'react';
 import Image from 'next/image';
-import Button1 from '@/app/gathering/(components)/button/Button1';
+import ButtonBasic from '@/app/gathering/(components)/button/ButtonBasic';
 
 interface ImageSectionProps {
   children: React.ReactNode;
@@ -75,7 +75,7 @@ const SquareImage = () => {
         className="self-end ml-4  text-neutral-60 border-neutral-30 rounded-md"
         htmlFor="sqaure-image"
       >
-        <Button1 content="이미지 업로드" />
+        <ButtonBasic content="이미지 업로드" />
       </label>
       <input
         className="w-0 h-0"

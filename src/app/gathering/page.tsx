@@ -5,7 +5,7 @@ import RetrospectSection from './(components)/section/main/RetrospectSection';
 import RecommendGatheringSection from './(components)/section/main/RecommendGatheringSection';
 import GatheringGuideSection from './(components)/section/main/GatheringGuideSection';
 import Advertisement from './(components)/section/main/AdvertisementSection';
-import Button2 from './(components)/button/Button2';
+import ButtonRound from './(components)/button/ButtonRound';
 
 const GatheringPage = () => {
   return (
@@ -17,7 +17,7 @@ const GatheringPage = () => {
           <p>프로젝트/ 스터디를 직접 모집해 팀원을 찾아보세요!</p>
         </div>
         <div>
-          <Button2 content="모임 만들기" />
+          <ButtonRound content="모임 만들기" />
         </div>
       </div>
       <DeadlineGatheringSection />
