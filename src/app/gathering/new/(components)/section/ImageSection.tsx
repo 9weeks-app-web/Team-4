@@ -23,7 +23,9 @@ const ImageSectionContext = createContext<ImageSectionContextValue | null>(
 );
 
 const ImageSection = ({ children, title }: ImageSectionProps) => {
-  const [imageSrc, setImageSrc] = useState('');
+  const [imageSrc, setImageSrc] = useState(
+    'https://dummyimage.com/100x100/74afe3/fff',
+  );
 
   const handleChangeImage: HandleChangeImage = e => {
     if (e.target.files === null) return;
