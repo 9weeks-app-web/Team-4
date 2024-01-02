@@ -1,4 +1,4 @@
-import Button1 from '../button/Button1';
+import Button1 from '../../button/Button1';
 
 const GUIDE = [
   {

@@ -1,14 +1,14 @@
 'use client';
 
-import SingleSection from '../(components)/section/SingleSection';
-import MultipleSection from '../(components)/section/MultipleSection';
-import Radio from '../(components)/input/Radio';
-import ComboBox from '../(components)/input/ComboBox';
-import ImageSection from '../(components)/section/ImageSection';
-import Counter from '../(components)/input/Counter';
+import SingleSection from '../../(components)/section/create/SingleSection';
+import MultipleSection from '../../(components)/section/create/MultipleSection';
+import Radio from '../../(components)/input/Radio';
+import ComboBox from '../../(components)/input/ComboBox';
+import ImageSection from '../../(components)/section/create/ImageSection';
+import Counter from '../../(components)/input/Counter';
 import Button1 from '../../(components)/button/Button1';
-import Input from '../(components)/input/Input';
-import Textarea from '../(components)/input/Textarea';
+import Input from '../../(components)/input/Input';
+import Textarea from '../../(components)/input/Textarea';
 
 const CreateGatheringPage = () => {
   return (
@@ -56,11 +56,9 @@ const GatheringForm = () => {
           ]}
         />
       </SingleSection>
-
       <SingleSection title="프로젝트 이름">
         <Input placeholder="직관적인 프로젝트명을 사용하면 많은 사람들이 볼 수 있어요. (20자 이내)" />
       </SingleSection>
-
       <SingleSection title="프로젝트 분야*">
         <Radio
           name="project-field"
@@ -72,15 +70,12 @@ const GatheringForm = () => {
           ]}
         />
       </SingleSection>
-
       <SingleSection title="프로젝트 요약">
         <Textarea placeholder="어떤 프로젝트인지 이해하기 쉽도록 명확하게 작성해주세요. (60자 이내)" />
       </SingleSection>
-
       <SingleSection title="프로젝트 설명*">
         <Textarea placeholder="프로젝트 동기, 서비스 기획 등 자세한 설명으로 지원율을 높여보세요!" />
       </SingleSection>
-
       <MultipleSection title="프로젝트 기간*">
         <ComboBox>
           <ComboBox.Date placeholder="시작일" />
@@ -89,7 +84,6 @@ const GatheringForm = () => {
           <ComboBox.Date placeholder="마감일" />
         </ComboBox>
       </MultipleSection>
-
       <MultipleSection title="모임일정*">
         <ComboBox>
           <ComboBox.Select selectName="every" />
@@ -98,7 +92,6 @@ const GatheringForm = () => {
           <ComboBox.Select selectName="day" />
         </ComboBox>
       </MultipleSection>
-
       <MultipleSection title="모임지역*">
         <ComboBox>
           <ComboBox.Select selectName="way" />
@@ -107,19 +100,15 @@ const GatheringForm = () => {
           <ComboBox.Select selectName="location" />
         </ComboBox>
       </MultipleSection>
-
       <ImageSection title="팀 프로필">
         <ImageSection.SquareImage />
       </ImageSection>
-
       <SingleSection title="팀 이름">
         <Input placeholder="2-8글자 이내로 입력해주세요" />
       </SingleSection>
-
       <ImageSection title="프로젝트 팀원">
         <ImageSection.CircleImage />
       </ImageSection>
-
       <MultipleSection title="모집인원*">
         <ComboBox>
           <ComboBox.Select selectName="job" />
@@ -130,9 +119,7 @@ const GatheringForm = () => {
         <Counter />
         <Button1 content="추가" />
       </MultipleSection>
-
       <div className="h-32 border">이런사람을 선호해요!</div>
-
       <MultipleSection title="기술스택*">
         <ComboBox>
           <ComboBox.Select selectName="imsi" />
@@ -141,7 +128,6 @@ const GatheringForm = () => {
           <ComboBox.Select selectName="imsi" />
         </ComboBox>
       </MultipleSection>
-
       <MultipleSection title="모집기간*">
         <ComboBox>
           <ComboBox.Select selectName="imsi" />
@@ -150,18 +136,15 @@ const GatheringForm = () => {
           <ComboBox.Select selectName="imsi" />
         </ComboBox>
       </MultipleSection>
-
       <MultipleSection title="연락방법*">
         <ComboBox>
           <ComboBox.Select selectName="imsi" />
         </ComboBox>
         <Input placeholder="링크주소" />
       </MultipleSection>
-
       <SingleSection title="키워드 설정">
         <Input placeholder="#키워드를 입력하면 자동으로 활성화됩니다." />
       </SingleSection>
-
       <div className="flex justify-center gap-10">
         <Button1 content="임시저장" />
         <Button1 content="등록하기" />

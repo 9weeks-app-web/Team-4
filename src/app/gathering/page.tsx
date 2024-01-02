@@ -1,10 +1,10 @@
-import GatheringBannerSection from './(components)/section/GatheringBannerSection';
-import DeadlineGatheringSection from './(components)/section/DeadlineGatheringSection';
-import MainGatheringSection from './(components)/section/MainGatheringSection';
-import RetrospectSection from './(components)/section/RetrospectSection';
-import RecommendGatheringSection from './(components)/section/RecommendGatheringSection';
-import GatheringGuideSection from './(components)/section/GatheringGuideSection';
-import Advertisement from './(components)/section/AdvertisementSection';
+import GatheringBannerSection from './(components)/section/main/GatheringBannerSection';
+import DeadlineGatheringSection from './(components)/section/main/DeadlineGatheringSection';
+import MainGatheringSection from './(components)/section/main/MainGatheringSection';
+import RetrospectSection from './(components)/section/main/RetrospectSection';
+import RecommendGatheringSection from './(components)/section/main/RecommendGatheringSection';
+import GatheringGuideSection from './(components)/section/main/GatheringGuideSection';
+import Advertisement from './(components)/section/main/AdvertisementSection';
 import Button2 from './(components)/button/Button2';
 
 const GatheringPage = () => {

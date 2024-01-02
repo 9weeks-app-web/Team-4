@@ -1,4 +1,4 @@
-import NormalGatherigCard from '../card/NormalGatheringCard';
+import NormalGatherigCard from '../../card/NormalGatheringCard';
 
 const GATHERING_FILTERS = [
   {

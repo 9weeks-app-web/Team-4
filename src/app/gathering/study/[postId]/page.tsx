@@ -1,41 +1,33 @@
 import Image from 'next/image';
-import RetrospectDetailHeader from '../(components)/RetrospectBanner';
-import Section from '../../(components)/section/Section';
-import TeamInfo from '../../(components)/section/TeamInfo';
-import Comment from '../../(components)/section/Comment';
-import RecommendGathering from '../../(components)/section/RecommendGathering';
-import Input from '@/app/gathering/new/(components)/input/Input';
+import GatheringDetailHeader from '../../(components)/section/post/GatheringDetailHeader';
+import GatheringInfoSection from '../../(components)/section/post/GatheringInfoSection';
+import Section from '../../(components)/section/post/Section';
+import TeamInfo from '../../(components)/section/post/TeamInfo';
+import Comment from '../../(components)/section/post/Comment';
+import RecommendGathering from '../../(components)/section/post/RecommendGathering';
 
 const GatheringDetailPage = () => {
   return (
     <>
-      <RetrospectDetailHeader
-        title="eyeLong : Eye Exercise App"
-        type="사이드 프로젝트"
-        field="헬스케어"
-        createdAt="2023.12.29"
-      />
-      <main className="py-[70px] px-[20%] min-h-screen ">
-        <div className="flex items-center text-2xl">
-          <h2>프로젝트 이름</h2>
-          <p className="ml-10">eyeLong : Eye Exercise App</p>
+      <main className="py-[70px] px-[20%] min-h-screen">
+        <GatheringDetailHeader title="프로젝트 이름" type="사이드 프로젝트" />
+        <div className="flex items-center gap-2 mt-[50px] mb-[30px]">
+          <Image
+            className="rounded-[50%]"
+            src="https://dummyimage.com/100x100/74afe3/fff"
+            alt="team profile"
+            width={48}
+            height={48}
+          />
+          <div>4벤져스</div>
+          <div>|</div>
+          <div>2023/12/26</div>
         </div>
-        <div className="flex items-center mt-10">
-          <h2 className="text-2xl">프로젝트 기간</h2>
-          <div className="flex items-center gap-4 text-neutral-30">
-            <span className="px-4 py-2 ml-10 border border-neutral-30 rounded-md">
-              2024.01.01
-            </span>
-            -
-            <span className="px-4 py-2 border border-neutral-30 rounded-md">
-              2024.01.01
-            </span>
-          </div>
-        </div>
+        <GatheringInfoSection />
         <Section title="팀 정보">
-          <TeamInfo teamName="팀 이름" postType="retrospect" />
+          <TeamInfo teamName="팀 이름" postType="recruit" />
         </Section>
-        <Section title="프로젝트 소개" line={true}>
+        <Section title="프로젝트 요약" line={true}>
           <p>
             두둥! 한달살기 예산 300만원, 나의 선택은? 짧은 여행부터 장기
             체류까지 국내에 다양한 지자체 여행지원 프로그램이 있는거 알고
@@ -44,7 +36,7 @@ const GatheringDetailPage = () => {
             줄이고, 생각지 못한 낯선곳으로 여행을 떠나보세요.
           </p>
         </Section>
-        <Section title="프로젝트 회고" line={true}>
+        <Section title="프로젝트 요약" line={true}>
           <p>
             두둥! 한달살기 예산 300만원, 나의 선택은? 짧은 여행부터 장기
             체류까지 국내에 다양한 지자체 여행지원 프로그램이 있는거 알고
@@ -74,9 +66,6 @@ const GatheringDetailPage = () => {
             />
           </div>
         </Section>
-        <Section title="프로젝트 링크" line={true}>
-          <Input placeholder="https://" />
-        </Section>
         <Section title="키워드" line={true}>
           <div className="flex gap-5 text-neutral-20">
             <div className="px-6 py-2 border border-neutral-10 rounded-3xl">
@@ -90,6 +79,16 @@ const GatheringDetailPage = () => {
             </div>
           </div>
         </Section>
+        <div className="flex justify-between mt-[150px]">
+          <button>공유하기</button>
+          <button>신고하기</button>
+        </div>
+        <div className="flex justify-evenly py-4 mt-8 border border-neutral-10 rounded-md">
+          <div>좋아요</div>
+          <div>댓글</div>
+          <div>조회수</div>
+          <div>북마크</div>
+        </div>
         <Comment />
       </main>
       <RecommendGathering />

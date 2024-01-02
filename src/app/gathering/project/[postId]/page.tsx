@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import GatheringDetailHeader from '../(components)/section/GatheringDetailHeader';
-import GatheringInfoSection from '../(components)/section/GatheringInfoSection';
-import Section from '../(components)/section/Section';
-import TeamInfo from '../(components)/section/TeamInfo';
-import Comment from '../(components)/section/Comment';
-import RecommendGathering from '../(components)/section/RecommendGathering';
+import GatheringDetailHeader from '../../(components)/section/post/GatheringDetailHeader';
+import GatheringInfoSection from '../../(components)/section/post/GatheringInfoSection';
+import Section from '../../(components)/section/post/Section';
+import TeamInfo from '../../(components)/section/post/TeamInfo';
+import Comment from '../../(components)/section/post/Comment';
+import RecommendGathering from '../../(components)/section/post/RecommendGathering';
 
 const GatheringDetailPage = () => {
   return (

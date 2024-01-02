@@ -1,5 +1,5 @@
-import Button1 from '../button/Button1';
-import LargeGatherigCard from '../card/LargeGatheringCard';
+import Button1 from '../../button/Button1';
+import LargeGatherigCard from '../../card/LargeGatheringCard';
 
 const DeadlineGatheringSection = () => {
   return (

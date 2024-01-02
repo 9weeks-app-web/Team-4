@@ -1,5 +1,5 @@
-import NormalGatherigCard from '../card/NormalGatheringCard';
-import Button2 from '../button/Button2';
+import NormalGatherigCard from '../../card/NormalGatheringCard';
+import Button2 from '../../button/Button2';
 
 const RecommendGatheringSection = () => {
   return (

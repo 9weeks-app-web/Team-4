@@ -1,4 +1,4 @@
-import Button2 from '../button/Button2';
+import Button2 from '../../button/Button2';
 
 const GATHERING_FILTERS = [
   {

@@ -1,4 +1,4 @@
-import Button2 from '../../../(components)/button/Button2';
+import Button2 from '../../button/Button2';
 
 interface GatheringDetailHeaderProps {
   title: string;

@@ -1,5 +1,5 @@
-import Button1 from '../button/Button1';
-import RetrospectCard from '../card/RetrospectCard';
+import Button1 from '../../button/Button1';
+import RetrospectCard from '../../card/RetrospectCard';
 
 const RetrospectSection = () => {
   return (
