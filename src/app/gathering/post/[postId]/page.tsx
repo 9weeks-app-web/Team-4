@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import GatheringDetailHeader from './(components)/section/GatheringDetailHeader';
-import GatheringInfoSection from './(components)/section/GatheringInfoSection';
-import Section from './(components)/section/Section';
-import TeamInfo from './(components)/section/TeamInfo';
-import Comment from './(components)/section/Comment';
-import RecommendGathering from './(components)/section/RecommendGathering';
+import GatheringDetailHeader from '../(components)/section/GatheringDetailHeader';
+import GatheringInfoSection from '../(components)/section/GatheringInfoSection';
+import Section from '../(components)/section/Section';
+import TeamInfo from '../(components)/section/TeamInfo';
+import Comment from '../(components)/section/Comment';
+import RecommendGathering from '../(components)/section/RecommendGathering';
 
 const GatheringDetailPage = () => {
   return (
@@ -25,7 +25,7 @@ const GatheringDetailPage = () => {
         </div>
         <GatheringInfoSection />
         <Section title="팀 정보">
-          <TeamInfo teamName="팀 이름" />
+          <TeamInfo teamName="팀 이름" postType="recruit" />
         </Section>
         <Section title="프로젝트 요약" line={true}>
           <p>

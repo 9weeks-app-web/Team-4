@@ -10,6 +10,7 @@ interface TeamInfoProps {
     isLeader: boolean;
   }[];
   preference?: {};
+  postType: 'recruit' | 'retrospect';
 }
 
 const MEMBERS = [
@@ -40,6 +41,7 @@ const TeamInfo = ({
   teamName,
   members = MEMBERS,
   preference,
+  postType,
 }: TeamInfoProps) => {
   return (
     <div className="flex flex-col gap-4 text-neutral-30 ">
@@ -74,12 +76,14 @@ const TeamInfo = ({
           ))}
         </div>
       </div>
-      <div>
-        <p className="pb-2 text-lg">*이런 사람을 선호해요!</p>
-        <div className="w-[40%] aspect-square border border-neutral-30 rounded-md">
-          6각 그래프
+      {postType === 'recruit' && (
+        <div>
+          <p className="pb-2 text-lg">*이런 사람을 선호해요!</p>
+          <div className="w-[40%] aspect-square border border-neutral-30 rounded-md">
+            6각 그래프
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
