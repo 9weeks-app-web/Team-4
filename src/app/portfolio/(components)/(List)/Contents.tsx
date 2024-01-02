@@ -1,6 +1,6 @@
 'use client';
 
-import { PortfolioDetail, PortolioList } from '@/types/portfolio';
+import { PortolioList } from '@/types/portfolio';
 import { apiRequest } from '@/utils/api';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
@@ -8,12 +8,23 @@ import { useEffect, useState } from 'react';
 
 const PortfolioListContents = ({ category }: { category: string }) => {
   const [page, setPage] = useState(1);
-  const { data, isLoading,refetch } = useQuery({
+  const [sort, setSort] = useState('latest');
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ['PortfolioList'],
     queryFn: async () => {
       const response = await apiRequest<PortolioList>(
-        `portfolios?category=${category}&page=${page}`,
+        `portfolios?category=${category}&page=${page}&sort=${sort}`,
         'GET',
+      );
+      return response;
+    },
+  });
+
+  const { data: countData, refetch: countRefetch } = useQuery({
+    queryKey: ['PortfolioListCount'],
+    queryFn: async () => {
+      const response = await apiRequest<{ count: number }>(
+        `portfolios/count?category=${category}`,
       );
       return response;
     },
@@ -21,19 +32,59 @@ const PortfolioListContents = ({ category }: { category: string }) => {
 
   useEffect(() => {
     refetch();
-  }, [category, page, refetch]);
+    countRefetch();
+  }, [category, page, refetch, countRefetch, sort]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [category]);
 
   if (isLoading) {
     return <div>로딩중...</div>;
   } else if (data && data.portfolioList) {
     return (
       <div className="w-full h-full flex flex-col">
-        <div className="w-full h-full grid  grid-cols-4">
+        <div className="flex mb-4">
+          <div>총 {countData && countData.count}건</div>
+          <div className="ml-auto">
+            <button
+              onClick={() => {
+                setSort('latest');
+              }}
+              className={`${
+                sort !== 'latest' && `text-neutral-30`
+              } font-medium text-base mr-5`}
+            >
+              최신순
+            </button>
+            <button
+              onClick={() => {
+                setSort('popular');
+              }}
+              className={`${
+                sort !== 'popular' && `text-neutral-30`
+              } font-medium text-base mr-5`}
+            >
+              인기순
+            </button>
+            <button
+              onClick={() => {
+                setSort('recomand');
+              }}
+              className={`${
+                sort !== 'recomand' && `text-neutral-30`
+              } font-medium text-base mr-2`}
+            >
+              추천순
+            </button>
+          </div>
+        </div>
+        <div className="w-full h-full grid gap-8 grid-cols-4">
           {data.portfolioList.map(e => (
-            <div className={`w-64 h-96`} key={e.portfolioId}>
-              <div className={`w-64 h-96 flex flex-col`}>
+            <div className={`w-full h-96`} key={e.portfolioId}>
+              <div className={`w-full h-96 flex flex-col`}>
                 {/* 썸네일 영역 */}
-                <div className={`w-64 h-52 relative mb-2`}>
+                <div className={`w-full h-52 relative mb-2`}>
                   <Image
                     src={e.thumbnail}
                     className={`rounded-lg`}
@@ -71,6 +122,7 @@ const PortfolioListContents = ({ category }: { category: string }) => {
               </div>
             </div>
           ))}
+          di
         </div>
         <div className="flex w-full justify-center h-10">
           <div className="flex h-full items-center">

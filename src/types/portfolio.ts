@@ -55,10 +55,10 @@ export interface PortfolioDetail extends Portfolio {
   createAt: Date;
 }
 
-export interface PortolioList{
+export interface PortolioList {
   page: number;
   endPage: number;
-  portfolioList: Omit<PortfolioDetail, 'content' | 'portfolio'>[]
+  portfolioList: Omit<PortfolioDetail, 'content' | 'portfolio'>[];
 }
 
 export interface PortfoiloComments {

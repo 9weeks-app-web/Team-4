@@ -14,6 +14,7 @@ const PortfolioListContainer = () => {
         <PortfolioCategory category={category} setCategory={setCategory} />
       </div>
       <div className="w-full">
+        
         <PortfolioListContents category={category} />
       </div>
       <div className="w-full h-[500px]">배너영역</div>

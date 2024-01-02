@@ -28,7 +28,7 @@ export const portfolioDummy: PortfolioDetail = {
 };
 
 export const portfolioDummy2: PortfolioDetail = {
-  portfolioId: 2,
+  portfolioId: 31,
   title: '작업제목',
   content: {
     title: '작업제목',
@@ -47,15 +47,15 @@ export const portfolioDummy2: PortfolioDetail = {
   ],
   thumbnail: 'https://dummyimage.com/278X208/000/fff.jpg&text=thumbnail',
   createAt: new Date('2024-01-01'),
-  hit: 0,
-  like: 0,
-  userId: 0,
+  hit: 223,
+  like: 992,
+  userId: 1,
   nickname: '홍길동',
   profileImg: 'https://dummyimage.com/24X24/000/fff.jpg&text=Pro',
 };
 
 export const portfolioDummy3: PortfolioDetail = {
-  portfolioId: 3,
+  portfolioId: 32,
   title: '작업제목',
   content: {
     title: '작업제목',
@@ -74,15 +74,15 @@ export const portfolioDummy3: PortfolioDetail = {
   ],
   thumbnail: 'https://dummyimage.com/278X208/000/fff.jpg&text=thumbnail',
   createAt: new Date('2024-01-01'),
-  hit: 0,
-  like: 0,
+  hit: 999,
+  like: 333,
   userId: 0,
   nickname: '홍길동',
   profileImg: 'https://dummyimage.com/24X24/000/fff.jpg&text=Pro',
 };
 
 export const portfolioDummy4: PortfolioDetail = {
-  portfolioId: 4,
+  portfolioId: 33,
   title: '작업제목',
   content: {
     title: '작업제목',
@@ -100,9 +100,9 @@ export const portfolioDummy4: PortfolioDetail = {
     },
   ],
   thumbnail: 'https://dummyimage.com/278X208/000/fff.jpg&text=thumbnail',
-  createAt: new Date('2024-01-01'),
-  hit: 0,
-  like: 0,
+  createAt: new Date('2024-01-03'),
+  hit: 1,
+  like: 2,
   userId: 0,
   nickname: '홍길동',
   profileImg: 'https://dummyimage.com/24X24/000/fff.jpg&text=Pro',
@@ -115,3 +115,7 @@ export const portfolioDummys: Omit<PortfolioDetail, 'content' | 'portfolio'>[] =
     ...portfolioDummy,
     portfolioId: portfolioDummy.portfolioId + index,
   }));
+
+portfolioDummys.push(portfolioDummy2);
+portfolioDummys.push(portfolioDummy3);
+portfolioDummys.push(portfolioDummy4);
