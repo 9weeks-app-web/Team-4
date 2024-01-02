@@ -27,6 +27,7 @@ export interface PortfolioContent {
   description: string;
   tags: string[];
   tools: string[];
+  bookmark: string[];
   programs?: string;
   collaborators?: string[];
 }

@@ -34,7 +34,6 @@ export async function GET(request: Request) {
       return b.like - a.like;
     });
   }
-  console.log(portfolioList.length);
   const endPage = Math.ceil(portfolioList.length / 16);
   portfolioList = portfolioList.slice(startIndex, endIndex);
 
