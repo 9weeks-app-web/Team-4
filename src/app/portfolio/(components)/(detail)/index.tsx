@@ -72,9 +72,8 @@ const PortfolioDetail = ({ portfolioId }: { portfolioId: number }) => {
           </div>
           {/* 해당 유저의 다른 포트폴리오 영역 */}
           <div className="w-full h-[500px] bg-neutral-90">
-                    <div className='p-5 flex flex-col'>
-                        <div></div>
-
+            <div className="p-5 flex flex-col">
+              <div></div>
             </div>
           </div>
           {/* 하단 푸터 영역 */}
