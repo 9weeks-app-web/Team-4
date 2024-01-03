@@ -1,0 +1,92 @@
+import { CommunityDetail } from '@/types/community';
+
+const CommunityDummys: CommunityDetail[] = [
+  {
+    id: 1,
+    nickname: '하으니',
+    major: 'UI/UX 디자이너',
+    createdAt: new Date(),
+    title: '새 프로젝트 드디어 시작',
+    thumbnail: [
+      'https://dummyimage.com/600x400/f078b0/ffffff&text=A',
+      'https://dummyimage.com/600x400/887ef7/ffffff&text=B',
+      'https://dummyimage.com/600x400/42e0ff/ffffff&text=C',
+    ],
+    pictureCount: 5,
+    content: 'UX/UI 드디어 시작했습니다. 열심히 해보겠습니다. 아자아자!!',
+    commentCounts: 812,
+    likes: 812,
+    reactions: {
+      cry: 123,
+      heart: 123,
+      fire: 123,
+    },
+    isLike: false,
+    hits: 812,
+    bookmarks: 812,
+  },
+  {
+    id: 2,
+    nickname: '디벨로퍼',
+    major: 'Frontend Developer',
+    createdAt: new Date(),
+    title: 'React 프로젝트 완료!',
+    thumbnail: ['https://dummyimage.com/600x400/f078b0/ffffff&text=A'],
+    pictureCount: 1,
+    content: 'React 프로젝트를 완료했습니다. 여러분들의 의견을 기다립니다!',
+    commentCounts: 256,
+    likes: 512,
+    reactions: {
+      cry: 50,
+      heart: 100,
+      fire: 75,
+    },
+    isLike: true,
+    hits: 512,
+    bookmarks: 256,
+  },
+  {
+    id: 3,
+    nickname: '데이터사이언티스트',
+    major: 'Data Scientist',
+    createdAt: new Date(),
+    title: '빅데이터 분석 프로젝트 시작',
+    thumbnail: ['https://dummyimage.com/600x400/887ef7/ffffff&text=B'],
+    pictureCount: 1,
+    content:
+      '빅데이터 분석 프로젝트를 시작했습니다. 다양한 데이터를 활용해보겠습니다.',
+    commentCounts: 128,
+    likes: 256,
+    reactions: {
+      cry: 30,
+      heart: 60,
+      fire: 40,
+    },
+    isLike: false,
+    hits: 256,
+    bookmarks: 128,
+  },
+  {
+    id: 4,
+    nickname: '서버맨',
+    major: 'Backend Developer',
+    createdAt: new Date(),
+    title: '서버 개발 시작!',
+    thumbnail: ['https://dummyimage.com/600x400/42e0ff/ffffff&text=C'],
+    pictureCount: 1,
+    content:
+      '서버 개발 프로젝트를 시작했습니다. 안정적인 서비스를 제공하겠습니다.',
+    commentCounts: 64,
+    likes: 128,
+    reactions: {
+      cry: 15,
+      heart: 30,
+      fire: 20,
+    },
+    isLike: true,
+    hits: 128,
+    bookmarks: 64,
+  },
+];
+
+export default CommunityDummys;

@@ -1,7 +1,7 @@
-import Card from './components/Card';
-import Chat from './components/Chat';
-import HotBoard from './components/HotBorad';
-import PollCard from './components/PollCard';
+import Card from './(components)/Card';
+import Chat from './(components)/Chat';
+import HotBoard from './(components)/HotBorad';
+import PollCard from './(components)/PollCard';
 
 const Community = () => {
   const categories: string[] = [
@@ -15,8 +15,14 @@ const Community = () => {
     <div className="flex justify-center items-center">
       <div>
         <section className=" my-10">
-          <h1 className="my-11 font-bold text-3xl">핫한 게시글</h1>
-          <div className="grid grid-cols-2 gap-4 ">
+          <div className="flex justify-between">
+            <h1 className="font-bold text-[26px] mb-4">핫한 게시글</h1>
+            <div className="flex items-center">
+              <div className="mr-4 text-2xl"> &#60;</div>
+              <div className="text-2xl"> &#62;</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-[30px] ">
             <HotBoard />
             <HotBoard />
             <HotBoard />
@@ -27,8 +33,11 @@ const Community = () => {
         </section>
         <section className="my-10">
           <div className="flex justify-between">
-            <h1 className="font-bold text-3xl mb-4">자유글</h1>
-            <div className="flex items-center">더보기 &#62;</div>
+            <h1 className="font-bold text-[26px] mb-4">자유글</h1>
+            <div className="flex items-center">
+              <div className="text-lg mr-1">더보기</div>
+              <div className="text-2xl"> &#62;</div>
+            </div>
           </div>
           <div className="grid grid-cols-2 gap-2">
             <Card />
@@ -86,8 +95,6 @@ const Community = () => {
             <div>더보기 &#62;</div>
           </div>
           <div className="grid grid-cols-2 gap-[30px]">
-            <Card />
-            <Card />
             <Card />
             <Card />
             <Card />

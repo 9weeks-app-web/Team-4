@@ -2,7 +2,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import Image from 'next/image';
 
-import MyMarkdownEditor from '../components/MarkDownEditor';
+import MyMarkdownEditor from '../(components)/MarkDownEditor';
 import SurveyPostCard from './(components)/SurveyPostCard';
 
 interface PostProps {}
@@ -50,7 +50,7 @@ const Post: React.FC<PostProps> = () => {
             type="text"
             id="title"
             placeholder="제목을 입력해주세요(20자 이내)"
-            className="w-full border h-[52px] px-[14px] py-3 rounded-xl mb-5"
+            className="w-full border h-[52px] px-[14px] py-3 rounded-xl mb-5 "
           />
 
           <MyMarkdownEditor

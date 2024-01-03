@@ -1,4 +1,4 @@
-import SurveyCard from '../components/SurveyCard';
+import SurveyCard from '../(components)/SurveyCard';
 
 const Survey = () => {
   return (
