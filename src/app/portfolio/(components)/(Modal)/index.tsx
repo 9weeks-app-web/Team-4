@@ -41,7 +41,7 @@ const ModalWrapper = ({
   }, [unmountCleanUp]);
   return (
     <>
-      <div className="fixed z-[9999] inset-0 bg-[rgba(0,0,0,0.3)]" />
+      <div className="fixed z-[9999] inset-0 rouned bg-[rgba(0,0,0,0.3)]" />
       <div
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}

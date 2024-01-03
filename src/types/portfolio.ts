@@ -56,7 +56,7 @@ export interface PortfolioDetail extends Portfolio {
   createAt: Date;
 }
 
-export interface PortolioList {
+export interface PortfolioList {
   page: number;
   endPage: number;
   portfolioList: Omit<PortfolioDetail, 'content' | 'portfolio'>[];

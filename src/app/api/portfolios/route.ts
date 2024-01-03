@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { portfolioDummys } from './(dummys)';
-import { PortolioList } from '@/types/portfolio';
+import { PortfolioList } from '@/types/portfolio';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -37,5 +37,5 @@ export async function GET(request: Request) {
   const endPage = Math.ceil(portfolioList.length / 16);
   portfolioList = portfolioList.slice(startIndex, endIndex);
 
-  return NextResponse.json({ page, endPage, portfolioList } as PortolioList);
+  return NextResponse.json({ page, endPage, portfolioList } as PortfolioList);
 }

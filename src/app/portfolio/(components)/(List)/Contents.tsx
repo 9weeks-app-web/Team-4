@@ -1,6 +1,6 @@
 'use client';
 
-import { PortolioList } from '@/types/portfolio';
+import { PortfolioList } from '@/types/portfolio';
 import { apiRequest } from '@/utils/api';
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
@@ -18,7 +18,7 @@ const PortfolioListContents = ({ category }: { category: string }) => {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['PortfolioList'],
     queryFn: async () => {
-      const response = await apiRequest<PortolioList>(
+      const response = await apiRequest<PortfolioList>(
         `portfolios?category=${category}&page=${page}&sort=${sort}`,
         'GET',
       );
