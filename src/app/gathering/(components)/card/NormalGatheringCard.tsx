@@ -1,14 +1,18 @@
 'use client';
 
-import { GatheringCard } from '@/types/gathering';
 import Image from 'next/image';
-import Link from 'next/link';
+import { GatheringCard } from '@/types/gathering';
 import ChipBasic from '../chip/ChipBasic';
 import ChipPrimary from '../chip/ChipPrimary';
 
 interface NormalGatherigCardProps {
   data: GatheringCard;
 }
+
+const TYPE_MAPPER = {
+  project: '프로젝트',
+  study: '스터디',
+};
 
 const NormalGatherigCard = ({ data }: NormalGatherigCardProps) => {
   const {
@@ -28,16 +32,18 @@ const NormalGatherigCard = ({ data }: NormalGatherigCardProps) => {
   } = data;
 
   return (
-    <Link
-      className="relative min-w-[380px] h-[360px] px-6 py-3 border border-stroke-10 rounded-2xl"
-      href={`/gathering/${type}/${id}`}
-    >
+    <div className="relative min-w-[380px] h-[360px] px-6 py-3 border border-stroke-10 bg-neutral-0 rounded-2xl">
       <div className="flex justify-between">
         <div className="flex gap-2">
-          <ChipBasic content={type} />
+          <ChipBasic content={TYPE_MAPPER[type as 'project' | 'study']} />
           <ChipPrimary content={`마감 D-${Dday}`} />
         </div>
-        <div>북마크 버튼</div>
+        <Image
+          src="images/gathering/bookmark.svg"
+          width={32}
+          height={32}
+          alt="bookmark"
+        />
       </div>
       <p className="pt-6 text-sm text-primary-100">{subject}</p>
       <h3 className="pt-[6px] text-[22px]">{title}</h3>
@@ -94,13 +100,31 @@ const NormalGatherigCard = ({ data }: NormalGatherigCardProps) => {
             />
             <span>{teamName}</span>
           </div>
-          <div className="text-neutral-60">
-            <span className="mr-[2.75px]">댓글 {comments}</span>
-            <span>조회수 {hits}</span>
+          <div className="flex text-neutral-60">
+            <div className="flex mr-2">
+              <Image
+                className="mr-1"
+                src="images/gathering/chat_bubble.svg"
+                width={24}
+                height={24}
+                alt="chat bubble"
+              />
+              {comments}
+            </div>
+            <div className="flex ">
+              <Image
+                className="mr-1"
+                src="images/gathering/view.svg"
+                width={24}
+                height={24}
+                alt="view"
+              />
+              {hits}
+            </div>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

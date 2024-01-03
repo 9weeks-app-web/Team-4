@@ -1,46 +1,52 @@
 'use client';
 
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { clsx } from 'clsx';
 import { apiRequest } from '@/utils/api';
 import { GatheringCard } from '@/types/gathering';
 import NormalGatherigCard from '../../card/NormalGatheringCard';
+import ComboBox from '../../input/ComboBox';
+import Image from 'next/image';
 
-const GATHERING_FILTERS = [
+const SECTIONS = [
   {
-    selectName: 'skill',
-    options: [
-      { value: 'default', description: '기술스택' },
-      { value: 'react', description: 'React' },
-      { value: 'next', description: 'Next.js' },
-    ],
+    id: 'all',
+    content: '전체',
   },
   {
-    selectName: 'project',
-    options: [
-      { value: 'default', description: '프로젝트' },
-      { value: 'react', description: 'React' },
-      { value: 'next', description: 'Next.js' },
-    ],
+    id: 'project',
+    content: '프로젝트',
   },
   {
-    selectName: 'study',
-    options: [
-      { value: 'default', description: '스터디' },
-      { value: 'react', description: 'React' },
-      { value: 'next', description: 'Next.js' },
-    ],
+    id: 'study',
+    content: '스터디',
   },
   {
-    selectName: 'repecter',
-    options: [
-      { value: 'default', description: '리스팩러' },
-      { value: 'react', description: 'React' },
-      { value: 'next', description: 'Next.js' },
-    ],
+    id: 'repecter',
+    content: '리스팩러',
+  },
+];
+
+const ORDERS = [
+  {
+    id: 'new',
+    content: '최신순',
+  },
+  {
+    id: 'popular',
+    content: '인기순',
+  },
+  {
+    id: 'recommend',
+    content: '추천순',
   },
 ];
 
 const MainGatheringSection = () => {
+  const [section, setSection] = useState('all');
+  const [order, setOrder] = useState('new');
+  const [page, setPage] = useState(1);
   const { data, isLoading } = useQuery({
     queryKey: ['GatheringCardGridList'],
     queryFn: async () => {
@@ -53,48 +59,55 @@ const MainGatheringSection = () => {
   });
 
   return (
-    <section className="flex flex-col min-w-[1200px] my-28">
+    <section className="flex flex-col min-w-[1200px] my-40">
       <nav>
-        <ul className="flex gap-[30px] text-2xl">
-          <li>
-            <button>전체</button>
-          </li>
-          <li>
-            <button>프로젝트</button>
-          </li>
-          <li>
-            <button>스터디</button>
-          </li>
-          <li>
-            <button>리스팩러</button>
-          </li>
+        <ul className="flex gap-[30px] text-lg text-neutral-30">
+          {SECTIONS.map(({ id, content }) => (
+            <li key={id}>
+              <button
+                className={clsx(
+                  section === id && ['text-neutral-100', 'border-b-2'],
+                )}
+                onClick={() => setSection(id)}
+              >
+                {content}
+              </button>
+            </li>
+          ))}
         </ul>
       </nav>
-      <div className="flex gap-[20px] mt-5">
-        {GATHERING_FILTERS.map(({ selectName, options }) => (
-          <select
-            key={selectName}
-            className="border-[1px] border-neutral-30 rounded-sm"
-            name={selectName}
-            id={`${selectName}-select`}
-          >
-            {options.map(({ value, description }) => (
-              <option key={value} value={value}>
-                {description}
-              </option>
-            ))}
-          </select>
-        ))}
+      <div className="flex max-w-[764px] gap-4 mt-5">
+        <ComboBox>
+          <ComboBox.Select selectName="skills" />
+        </ComboBox>
+        <ComboBox>
+          <ComboBox.Select selectName="skills" />
+        </ComboBox>
+        <ComboBox>
+          <ComboBox.Select selectName="skills" />
+        </ComboBox>
+        <ComboBox>
+          <ComboBox.Select selectName="skills" />
+        </ComboBox>
+        <ComboBox>
+          <ComboBox.Select selectName="skills" />
+        </ComboBox>
       </div>
-      <div className="flex justify-between mt-14">
-        <span className="">999건</span>
-        <span className="flex gap-4">
-          <button>최신순</button>
-          <button>인기순</button>
-          <button>추천순</button>
+      <div className="flex justify-between mt-12 mb-3">
+        <span className="">총 9,999건</span>
+        <span className="flex gap-6 text-neutral-30">
+          {ORDERS.map(({ id, content }) => (
+            <button
+              key={id}
+              className={clsx(order === id && ['text-neutral-100'])}
+              onClick={() => setOrder(id)}
+            >
+              {content}
+            </button>
+          ))}
         </span>
       </div>
-      <div className="grid grid-cols-3 grid-flow-row gap-x-[30px] gap-y-12 mt-4">
+      <div className="grid grid-cols-3 grid-flow-row gap-x-[30px] gap-y-12">
         {isLoading ? (
           <div>로딩중..</div>
         ) : (
@@ -103,19 +116,56 @@ const MainGatheringSection = () => {
           ))
         )}
       </div>
-      <div className="flex self-center gap-4 mt-12">
-        <button>{'<'}</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>10</button>
-        <button>{'>'}</button>
+      <div className="flex items-center self-center mt-20 text-neutral-50">
+        <button className="p-[10px]">
+          <Image
+            src="/images/gathering/double_left_arrow.svg"
+            width={24}
+            height={24}
+            alt="double left arrow"
+          />
+        </button>
+        <button className="p-[10px]">
+          <Image
+            src="/images/gathering/left_arrow.svg"
+            width={24}
+            height={24}
+            alt="left arrow"
+          />
+        </button>
+        {Array.from({ length: 10 }, (_, i) => i + 1).map(num => (
+          <button
+            key={num}
+            className={clsx(
+              page === num && [
+                'text-neutral-0',
+                'bg-primary-100',
+                'rounded-[50%]',
+              ],
+              'w-10',
+              'h-10',
+            )}
+            onClick={() => setPage(num)}
+          >
+            {num}
+          </button>
+        ))}
+        <button className="p-[10px]">
+          <Image
+            src="/images/gathering/right_arrow.svg"
+            width={24}
+            height={24}
+            alt="right arrow"
+          />
+        </button>
+        <button className="p-[10px]">
+          <Image
+            src="/images/gathering/double_right_arrow.svg"
+            width={24}
+            height={24}
+            alt="double right arrow"
+          />
+        </button>
       </div>
     </section>
   );

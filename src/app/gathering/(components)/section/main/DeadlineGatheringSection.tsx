@@ -23,9 +23,9 @@ const DeadlineGatheringSection = () => {
   return (
     <section className="w-full min-w-[1200px] pl-[calc((100%-1200px)/2)]">
       <div className="flex py-4">
-        <h3 className="pr-8 text-2xl break-keep">마감이 임박했어요!</h3>
+        <h3 className="pr-8 text-[26px] font-bold">마감이 임박했어요!</h3>
         <div className="self-end">
-          <ButtonBasic content={`로그인 후 관심사 추천받기 >`} />
+          {/* <ButtonBasic content={`로그인 후 관심사 추천받기 >`} /> */}
         </div>
       </div>
 
