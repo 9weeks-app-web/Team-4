@@ -1,3 +1,8 @@
+'use client';
+
+import { useQuery } from '@tanstack/react-query';
+import { apiRequest } from '@/utils/api';
+import { GatheringCard } from '@/types/gathering';
 import NormalGatherigCard from '../../card/NormalGatheringCard';
 
 const GATHERING_FILTERS = [
@@ -36,8 +41,19 @@ const GATHERING_FILTERS = [
 ];
 
 const MainGatheringSection = () => {
+  const { data, isLoading } = useQuery({
+    queryKey: ['GatheringCardGridList'],
+    queryFn: async () => {
+      const res = await apiRequest<{ gatheringCardDummy: GatheringCard[] }>(
+        '/gathering/deadline',
+      );
+
+      return res;
+    },
+  });
+
   return (
-    <section className="flex flex-col w-[60%] my-28">
+    <section className="flex flex-col min-w-[1200px] my-28">
       <nav>
         <ul className="flex gap-[30px] text-2xl">
           <li>
@@ -78,19 +94,14 @@ const MainGatheringSection = () => {
           <button>추천순</button>
         </span>
       </div>
-      <div className="grid grid-rows-4 grid-flow-col gap-x-4 gap-y-6 mt-4">
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
+      <div className="grid grid-cols-3 grid-flow-row gap-x-[30px] gap-y-12 mt-4">
+        {isLoading ? (
+          <div>로딩중..</div>
+        ) : (
+          data?.gatheringCardDummy.map(data => (
+            <NormalGatherigCard key={data.id} data={data} />
+          ))
+        )}
       </div>
       <div className="flex self-center gap-4 mt-12">
         <button>{'<'}</button>
