@@ -1,14 +1,14 @@
 
 const PaginationButton = () => {
     return (
-        <div className="flex justify-center items-center mb-12 pr-[45px]">
-            <div className="text-neutral-50 px-4 py-2 rounded">{`<<`}</div>
-            <div className="text-neutral-50 px-4 py-2 rounded">{`<`}</div>
-            <div className="text-neutral-50 px-4 py-2 rounded">1</div>
-            <div className="text-neutral-50 px-4 py-2 rounded">2</div>
-            <div className="text-neutral-50 px-4 py-2 rounded">3</div>
-            <div className="text-neutral-50 px-4 py-2 rounded">{`>`}</div>
-            <div className="text-neutral-50 px-4 py-2 rounded">{`>>`}</div>
+        <div className="flex justify-center items-center space-x-5">
+            <button className="text-neutral-50 text-[16px]">{`<<`}</button>
+            <button className="text-neutral-50 text-[16px]">{`<`}</button>
+            <button className="text-neutral-50 text-[16px]">1</button>
+            <button className="bg-primary-100 text-neutral-0 text-[16px] rounded-full w-[44px] h-[44px] flex items-center justify-center">2</button>
+            <button className="text-neutral-50 text-[16px]">3</button>
+            <button className="text-neutral-50 text-[16px]">{`>`}</button>
+            <button className="text-neutral-50 text-[16px]">{`>>`}</button>
         </div>
     )
 }

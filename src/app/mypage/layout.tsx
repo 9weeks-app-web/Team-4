@@ -5,13 +5,13 @@ const MyPageLayout = ({ children }: { children: React.ReactNode }) => {
     return <>
         <div className="relative">
             <MyPageBannerSection />
-            <div className="absolute top-[93px] left-[80px]">
-                <SideBarSection />
-            </div>
-            <div className="ml-[408px] mt-[74px]">
-                <div className="max-w-screen-xl mx-auto px-4">
+            <div className="py-[74px] pl-[408px] pr-[48px]">
+                <div className="max-w-screen-xl mx-right">
                     {children}
                 </div>
+            </div>
+            <div className="absolute top-[93px] left-[80px]">
+                <SideBarSection />
             </div>
         </div>
     </>;

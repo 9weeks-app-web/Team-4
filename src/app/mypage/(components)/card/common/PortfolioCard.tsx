@@ -25,7 +25,7 @@ import { MypageMyPortfolio } from '@/types/mypage';
 const PortfolioCard = () => {
 
     return (
-        <div className="h-[335px] w-[354px] border-[1px] border-neutral-10 rounded-xl overflow-x-auto overflow-y-hidden">
+        <div className="h-[335px] min-w-[354px] border-[1px] border-neutral-10 rounded-xl overflow-x-auto overflow-y-hidden">
             <div className="h-[257px] w-full bg-primary-10">
 
             </div>
