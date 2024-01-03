@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 interface ModalWrapperProps {
   width?: string;
-
+  m?: string;
   onCloseModal: () => void;
   unmountCleanUp?: () => void;
   children: React.ReactNode;
@@ -13,6 +13,7 @@ interface ModalWrapperProps {
 
 const ModalWrapper = ({
   width = 'w-[776px]',
+  m = 'm-auto',
   onCloseModal,
   unmountCleanUp,
   children,
@@ -48,7 +49,7 @@ const ModalWrapper = ({
         className="fixed z-[99999] inset-0 flex overscroll-none overflow-y-auto py-[40px] px-[35px]"
       >
         <div
-          className={`m-auto relative ${width} max-w-[1200px] min-h-fit shadow-[0px_0px_8px_0px_rgba(0,0,0,0.25)] bg-neutral-0 rounded-2xl border border-solid border-[rgba(230,230,230,1)] ${
+          className={`${m} relative ${width} max-w-[1200px] min-h-fit shadow-[0px_0px_8px_0px_rgba(0,0,0,0.25)] bg-neutral-0 rounded-2xl border border-solid border-[rgba(230,230,230,1)] ${
             !isWrapperNoPadding ? 'p-6' : 'p-0 overflow-hidden'
           }`}
         >

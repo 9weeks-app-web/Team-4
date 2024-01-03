@@ -14,6 +14,7 @@ const PortfolioListContents = ({ category }: { category: string }) => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [contentId, setContentId] = useState<number>();
+  const [modalMargin, setModalMargin] = useState<string>('m-auto');
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['PortfolioList'],
@@ -60,8 +61,14 @@ const PortfolioListContents = ({ category }: { category: string }) => {
               width="w-full"
               onCloseModal={modalHandler}
               isWrapperNoPadding={true}
+              m={modalMargin}
             >
-              {contentId && <PortfolioDetail portfolioId={contentId} />}
+              {contentId && (
+                <PortfolioDetail
+                  portfolioId={contentId}
+                  setModalMargin={setModalMargin}
+                />
+              )}
             </ModalWrapper>
           )}
         </div>
@@ -149,7 +156,6 @@ const PortfolioListContents = ({ category }: { category: string }) => {
               </button>
             </div>
           ))}
-          di
         </div>
         <div className="flex w-full justify-center h-10">
           <div className="flex h-full items-center">

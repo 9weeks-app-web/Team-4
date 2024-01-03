@@ -7,8 +7,15 @@ import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import UserOtherPortfolios from './UserOtherPortfolios';
 import ModalRightContent from './(ModalRightContent)';
+import { Dispatch, SetStateAction } from 'react';
 
-const PortfolioDetail = ({ portfolioId }: { portfolioId: number }) => {
+const PortfolioDetail = ({
+  portfolioId,
+  setModalMargin,
+}: {
+  portfolioId: number;
+  setModalMargin: Dispatch<SetStateAction<string>>;
+}) => {
   // 포트폴리오 데이터
   const { data, isFetching } = useQuery({
     queryKey: ['portfolioDetail', portfolioId],
@@ -214,12 +221,13 @@ const PortfolioDetail = ({ portfolioId }: { portfolioId: number }) => {
         </div>
         <div className="">
           <ModalRightContent
+            setModalMargin={setModalMargin}
             portfolioId={data.portfolioId}
             portfolioTitle={data.title}
             userId={data.userId}
             userNickname={data.nickname}
             userProfile={data.profileImg}
-            job = {data.job}
+            job={data.job}
           />
         </div>
       </div>

@@ -6,7 +6,6 @@ export async function GET(request: Request) {
   const portfolioId = parseInt(searchParams.get('portfolioId')!);
   const userId = parseInt(searchParams.get('userId')!);
 
-    
   let portfolioList = portfolioDummys.filter(e => {
     return e.portfolioId !== portfolioId && e.userId === userId;
   });

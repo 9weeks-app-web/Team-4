@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
-import ModalRightComment from './ModalRightComment';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import ModalRightComment from './CommentContainer';
 import { PortfolioPageCategory } from '@/types/portfolio';
 
 const ModalRightContent = ({
@@ -11,6 +11,7 @@ const ModalRightContent = ({
   userId,
   userNickname,
   userProfile,
+  setModalMargin,
   job,
 }: {
   portfolioId: number;
@@ -19,17 +20,26 @@ const ModalRightContent = ({
   userNickname: string;
   userProfile: string;
   job: PortfolioPageCategory;
+  setModalMargin: Dispatch<SetStateAction<string>>;
 }) => {
   const [commentHandler, setCommentHandler] = useState<boolean>(false);
+  useEffect(() => {
+    if (commentHandler) {
+      setModalMargin('my-auto ml-[165px]');
+    } else {
+      setModalMargin('m-auto');
+    }
+  }, [commentHandler, setModalMargin]);
   return (
     <div
       className={`flex flex-col text-neutral-0 ${
-        commentHandler ? 'w-[300px] ml-[30px]' : 'w-[90px] right-[248px]'
+        commentHandler ? 'w-[360px] ml-[30px]' : 'w-[90px] right-[248px]'
       }  fixed`}
     >
       {commentHandler ? (
-        <div className="w-[300px] min-h-[500px] bg-neutral-0 rounded-xl">
+        <div className="w-[360px] min-h-[500px] bg-neutral-0 rounded-xl">
           <ModalRightComment
+            profileImg={userProfile}
             setCommentHandler={setCommentHandler}
             portfolioId={portfolioId}
             portfolioTitle={portfolioTitle}
