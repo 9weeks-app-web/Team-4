@@ -25,6 +25,7 @@ const NormalGatherigCard = ({ data }: NormalGatherigCardProps) => {
     teamName,
     tag,
     member,
+    capacity,
     deadline,
     profileImage,
     comments,
@@ -51,35 +52,41 @@ const NormalGatherigCard = ({ data }: NormalGatherigCardProps) => {
       <div className="absolute bottom-3 w-full pr-12">
         <div className="pt-9 text-xs text-neutral-70">
           <span className="mr-2 text-neutral-80 font-semibold">모집인원</span>
-          {member.planner && (
+          {member?.planner && (
             <span>
               기획자 <span className="text-primary-100">{member.planner}</span>
             </span>
           )}
-          {member.PM && (
+          {member?.PM && (
             <span>
               <span className="px-[6px]">·</span>
               PM <strong className="text-primary-100">{member.PM}</strong>
             </span>
           )}
-          {member.designer && (
+          {member?.designer && (
             <span>
               <span className="px-[6px]">·</span>
               디자이너{' '}
               <span className="text-primary-100">{member.designer}</span>
             </span>
           )}
-          {member.frontEnd && (
+          {member?.frontEnd && (
             <span>
               <span className="px-[6px]">·</span>
               프론트엔드{' '}
               <span className="text-primary-100">{member.frontEnd}</span>
             </span>
           )}
-          {member.backEnd && (
+          {member?.backEnd && (
             <span>
               <span className="px-[6px]">·</span>
               백엔드 <span className="text-primary-100">{member.backEnd}</span>
+            </span>
+          )}
+          {capacity && (
+            <span>
+              <span className="pl-[6px] text-primary-100">{capacity[0]}</span>
+              <span className="">/{capacity[1]}</span>
             </span>
           )}
         </div>

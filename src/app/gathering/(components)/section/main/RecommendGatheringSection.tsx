@@ -4,13 +4,12 @@ import { useQuery } from '@tanstack/react-query';
 import { apiRequest } from '@/utils/api';
 import { GatheringCard } from '@/types/gathering';
 import NormalGatherigCard from '../../card/NormalGatheringCard';
-import ButtonRound from '../../button/ButtonRound';
 
 const RecommendGatheringSection = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['RecommendCardList'],
     queryFn: async () => {
-      const res = await apiRequest<{ recommendCardDummy: GatheringCard[] }>(
+      const res = await apiRequest<{ recommendProjectDummy: GatheringCard[] }>(
         '/gathering/recommend',
       );
 
@@ -29,7 +28,7 @@ const RecommendGatheringSection = () => {
         {isLoading ? (
           <div>로딩중..</div>
         ) : (
-          data?.recommendCardDummy.map(data => (
+          data?.recommendProjectDummy.map(data => (
             <NormalGatherigCard key={data.id} data={data} />
           ))
         )}

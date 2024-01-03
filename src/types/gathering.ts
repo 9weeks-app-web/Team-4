@@ -39,13 +39,14 @@ export interface GatheringCard {
   content: string;
   subject: string;
   tag: string;
-  member: {
+  member?: {
     planner?: number;
     PM?: number;
     designer?: number;
     frontEnd?: number;
     backEnd?: number;
   };
+  capacity?: number[];
   teamName: string;
   deadline: Date;
   profileImage: string;

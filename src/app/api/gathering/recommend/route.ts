@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { recommendCardDummy } from '../(dummy)';
+import { recommendProjectDummy } from '../(dummy)/project';
 
 export async function GET() {
-  return NextResponse.json({ recommendCardDummy });
+  return NextResponse.json({ recommendProjectDummy });
 }
