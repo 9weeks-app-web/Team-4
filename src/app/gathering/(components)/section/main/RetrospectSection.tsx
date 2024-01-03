@@ -1,13 +1,15 @@
 'use client';
 
+import { Children, useEffect, useId, useMemo, useState } from 'react';
+import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import clsx from 'clsx';
 import { apiRequest } from '@/utils/api';
-import { RetrospectCard } from '@/types/gathering';
+import { Retrospect, RetrospectCard } from '@/types/gathering';
 import LargeRetrospectCard from '../../card/LargeRetrospectCard';
 import ButtonSimple from '../../button/ButtonSimple';
-import Image from 'next/image';
 
 const RetrospectSection = () => {
   const { data, isLoading } = useQuery({
@@ -45,7 +47,7 @@ const RetrospectSection = () => {
           data?.retrospectCardDummy.map(data => (
             <SwiperSlide key={data.id} className="relative">
               <LargeRetrospectCard data={data} />
-              <RetrospectPreview />
+              <RetrospectPreview retrospectId={data.id} />
             </SwiperSlide>
           ))
         )}
@@ -56,51 +58,55 @@ const RetrospectSection = () => {
 
 export default RetrospectSection;
 
-const RetrospectPreview = () => {
+interface RetrospectPreviewProps {
+  retrospectId: number;
+}
+
+const RetrospectPreview = ({ retrospectId }: RetrospectPreviewProps) => {
+  const { data, isLoading } = useQuery({
+    queryKey: ['retrospect', retrospectId],
+    queryFn: async () => {
+      const res = await apiRequest<{ retrospect: Retrospect }>(
+        `/gathering/retrospect/${retrospectId}`,
+      );
+
+      return res;
+    },
+  });
+  const [focusMemberId, setFocusMemberId] = useState<number>();
+  const focusMember = data?.retrospect.members.find(
+    ({ userId }) => userId === focusMemberId,
+  );
+
+  useEffect(() => {
+    setFocusMemberId(data?.retrospect.members[0].userId);
+  }, [data]);
+
   return (
     <article className="absolute top-0 right-0 min-w-[635px] h-full p-[30px] border border-primary-30 rounded-2xl">
       <div className="py-2 text-lg text-neutral-60 font-bold">회고</div>
       <div className="flex gap-4 mt-[30px] pb-4 text-sm text-neutral-80">
-        <div className="flex flex-col items-center gap-2">
-          <Image
-            className="rounded-[50%] border-2 border-primary-100"
-            src="https://dummyimage.com/100x100/74afe3/fff"
-            width={72}
-            height={72}
-            alt="profile"
-          />
-          <span>김스팩</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Image
-            className="rounded-[50%] border border-neutral-20"
-            src="https://dummyimage.com/100x100/74afe3/fff"
-            width={72}
-            height={72}
-            alt="profile"
-          />
-          <span>박스팩</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Image
-            className="rounded-[50%] border border-neutral-20"
-            src="https://dummyimage.com/100x100/74afe3/fff"
-            width={72}
-            height={72}
-            alt="profile"
-          />
-          <span>박스팩</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Image
-            className="rounded-[50%] border border-neutral-20"
-            src="https://dummyimage.com/100x100/74afe3/fff"
-            width={72}
-            height={72}
-            alt="profile"
-          />
-          <span>박스팩</span>
-        </div>
+        {isLoading ||
+          Children.toArray(
+            data?.retrospect.members.map(({ userId, userProfile, name }) => (
+              <div
+                className="flex flex-col items-center gap-2"
+                onClick={() => setFocusMemberId(userId)}
+              >
+                <Image
+                  className={clsx(
+                    'rounded-[50%] border-2 border-neutral-20',
+                    focusMemberId === userId && 'border-primary-100',
+                  )}
+                  src={userProfile}
+                  width={72}
+                  height={72}
+                  alt="profile"
+                />
+                <span>{name}</span>
+              </div>
+            )),
+          )}
       </div>
       <div className="min-h-[300px] my-[30px] pt-[30px] bg-background-blue rounded-xl">
         <div className="flex items-center gap-[10px] ml-10">
@@ -112,8 +118,11 @@ const RetrospectPreview = () => {
             alt="profile"
           />
           <div className="font-medium">
-            <div className="text-neutral-80 text-xl ">김스팩</div>
-            <div className="text-neutral-40">팀장 · PM</div>
+            <div className="text-neutral-80 text-xl ">{focusMember?.name}</div>
+            <div className="text-neutral-40">
+              {focusMember?.isLeader && '팀장 · '}
+              {focusMember?.position}
+            </div>
           </div>
         </div>
         <div className="flex gap-4 px-8 py-[30px]">
@@ -125,9 +134,7 @@ const RetrospectPreview = () => {
             alt="open double quote"
           />
           <p className="w-[413px] text-xl text-neutral-70 font-medium">
-            초기 브랜딩은 모든 팀원들이 함께 참여하면서 친근감 있는 캐릭터를
-            어떻게 잡을까 고민했던 것 같아요. 그 가운데 고양이 캐릭터가
-            탄생했습니다. 그 가운데 고양이 캐릭터가 탄생했습니다.
+            {data?.retrospect.retrospect}
           </p>
           <Image
             className="self-start"

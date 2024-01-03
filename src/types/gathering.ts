@@ -120,7 +120,7 @@ export interface Retrospect {
   teamName: string;
   thumbnail: string;
   members: {
-    userId: string;
+    userId: number;
     name: string;
     userProfile: string;
     level?: number;
@@ -130,5 +130,5 @@ export interface Retrospect {
   introduction: string;
   retrospect: string;
   skills: string[];
-  tags: string[];
+  tags?: string[];
 }

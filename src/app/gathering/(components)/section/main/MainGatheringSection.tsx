@@ -61,7 +61,7 @@ const MainGatheringSection = () => {
   useEffect(() => {
     refetch();
   }, [section, page]);
-  console.log(page);
+
   return (
     <section className="flex flex-col min-w-[1200px] my-40">
       <nav>
