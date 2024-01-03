@@ -1,4 +1,4 @@
-import RetrospectCard from '../../(components)/card/RetrospectCard';
+import RetrospectCard from '../../(components)/card/LargeRetrospectCard';
 
 const RETROSPECT_FILTERS = [
   {

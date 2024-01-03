@@ -22,7 +22,7 @@ const GatheringPage = () => {
       </div>
       <DeadlineGatheringSection />
       <MainGatheringSection />
-      {/* <RetrospectSection /> */}
+      <RetrospectSection />
       {/* <RecommendGatheringSection /> */}
       {/* <GatheringGuideSection /> */}
       {/* <Advertisement /> */}
