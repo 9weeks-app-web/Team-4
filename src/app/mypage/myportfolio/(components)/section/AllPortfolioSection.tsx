@@ -11,7 +11,7 @@ const AllPortfolioSection = () => {
                 <MidiumHead title="모든 포트폴리오" content="" />
                 <div className="flex justify-end space-x-4">
                     <SelectBoxButton options={['최신순', '오래된순', '인기순']} />
-                    <BasicButton content="공개 여부 설정" />
+                    <BasicButton color="gray" content="공개 여부 설정" />
                 </div>
             </div>
             <div className="grid grid-cols-3 gap-6">

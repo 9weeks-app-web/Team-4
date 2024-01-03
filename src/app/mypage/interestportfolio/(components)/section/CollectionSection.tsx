@@ -5,8 +5,8 @@ const CollectionSection = () => {
     return (
         <>
             <div className="flex justify-end space-x-4 pt-[24px] pb-[48px]">
-                <BasicButton content="추가" />
-                <BasicButton content="편집" />
+                <BasicButton color="gray" content="추가" />
+                <BasicButton color="gray" content="편집" />
             </div>
             <div className="grid grid-cols-3 gap-6 mb-12">
                 <CollectionCard />
