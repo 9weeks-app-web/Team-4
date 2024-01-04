@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import ModalRightComment from './CommentContainer';
+import ModalRightComment from './(Comment)/Container';
 import { PortfolioPageCategory } from '@/types/portfolio';
 
 const ModalRightContent = ({
@@ -51,7 +51,7 @@ const ModalRightContent = ({
       ) : (
         <>
           <div className="w-full mb-[32px] flex items-center flex-col">
-            <div className="w-[72px] rounded-full overflow-hidden relative h-[72px] flex items-center justify-center bg-neutral-0">
+            <div className="w-[64px] rounded-full overflow-hidden relative h-[64px] flex items-center justify-center bg-neutral-0">
               <Image
                 src={userProfile}
                 alt="유저 프로필 이미지"
@@ -64,7 +64,7 @@ const ModalRightContent = ({
             </div>
           </div>
           <div className="w-full mb-[32px] flex items-center flex-col">
-            <div className="w-[72px] rounded-full overflow-hidden relative  h-[72px] flex items-center justify-center  bg-neutral-0">
+            <div className="w-[64px] rounded-full overflow-hidden relative  h-[64px] flex items-center justify-center  bg-neutral-0">
               <Image
                 src="/portfolios/paper.svg"
                 alt="제안하기"
@@ -77,7 +77,7 @@ const ModalRightContent = ({
             </div>
           </div>
           <div className="w-full mb-[32px] flex items-center flex-col">
-            <div className="w-[72px] rounded-full overflow-hidden relative  h-[72px] flex items-center justify-center  bg-neutral-0">
+            <div className="w-[64px] rounded-full overflow-hidden relative  h-[64px] flex items-center justify-center  bg-neutral-0">
               <Image
                 src="/portfolios/folder.svg"
                 alt="컬렉션"
@@ -90,7 +90,7 @@ const ModalRightContent = ({
             </div>
           </div>
           <div className="w-full mb-[32px] flex items-center flex-col">
-            <div className="w-[72px] rounded-full overflow-hidden relative  h-[72px] flex items-center justify-center  bg-neutral-0">
+            <div className="w-[64px] rounded-full overflow-hidden relative  h-[64px] flex items-center justify-center  bg-neutral-0">
               <Image
                 src="/portfolios/share.svg"
                 alt="공유하기"
@@ -103,7 +103,7 @@ const ModalRightContent = ({
             </div>
           </div>
           <div className="w-full mb-[32px] flex items-center flex-col">
-            <div className="w-[72px] rounded-full overflow-hidden relative  h-[72px] flex items-center justify-center bg-[#FFBE5C]">
+            <div className="w-[64px] rounded-full overflow-hidden relative  h-[64px] flex items-center justify-center bg-[#FFBE5C]">
               <Image
                 src="/portfolios/star.svg"
                 alt="한 줄 피드백"
@@ -121,7 +121,7 @@ const ModalRightContent = ({
             }}
             className="w-full mb-[32px] flex items-center flex-col"
           >
-            <div className="w-[72px] rounded-full overflow-hidden relative  h-[72px] flex items-center justify-center bg-primary-80">
+            <div className="w-[64px] rounded-full overflow-hidden relative  h-[64px] flex items-center justify-center bg-primary-80">
               <Image
                 src="/portfolios/comment.svg"
                 alt="코멘트"
@@ -134,7 +134,7 @@ const ModalRightContent = ({
             </div>
           </button>
           <div className="w-full mb-[32px] flex items-center flex-col">
-            <div className="w-[72px] rounded-full overflow-hidden relative  h-[72px] flex items-center justify-center bg-[#FF5171]">
+            <div className="w-[64px] rounded-full overflow-hidden relative  h-[64px] flex items-center justify-center bg-[#FF5171]">
               <Image
                 src="/portfolios/modal_like.svg"
                 alt="좋아요"

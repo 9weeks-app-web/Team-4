@@ -1,7 +1,7 @@
 import { PortfolioPageCategory } from '@/types/portfolio';
 import Image from 'next/image';
 import { Dispatch, SetStateAction } from 'react';
-import CommentInput from './CommentInput';
+import CommentInput from './Input';
 
 const ModalRightComment = ({
   portfolioId,

@@ -23,11 +23,11 @@ const CommentInput = ({
         />
         <div className="ml-[6px]">{userNickname}</div>
       </div>
-      <div className="w-[310px] h-[178px] bg-background-5  mt-[7px]">
-        <div className="w-full h-[130px] bg-background-5">
+      <div className="w-[310px] h-[178px] bg-background-5  rounded-xl  mt-[7px]">
+        <div className="w-full h-[130px] bg-background-5 rounded-xl ">
           <input
             placeholder="댓글을 입력해주세요"
-            className="p-[20px] w-full h-full bg-background-5"
+            className="p-[20px] w-full h-full bg-background-5 rounded-xl "
           />
         </div>
         <div className="flex w-full h-[48px]">
