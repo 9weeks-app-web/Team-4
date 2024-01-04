@@ -8,6 +8,8 @@ import { GatheringCard } from '@/types/gathering';
 import NormalGatherigCard from '../../card/NormalGatheringCard';
 import ComboBox from '../../input/ComboBox';
 import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
+import RespecterCard from '../../card/RespecterCard';
 
 const SECTIONS = [
   {
@@ -23,7 +25,7 @@ const SECTIONS = [
     content: '스터디',
   },
   {
-    id: 'repecter',
+    id: 'respecter',
     content: '리스팩러',
   },
 ];
@@ -44,6 +46,8 @@ const ORDERS = [
 ];
 
 const MainGatheringSection = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [section, setSection] = useState('all');
   const [order, setOrder] = useState('new');
   const [page, setPage] = useState(1);
@@ -58,9 +62,15 @@ const MainGatheringSection = () => {
     },
   });
 
+  console.log(section);
+
   useEffect(() => {
     refetch();
   }, [section, page]);
+
+  useEffect(() => {
+    router.push(pathname + '?section=' + section);
+  }, [section]);
 
   return (
     <section className="flex flex-col min-w-[1200px] my-40">
@@ -139,8 +149,16 @@ const MainGatheringSection = () => {
           ))}
         </span>
       </div>
-      <div className="grid grid-cols-3 grid-flow-row gap-x-[30px] gap-y-12">
-        {isLoading ? (
+      <div className="grid grid-cols-3 grid-flow-row gap-x-[30px] gap-y-12 w-full">
+        {section === 'respecter' ? (
+          <>
+            <RespecterCard />
+            <RespecterCard />
+            <RespecterCard />
+            <RespecterCard />
+            <RespecterCard />
+          </>
+        ) : isLoading ? (
           <div>로딩중..</div>
         ) : (
           Children.toArray(

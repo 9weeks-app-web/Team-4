@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import GatheringBannerSection from './(components)/section/main/GatheringBannerSection';
 import DeadlineGatheringSection from './(components)/section/main/DeadlineGatheringSection';
 import MainGatheringSection from './(components)/section/main/MainGatheringSection';
@@ -6,9 +7,15 @@ import RecommendGatheringSection from './(components)/section/main/RecommendGath
 import ButtonRound from './(components)/button/ButtonRound';
 import GatheringGuideSection from './(components)/section/main/GatheringGuideSection';
 import AdvertisementSection from './(components)/section/main/AdvertisementSection';
-import Image from 'next/image';
+import TodayRespecterSection from './(components)/section/main/TodayRespecterSection';
 
-const GatheringPage = () => {
+interface GatheringPageProps {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+const GatheringPage = ({ searchParams }: GatheringPageProps) => {
+  const { section } = searchParams;
+
   return (
     <main className="flex flex-col items-center min-h-screen">
       <GatheringBannerSection />
@@ -33,7 +40,11 @@ const GatheringPage = () => {
           <ButtonRound content="모임 만들기" />
         </div>
       </div>
-      <DeadlineGatheringSection />
+      {section === 'respecter' ? (
+        <TodayRespecterSection />
+      ) : (
+        <DeadlineGatheringSection />
+      )}
       <MainGatheringSection />
       <RetrospectSection />
       <RecommendGatheringSection />

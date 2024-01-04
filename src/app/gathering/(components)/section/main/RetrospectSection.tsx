@@ -8,8 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import clsx from 'clsx';
 import { apiRequest } from '@/utils/api';
 import { Retrospect, RetrospectCard } from '@/types/gathering';
-import LargeRetrospectCard from '../../card/LargeRetrospectCard';
 import ButtonSimple from '../../button/ButtonSimple';
+import SimpleRetrospectCard from '../../card/ThumbnailGatheringCard';
 
 const RetrospectSection = () => {
   const { data, isLoading } = useQuery({
@@ -46,7 +46,9 @@ const RetrospectSection = () => {
         ) : (
           data?.retrospectCardDummy.map(data => (
             <SwiperSlide key={data.id} className="relative">
-              <LargeRetrospectCard data={data} />
+              <div className="max-w-[534px]  px-[47px] py-[35px] border-4 border-primary-50 rounded-2xl">
+                <SimpleRetrospectCard data={data} />
+              </div>
               <RetrospectPreview retrospectId={data.id} />
             </SwiperSlide>
           ))

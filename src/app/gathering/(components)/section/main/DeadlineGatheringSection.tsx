@@ -6,7 +6,6 @@ import { Navigation } from 'swiper/modules';
 import { apiRequest } from '@/utils/api';
 import { GatheringCard } from '@/types/gathering';
 import LargeGatherigCard from '../../card/LargeGatheringCard';
-import ButtonBasic from '../../button/ButtonBasic';
 
 const DeadlineGatheringSection = () => {
   const { data, isLoading } = useQuery({
