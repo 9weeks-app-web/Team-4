@@ -40,8 +40,8 @@ const UserOtherPortfolios = ({
           modules={[Navigation, Pagination]}
         >
           {data.portfolioList.map(e => (
-            <SwiperSlide key={e.portfolioId}>
-              <div className="min-w-[30%]  w-full h-[340px] flex flex-col items-center">
+            <SwiperSlide key={e.portfolioId} className="z-1">
+              <div className="min-w-[30%]  w-full h-[340px] flex flex-col items-center z-1">
                 <div className="max-w-[337px] w-full h-[252px] relative">
                   <Image
                     src={e.thumbnail}
@@ -50,8 +50,10 @@ const UserOtherPortfolios = ({
                     fill
                   />
                 </div>
-                <div className="mt-auto max-w-[337px] p-1 w-full text-neutral-0">
-                  <div className="font-semibold text-lg mb-2">{e.title}</div>
+                <div className="mt-auto max-w-[337px] p-1 w-full text-neutral-0 z-1">
+                  <div className="font-semibold text-lg mb-2 z-1">
+                    {e.title}
+                  </div>
                   <div className="flex font-normal text-sm">
                     <div className="flex h-6">
                       <Image

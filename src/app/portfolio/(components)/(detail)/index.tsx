@@ -50,7 +50,7 @@ const PortfolioDetail = ({
           </div>
           <div className="w-full border-t-2 border-neutral-20"></div>
           {/* 태그 영역 */}
-          <div className="flex p-[12px] h-[76px] items-center">
+          <div className="flex p-[12px] h-[76px] items-center sticky -top-[40px] z-10 bg-neutral-0 border-b-2 border-neutral-20">
             {data.content.bookmark.map((e, index) => (
               <div
                 className="mr-2 flex px-[20px] p-3 border h-8 items-center border-neutral-10 w-fit rounded-full"
