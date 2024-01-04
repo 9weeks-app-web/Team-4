@@ -1,0 +1,108 @@
+import { CommunityCategoryList } from '@/types/community';
+
+const qnaDummyData: CommunityCategoryList = {
+  type: 'QnA',
+  page: 1,
+  endPage: 2,
+  postList: [
+    {
+      nickname: '질문맨',
+      major: '프론트엔드 개발자',
+      createdAt: new Date(),
+      title: 'React에서 발생한 오류 질문',
+      thumbnail: ['https://dummyimage.com/600x400/ff5733/ffffff&text=Q1'],
+      pictureCount: 1,
+      content:
+        'React 프로젝트 중에 발생한 오류에 대해 도움이 필요합니다. 어떻게 해결할 수 있을까요?',
+      commentCounts: 32,
+      likes: 64,
+      hits: 64,
+      bookmarks: 32,
+      poll: undefined,
+      category: 'QnA',
+    },
+    {
+      nickname: '질문러너',
+      major: '백엔드 개발자',
+      createdAt: new Date(),
+      title: 'Django에서의 성능 최적화에 관한 질문',
+      thumbnail: ['https://dummyimage.com/600x400/33ff57/ffffff&text=Q2'],
+      pictureCount: 1,
+      content:
+        'Django 프로젝트에서 성능 최적화에 대해 궁금합니다. 어떤 방법을 사용하는 것이 좋을까요?',
+      commentCounts: 18,
+      likes: 36,
+      hits: 36,
+      bookmarks: 18,
+      poll: undefined,
+      category: 'QnA',
+    },
+    {
+      nickname: '질문자',
+      major: '디자이너',
+      createdAt: new Date(),
+      title: '웹 디자인에서의 컬러 조합에 대한 질문',
+      thumbnail: ['https://dummyimage.com/600x400/576bff/ffffff&text=Q3'],
+      pictureCount: 1,
+      content:
+        '웹 디자인에서 좋은 컬러 조합을 찾기 어려워서 도움이 필요합니다. 어떤 컬러를 추천하시나요?',
+      commentCounts: 45,
+      likes: 90,
+      hits: 90,
+      bookmarks: 45,
+      poll: undefined,
+      category: 'QnA',
+    },
+    {
+      nickname: '질문왕',
+      major: '데이터사이언티스트',
+      createdAt: new Date(),
+      title: '데이터 분석 도구에 관한 질문',
+      thumbnail: ['https://dummyimage.com/600x400/ffdb58/ffffff&text=Q4'],
+      pictureCount: 1,
+      content:
+        '데이터 분석에 사용되는 효과적인 도구에 대한 추천이 필요합니다. 어떤 도구를 사용하시나요?',
+      commentCounts: 22,
+      likes: 44,
+      hits: 44,
+      bookmarks: 22,
+      poll: undefined,
+      category: 'QnA',
+    },
+    {
+      nickname: '질문탐구자',
+      major: '프론트엔드 개발자',
+      createdAt: new Date(),
+      title: '웹 성능 최적화에 대한 질문',
+      thumbnail: ['https://dummyimage.com/600x400/9acd32/ffffff&text=Q5'],
+      pictureCount: 1,
+      content:
+        '웹 성능 최적화에 관련된 팁이나 가이드라인을 알고 싶습니다. 도움 부탁드립니다!',
+      commentCounts: 27,
+      likes: 54,
+      hits: 54,
+      bookmarks: 27,
+      poll: undefined,
+      category: 'QnA',
+    },
+
+    {
+      nickname: '더미맨',
+      major: '더미 개발자',
+      createdAt: new Date(),
+      title: '더미 데이터에 관한 질문',
+      thumbnail: ['https://dummyimage.com/600x400/666666/ffffff&text=Q6'],
+      pictureCount: 1,
+      content:
+        '더미 데이터를 사용하는 중에 발생한 문제에 대해 도움이 필요합니다. 더미 데이터에 대해 질문이 있습니다.',
+      commentCounts: 15,
+      likes: 30,
+      hits: 30,
+      bookmarks: 15,
+      poll: undefined,
+      category: 'QnA',
+    },
+  ],
+};
+
+export default qnaDummyData;

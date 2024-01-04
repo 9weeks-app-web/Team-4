@@ -3,11 +3,10 @@ import { usePathname } from 'next/navigation';
 
 const SideBar = () => {
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
-    <div className="border border-neutral-10 py-7 pl-5 rounded-xl w-44 h-72 fixed left-[13%] top-1/4">
-      <p className="text-lg font-bold mb-5">커뮤니티</p>
+    <div className="border border-neutral-10 py-7 pl-5 rounded-xl w-44 h-72 fixed left-[13%] top-1/4 font-bold">
+      <p className="text-lg  mb-5">커뮤니티</p>
 
       <div className="flex flex-col text-neutral-30">
         <Link

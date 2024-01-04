@@ -19,10 +19,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }
 
   return (
-    <div className="flex justify-center items-center my-[40px]">
+    <div className="flex justify-center items-center mt-20">
       <SideBar />
       <SideWrite />
-      <main className=" w-[996px] p-4">{children}</main>
+      <main className=" w-[997px]">{children}</main>
     </div>
   );
 };

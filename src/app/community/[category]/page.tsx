@@ -1,10 +1,11 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import BoardCard from '../(components)/AllBoradCard';
+import SurveyCard from '../(components)/SurveyCard';
 
 const CommunityPage = () => {
   const pathname = usePathname();
-  const category = pathname.split('/')[2]; // Assuming the category is the third part of the path
+  const category = pathname.split('/')[2];
 
   let boardTitle = '';
   if (category === 'qna') {
@@ -12,9 +13,10 @@ const CommunityPage = () => {
   } else if (category === 'freesubject') {
     boardTitle = '자유주제';
   } else if (category === 'jobboard') {
-    boardTitle = '직무별게시판';
+    boardTitle = '직무별 게시판';
+  } else if (category === 'survey') {
+    return <SurveyCard />;
   }
-  // Add more conditions for other categories...
 
   return <BoardCard title={boardTitle} />;
 };
