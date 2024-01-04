@@ -8,6 +8,7 @@ import ButtonRound from './(components)/button/ButtonRound';
 import GatheringGuideSection from './(components)/section/main/GatheringGuideSection';
 import AdvertisementSection from './(components)/section/main/AdvertisementSection';
 import TodayRespecterSection from './(components)/section/main/TodayRespecterSection';
+import RespectRankSection from './(components)/section/main/RespectRankSection';
 
 interface GatheringPageProps {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -46,8 +47,12 @@ const GatheringPage = ({ searchParams }: GatheringPageProps) => {
         <DeadlineGatheringSection />
       )}
       <MainGatheringSection />
-      <RetrospectSection />
-      <RecommendGatheringSection />
+      {section === ('all' || 'project') && <RetrospectSection />}
+      {section === 'respecter' ? (
+        <RespectRankSection />
+      ) : (
+        <RecommendGatheringSection />
+      )}
       <GatheringGuideSection />
       <AdvertisementSection />
     </main>

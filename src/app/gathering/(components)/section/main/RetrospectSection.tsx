@@ -24,7 +24,7 @@ const RetrospectSection = () => {
   });
 
   return (
-    <section className="w-full min-w-[1200px] px-[calc((100%-1200px)/2)]">
+    <section className="w-full min-w-[1200px] px-[calc((100%-1200px)/2)] mt-10 mb-[160px]">
       <p className="pb-4 text-primary-100">프로젝트 회고</p>
       <div className="flex justify-between">
         <h3 className="w-[310px] text-[28px] font-bold break-keep">

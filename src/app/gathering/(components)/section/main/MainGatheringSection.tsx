@@ -62,8 +62,6 @@ const MainGatheringSection = () => {
     },
   });
 
-  console.log(section);
-
   useEffect(() => {
     refetch();
   }, [section, page]);

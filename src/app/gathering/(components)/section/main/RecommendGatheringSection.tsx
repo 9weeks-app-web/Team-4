@@ -18,7 +18,7 @@ const RecommendGatheringSection = () => {
   });
 
   return (
-    <section className="flex flex-col min-w-[1200px] px-[calc((100%-1200px)/2)] mt-[160px] py-[50px] bg-primary-80">
+    <section className="flex flex-col min-w-[1200px] px-[calc((100%-1200px)/2)] py-[50px] bg-primary-80">
       <p className="text-primary-30 text-lg font-bold">신규 모임</p>
       <h3 className="w-56 py-4 text-2xl text-neutral-0 font-bold break-keep">
         많은 사람들이 스크랩한 신규 모임들이에요
