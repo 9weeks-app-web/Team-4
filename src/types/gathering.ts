@@ -39,40 +39,16 @@ export interface GatheringCard {
   content: string;
   subject: string;
   tag: string;
-  member:
-    | {
-        planner?: number;
-        PM?: number;
-        designer?: number;
-        frontEnd?: number;
-        backEnd?: number;
-      }
-    | number; // type:"project" -> obeject, type:"study" -> number
+  member?: {
+    planner?: number;
+    PM?: number;
+    designer?: number;
+    frontEnd?: number;
+    backEnd?: number;
+  };
+  capacity?: number[];
   teamName: string;
-  profileImage: string;
-  comments: number;
-  hits: number;
-  bookmark?: boolean;
-}
-
-export interface GatheringCard {
-  id: number;
-  type: string;
-  Dday: number;
-  title: string;
-  content: string;
-  subject: string;
-  tag: string;
-  member:
-    | {
-        planner?: number;
-        PM?: number;
-        designer?: number;
-        frontEnd?: number;
-        backEnd?: number;
-      }
-    | number; // type:"project" -> obeject, type:"study" -> number
-  teamName: string;
+  deadline: Date;
   profileImage: string;
   comments: number;
   hits: number;
@@ -144,7 +120,7 @@ export interface Retrospect {
   teamName: string;
   thumbnail: string;
   members: {
-    userId: string;
+    userId: number;
     name: string;
     userProfile: string;
     level?: number;
@@ -154,5 +130,5 @@ export interface Retrospect {
   introduction: string;
   retrospect: string;
   skills: string[];
-  tags: string[];
+  tags?: string[];
 }

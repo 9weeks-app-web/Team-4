@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import ButtonBasic from '../../button/ButtonBasic';
 
 const GATHERING_FILTERS = [
@@ -37,15 +38,28 @@ const GATHERING_FILTERS = [
 
 const GatheringBannerSection = () => {
   return (
-    <section className="flex flex-col justify-center items-center gap-4 w-full h-96 bg-neutral-5">
-      <h2 className="text-6xl">모임찾기</h2>
-      <p>나와 맞는 모임을 검색해 보세요</p>
-      <div className="flex gap-[20px] text-xl">
-        <div className="flex gap-[20px] mt-5">
+    <section className="relative gap-4 w-full h-[539px] bg-[url(/images/gathering/main_banner.png)] bg-no-repeat">
+      <h2 className="mt-[304px] w-[500px] ml-[calc((100%-1200px)/2)] text-[42px]  text-neutral-0 font-semibold break-keep">
+        나와 맞는 모임을 찾아 커리어 스펙트럼을 넓혀보세요!
+      </h2>
+      <div className="absolute bottom-[-78.5px] min-w-[1200px] h-[157px] ml-[calc((100%-1200px)/2)] px-[53px] py-[48px] bg-neutral-0 rounded-2xl shadow-xl">
+        <div className="flex gap-3 text-lg text-neutral-40 font-medium">
+          <div className="flex flex-[3] px-5 py-[18px] border border-neutral-10 rounded-xl">
+            <Image
+              src="images/gathering/search.svg"
+              width={24}
+              height={24}
+              alt="search"
+            />
+            <input
+              className="ml-3 w-full"
+              placeholder="관심 키워드를 입력해 보세요!"
+            />
+          </div>
           {GATHERING_FILTERS.map(({ selectName, options }) => (
             <select
               key={selectName}
-              className="border-[1px] border-neutral-30 rounded-sm"
+              className="flex-[1] px-5 py-[18px] border border-neutral-10 rounded-xl"
               name={selectName}
               id={`${selectName}-select`}
             >
@@ -56,7 +70,7 @@ const GatheringBannerSection = () => {
               ))}
             </select>
           ))}
-          <ButtonBasic content="모임 만들기" />
+          <ButtonBasic content="모임 찾기" />
         </div>
       </div>
     </section>

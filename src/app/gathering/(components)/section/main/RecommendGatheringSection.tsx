@@ -1,24 +1,37 @@
+'use client';
+
+import { useQuery } from '@tanstack/react-query';
+import { apiRequest } from '@/utils/api';
+import { GatheringCard } from '@/types/gathering';
 import NormalGatherigCard from '../../card/NormalGatheringCard';
-import ButtonRound from '../../button/ButtonRound';
 
 const RecommendGatheringSection = () => {
+  const { data, isLoading } = useQuery({
+    queryKey: ['RecommendCardList'],
+    queryFn: async () => {
+      const res = await apiRequest<{ recommendProjectDummy: GatheringCard[] }>(
+        '/gathering/recommend',
+      );
+
+      return res;
+    },
+  });
+
   return (
-    <section className="flex flex-col w-full px-[20%] bg-neutral-5 my-[100px] py-[50px]">
-      <p className="text-neutral-30">신규 모임</p>
-      <h3 className="w-56 py-4 text-2xl break-keep">
-        많은 스펙인이 저장한 신규 모임들이에요
+    <section className="flex flex-col min-w-[1200px] px-[calc((100%-1200px)/2)] mt-[160px] py-[50px] bg-primary-80">
+      <p className="text-primary-30 text-lg font-bold">신규 모임</p>
+      <h3 className="w-56 py-4 text-2xl text-neutral-0 font-bold break-keep">
+        많은 사람들이 스크랩한 신규 모임들이에요
       </h3>
-      <div className="flex gap-4 w-full mt-4">
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-        <NormalGatherigCard />
-      </div>
-      <div className="flex flex-col justify-center items-center  gap-1 w-full py-[30px] mt-[50px] bg-neutral-20">
-        <p className=" text-2xl">
-          로그인 시 관심사에 맞는 프로젝트/ 스터디를 알려드려요
-        </p>
-        <p>로그인하면 여러분의 관심사에 맞는 프로젝트, 스터디를 추천해드려요</p>
-        <ButtonRound content="모임 만들기" />
+
+      <div className="flex gap-[30px] w-full mt-4">
+        {isLoading ? (
+          <div>로딩중..</div>
+        ) : (
+          data?.recommendProjectDummy.map(data => (
+            <NormalGatherigCard key={data.id} data={data} />
+          ))
+        )}
       </div>
     </section>
   );

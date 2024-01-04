@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import RetrospectCard from '../../(components)/card/RetrospectCard';
+import RetrospectCard from '../../(components)/card/LargeRetrospectCard';
 
 const RetrospectBannerSection = () => {
   return (
