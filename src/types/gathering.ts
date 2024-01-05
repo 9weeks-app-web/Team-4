@@ -67,14 +67,18 @@ export interface RetrospectCard {
   hits: number;
 }
 
-export interface respectUser {
+export interface RespectCard {
   id: number;
   userId: number;
   nickname: string;
   major: string;
   minor: string;
   profileImage: string;
-  portfolioImages: string[];
+  spectrumImage: string;
+  portfolioImages?: string[];
+  badge?: string[];
+  following: number;
+  follower: number;
 }
 [];
 

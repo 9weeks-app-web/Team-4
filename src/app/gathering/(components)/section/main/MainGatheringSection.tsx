@@ -1,14 +1,14 @@
 'use client';
 
+import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
 import { Children, useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
 import { apiRequest } from '@/utils/api';
-import { GatheringCard } from '@/types/gathering';
+import { GatheringCard, RespectCard } from '@/types/gathering';
 import NormalGatherigCard from '../../card/NormalGatheringCard';
 import ComboBox from '../../input/ComboBox';
-import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
 import RespecterCard from '../../card/RespecterCard';
 
 const SECTIONS = [
@@ -51,8 +51,13 @@ const MainGatheringSection = () => {
   const [section, setSection] = useState('all');
   const [order, setOrder] = useState('new');
   const [page, setPage] = useState(1);
-  const { data, refetch, isLoading } = useQuery({
-    queryKey: ['GatheringCardGridList'],
+  const [data, setData] = useState<{
+    size: number;
+    cardList: GatheringCard[] | RespectCard[];
+  }>();
+
+  const { data: gatheringCardList, refetch } = useQuery({
+    queryKey: ['gatheringCardGridList'],
     queryFn: async () => {
       const res = await apiRequest<{ size: number; cardList: GatheringCard[] }>(
         `/gathering?type=${section}&page=${page}`,
@@ -62,13 +67,39 @@ const MainGatheringSection = () => {
     },
   });
 
+  const { data: repecterCardList, refetch: refetchRespcter } = useQuery({
+    queryKey: ['respectCardGridList'],
+    queryFn: async () => {
+      const res = await apiRequest<{ size: number; cardList: RespectCard[] }>(
+        `/gathering/respecter?page=${page}`,
+      );
+
+      return res;
+    },
+  });
+
   useEffect(() => {
-    refetch();
-  }, [section, page]);
+    (async () => {
+      if (section === 'respecter') {
+        await refetchRespcter();
+        setData(repecterCardList);
+      } else {
+        await refetch();
+        setData(gatheringCardList);
+      }
+    })();
+  }, [
+    section,
+    page,
+    gatheringCardList,
+    repecterCardList,
+    refetchRespcter,
+    refetch,
+  ]);
 
   useEffect(() => {
     router.push(pathname + '?section=' + section);
-  }, [section]);
+  }, [pathname, router, section]);
 
   return (
     <section className="flex flex-col min-w-[1200px] my-40">
@@ -148,20 +179,14 @@ const MainGatheringSection = () => {
         </span>
       </div>
       <div className="grid grid-cols-3 grid-flow-row gap-x-[30px] gap-y-12 w-full">
-        {section === 'respecter' ? (
-          <>
-            <RespecterCard />
-            <RespecterCard />
-            <RespecterCard />
-            <RespecterCard />
-            <RespecterCard />
-          </>
-        ) : isLoading ? (
-          <div>로딩중..</div>
-        ) : (
-          Children.toArray(
-            data?.cardList.map(data => <NormalGatherigCard data={data} />),
-          )
+        {Children.toArray(
+          data?.cardList.map(data =>
+            section === 'respecter' ? (
+              <RespecterCard data={data as RespectCard} />
+            ) : (
+              <NormalGatherigCard data={data as GatheringCard} />
+            ),
+          ),
         )}
       </div>
       {data && (

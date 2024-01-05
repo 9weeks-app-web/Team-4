@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import GatheringBannerSection from './(components)/section/main/GatheringBannerSection';
 import DeadlineGatheringSection from './(components)/section/main/DeadlineGatheringSection';
@@ -9,13 +11,16 @@ import GatheringGuideSection from './(components)/section/main/GatheringGuideSec
 import AdvertisementSection from './(components)/section/main/AdvertisementSection';
 import TodayRespecterSection from './(components)/section/main/TodayRespecterSection';
 import RespectRankSection from './(components)/section/main/RespectRankSection';
+import { useSearchParams } from 'next/navigation';
 
 interface GatheringPageProps {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 const GatheringPage = ({ searchParams }: GatheringPageProps) => {
-  const { section } = searchParams;
+  // const { section } = searchParams;
+  const search = useSearchParams();
+  const section = search.get('section');
 
   return (
     <main className="flex flex-col items-center min-h-screen">
@@ -47,7 +52,7 @@ const GatheringPage = ({ searchParams }: GatheringPageProps) => {
         <DeadlineGatheringSection />
       )}
       <MainGatheringSection />
-      {section === ('all' || 'project') && <RetrospectSection />}
+      {(section === 'all' || section === 'project') && <RetrospectSection />}
       {section === 'respecter' ? (
         <RespectRankSection />
       ) : (

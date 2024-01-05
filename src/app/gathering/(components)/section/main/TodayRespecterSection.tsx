@@ -71,21 +71,20 @@ const FocusRespecter = () => {
           />
         </div>
         <div className="flex justify-between w-full text-neutral-60 font-mediume">
-          <div className="flex flex-col gap-[6px] justify-center items-center min-w-[140px] min-h-[93px] px-[30px] py-5 mb-6 border border-stroke-10 bg-background-5">
+          <div className="flex flex-col gap-[6px] justify-center items-center min-w-[140px] min-h-[93px] px-[30px] py-5 mb-6 border border-stroke-10 bg-background-5 rounded-md">
             <Image
-              className="rounded-[50%]"
-              src="https://dummyimage.com/100x100/74afe3/fff"
+              src="/images/gathering/spectrum.svg"
               width={32}
               height={32}
               alt="profile"
             />
             <span>스팩트럼</span>
           </div>
-          <div className="flex flex-col gap-[6px] justify-center items-center min-w-[140px] min-h-[93px] px-[30px] py-5 mb-6 border border-stroke-10 bg-background-5">
+          <div className="flex flex-col gap-[6px] justify-center items-center min-w-[140px] min-h-[93px] px-[30px] py-5 mb-6 border border-stroke-10 bg-background-5 rounded-md">
             <span className="text-lg text-neutral-100">999</span>
             <span>팔로워</span>
           </div>
-          <div className="flex flex-col gap-[6px] justify-center items-center min-w-[140px] min-h-[93px] px-[30px] py-5 mb-6 border border-stroke-10 bg-background-5">
+          <div className="flex flex-col gap-[6px] justify-center items-center min-w-[140px] min-h-[93px] px-[30px] py-5 mb-6 border border-stroke-10 bg-background-5 rounded-md">
             <span className="text-lg text-neutral-100">999</span>
             <span>프로젝트 수</span>
           </div>

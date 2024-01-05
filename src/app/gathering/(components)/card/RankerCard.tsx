@@ -42,8 +42,7 @@ const RankerCard = ({ data, winner = false }: RankerCardProps) => {
       <div className="flex justify-between items-center w-full min-h-[100px] px-5 mt-5 mb-6 text-neutral-60 font-mediume rounded-xl bg-background-5">
         <div className="flex flex-col gap-[6px] justify-center items-center min-h-[93px] py-5">
           <Image
-            className="rounded-[50%]"
-            src="https://dummyimage.com/100x100/74afe3/fff"
+            src="/images/gathering/spectrum.svg"
             width={32}
             height={32}
             alt="profile"

@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import { GatheringCard } from '@/types/gathering';
 import ChipBasic from '../chip/ChipBasic';
