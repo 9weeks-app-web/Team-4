@@ -10,6 +10,7 @@ export const portfolioDummy: PortfolioDetail = {
     tools: ['figma', 'Photoshop'],
     programs: 'UIUX 인턴형 프로그램 과정',
     collaborators: ['홍길동'],
+    bookmark: [],
   },
   job: 'UXUI디자인',
   portfolio: [
@@ -37,6 +38,7 @@ export const portfolioDummy2: PortfolioDetail = {
     tools: ['figma', 'Photoshop'],
     programs: 'UIUX 인턴형 프로그램 과정',
     collaborators: ['홍길동'],
+    bookmark: [],
   },
   job: 'UXUI디자인',
   portfolio: [
@@ -64,6 +66,7 @@ export const portfolioDummy3: PortfolioDetail = {
     tools: ['figma', 'Photoshop'],
     programs: 'UIUX 인턴형 프로그램 과정',
     collaborators: ['홍길동'],
+    bookmark: [],
   },
   job: 'UXUI디자인',
   portfolio: [
@@ -91,9 +94,26 @@ export const portfolioDummy4: PortfolioDetail = {
     tools: ['figma', 'Photoshop'],
     programs: 'UIUX 인턴형 프로그램 과정',
     collaborators: ['홍길동'],
+    bookmark: ['test', 'test', 'test', 'test', 'test', 'test'],
   },
   job: 'UXUI디자인',
   portfolio: [
+    {
+      type: 'image',
+      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+    },
+    {
+      type: 'image',
+      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+    },
+    {
+      type: 'image',
+      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+    },
+    {
+      type: 'image',
+      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+    },
     {
       type: 'image',
       content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
@@ -110,11 +130,13 @@ export const portfolioDummy4: PortfolioDetail = {
 
 // export const portfolioDummys: Omit<PortfolioDetail, 'content' | 'portfolio'>[] =
 //   [portfolioDummy, portfolioDummy2, portfolioDummy3, portfolioDummy4];
-export const portfolioDummys: Omit<PortfolioDetail, 'content' | 'portfolio'>[] =
-  Array.from({ length: 30 }, (_, index) => ({
+export const portfolioDummys: PortfolioDetail[] = Array.from(
+  { length: 30 },
+  (_, index) => ({
     ...portfolioDummy,
     portfolioId: portfolioDummy.portfolioId + index,
-  }));
+  }),
+);
 
 portfolioDummys.push(portfolioDummy2);
 portfolioDummys.push(portfolioDummy3);
