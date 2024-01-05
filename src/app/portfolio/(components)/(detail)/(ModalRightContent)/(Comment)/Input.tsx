@@ -15,6 +15,7 @@ const CommentInput = ({
   reComment?: boolean;
 }) => {
   const [bookmarkList, setBookmarList] = useState<string[]>([]);
+  const [text, setText] = useState<string>('');
   const [openBookmarkList, setOpenBookmarkList] = useState<boolean>(false);
   const bookmarks = [
     '데스크 리서치',
@@ -42,26 +43,32 @@ const CommentInput = ({
           <div className="ml-[6px]">{userNickname}</div>
         </div>
       )}
-      <div className="w-full mt-[8px] flex flex-wrap">
-        {bookmarkList.map((e, index) => (
-          <div
-            key={index}
-            className="text-primary-100 mr-[8px] mb-[8px] bg-primary-20 border border-primary-70 rounded-full px-[20px] py-[12px] w-fit h-[38px] flex justify-center items-center"
-          >
-            {e}
-          </div>
-        ))}
-      </div>
+
       <div
         className={`  ${
           reComment ? `` : `w-[310px]`
-        } h-[178px] bg-background-5  rounded-xl mt-[7px]`}
+        } min-h-[178px] bg-background-5  rounded-xl mt-[7px]`}
       >
-        <div className="w-full h-[130px] bg-background-5 rounded-xl ">
+        <div className="w-full min-h-[130px] bg-background-5 rounded-xl ">
+          <div className="w-full mt-[8px] p-[20px] flex flex-wrap">
+            {bookmarkList.map((e, index) => (
+              <div
+                key={index}
+                className="text-primary-100 mr-[8px] mb-[8px] bg-primary-20 border border-primary-70 rounded-full px-[20px] py-[12px] w-fit h-[38px] flex justify-center items-center"
+              >
+                {e}
+              </div>
+            ))}
+          </div>
           <input
             placeholder={
               reComment ? '답글을 입력해주세요' : '댓글을 입력해주세요'
             }
+            onChange={e => {
+              if (e && e.target && e.target.value) {
+                setText(e.target.value);
+              }
+            }}
             className="p-[20px] w-full h-full bg-background-5 rounded-xl "
           />
         </div>
@@ -82,15 +89,27 @@ const CommentInput = ({
               북마크로 질문
             </div>
           </button>
-          <button className="ml-auto mr-[8px]">
-            <Image
-              src="/portfolios/comment_upload.svg"
-              alt="업로드 버튼"
-              width={28}
-              height={28}
-              className="ml-auto "
-            />
-          </button>
+          {text === '' ? (
+            <button className="ml-auto mr-[8px]" disabled>
+              <Image
+                src="/portfolios/comment_upload.svg"
+                alt="업로드 버튼"
+                width={28}
+                height={28}
+                className={`ml-auto`}
+              />
+            </button>
+          ) : (
+            <button className="ml-auto mr-[8px]">
+              <Image
+                src="/portfolios/upload_blue.svg"
+                alt="업로드 버튼"
+                width={28}
+                height={28}
+                className={`ml-auto`}
+              />
+            </button>
+          )}
         </div>
       </div>
       {openBookmarkList && (

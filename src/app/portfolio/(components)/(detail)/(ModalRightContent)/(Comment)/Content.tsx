@@ -25,7 +25,9 @@ const RightContentComment = ({
   const [reply, setReply] = useState(false);
   return (
     <div
-      className={`w-[310px] ${reply ? `min-h-[400px]` : `min-h-[207px]`}  py-[32px]`}
+      className={`w-[310px] ${
+        reply ? `min-h-[400px]` : `min-h-[207px]`
+      }  py-[32px]`}
     >
       <div className="flex w-full h-[45px]">
         <div className="flex justify-center items-center w-[24px] h-full mr-[10px]">
@@ -46,10 +48,12 @@ const RightContentComment = ({
           </div>
         </div>
       </div>
-          <div className="py-[9px] mt-[10px] mb-[6px]">
-              <div>{bookmarks.map((e,index) => (
-                  <div key={index}></div>
-              )) }</div>
+      <div className="py-[9px] mt-[10px] mb-[6px]">
+        <div>
+          {bookmarks.map((e, index) => (
+            <div key={index}></div>
+          ))}
+        </div>
         <div className="text-base font-normal text-neutral-70 -tracking-[.96px] ">
           {content}
         </div>

@@ -5,6 +5,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import ModalRightComment from './(Comment)/Container';
 import { PortfolioPageCategory } from '@/types/portfolio';
 import ModalWrapper from '../../(Modal)';
+import PortfoliosCollection from './(Collection)/Collection';
 
 const ModalRightContent = ({
   portfolioId,
@@ -25,6 +26,9 @@ const ModalRightContent = ({
 }) => {
   const [commentHandler, setCommentHandler] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [collectionModalOpen, setCollectionModalOpen] =
+    useState<boolean>(false);
+
   useEffect(() => {
     if (commentHandler) {
       setModalMargin('my-auto ml-[165px]');
@@ -133,6 +137,19 @@ const ModalRightContent = ({
                 </ModalWrapper>
               </div>
             )}
+            {collectionModalOpen && (
+              <ModalWrapper
+                onCloseModal={() => {
+                  setCollectionModalOpen(false);
+                }}
+                width="w-[600px]"
+                overflow="hidden"
+              >
+                <PortfoliosCollection
+                  setCollectionModalOpen={setCollectionModalOpen}
+                />
+              </ModalWrapper>
+            )}
             <button className="w-[64px] hover:bg-opacity-70">
               <div className="w-[64px] rounded-full overflow-hidden relative h-[64px] flex items-center justify-center bg-neutral-0">
                 <Image
@@ -166,7 +183,12 @@ const ModalRightContent = ({
               제안하기
             </div>
           </button>
-          <button className="w-full mb-[32px] flex items-center flex-col">
+          <button
+            onClick={() => {
+              setCollectionModalOpen(true);
+            }}
+            className="w-full mb-[32px] flex items-center flex-col"
+          >
             <div className="w-[64px] rounded-full overflow-hidden relative  hover:bg-neutral-10 active:bg-neutral-20 h-[64px] flex items-center justify-center  bg-neutral-0">
               <Image
                 src="/portfolios/folder.svg"
