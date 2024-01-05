@@ -7,7 +7,6 @@ interface ButtonBasic {
 
 const ButtonBasic = ({ content, style }: ButtonBasic) => {
   const className = clsx(
-    style,
     'px-[30px]',
     'py-[15px]',
     'text-[18px]',
@@ -16,6 +15,7 @@ const ButtonBasic = ({ content, style }: ButtonBasic) => {
     'hover:bg-neutral-10',
     'text-neutral-0',
     'bg-primary-90',
+    style,
   );
 
   return <button className={className}>{content}</button>;

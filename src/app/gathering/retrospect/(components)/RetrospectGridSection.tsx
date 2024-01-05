@@ -1,45 +1,34 @@
 import RetrospectCard from '../../(components)/card/ThumbnailGatheringCard';
-
-const RETROSPECT_FILTERS = [
-  {
-    selectName: 'job',
-    options: [
-      { value: 'default', description: '직군' },
-      { value: 'react', description: 'React' },
-      { value: 'next', description: 'Next.js' },
-    ],
-  },
-  {
-    selectName: 'position',
-    options: [
-      { value: 'default', description: '포지션' },
-      { value: 'react', description: 'React' },
-      { value: 'next', description: 'Next.js' },
-    ],
-  },
-];
+import ComboBox from '../../(components)/input/ComboBox';
 
 const RetrospectGridSection = () => {
   return (
-    <section className="flex flex-col w-[60%] my-28">
-      <h3 className="text-2xl font-semibold">
+    <section className="flex flex-col w-[1200px] my-28">
+      <h3 className="text-[26px] font-bold">
         완성된 프로젝트 회고를 만나보세요
       </h3>
-      <div className="flex gap-[20px] mt-5">
-        {RETROSPECT_FILTERS.map(({ selectName, options }) => (
-          <select
-            key={selectName}
-            className="border-[1px] border-neutral-30 rounded-sm"
-            name={selectName}
-            id={`${selectName}-select`}
-          >
-            {options.map(({ value, description }) => (
-              <option key={value} value={value}>
-                {description}
-              </option>
-            ))}
-          </select>
-        ))}
+      <div className="flex w-full max-w-[296px] gap-4 mt-5">
+        <ComboBox>
+          <ComboBox.Select
+            selectName="jobs"
+            options={[
+              { value: 'default', description: '직군' },
+              { value: 'desinger', description: '디자이너' },
+              { value: 'developer', description: '개발자' },
+            ]}
+          />
+        </ComboBox>
+        <ComboBox>
+          <ComboBox.Select
+            selectName="position"
+            options={[
+              { value: 'default', description: '포지션' },
+              { value: 'desinger', description: '디자이너' },
+              { value: 'frontEnd', description: '프론트엔드' },
+              { value: 'backEnd', description: '백엔드' },
+            ]}
+          />
+        </ComboBox>
       </div>
       <div className="flex justify-between mt-14">
         <span className="">총 999건</span>

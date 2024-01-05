@@ -15,7 +15,7 @@ const GatheringDetailHeader = ({ title, type }: GatheringDetailHeaderProps) => {
           <p>{type}</p>
         </div>
         <div className="">
-          <ButtonRound content="모집 신청하기" />
+          <ButtonRound content="모집 신청하기" theme="neutral" />
         </div>
       </div>
     </>

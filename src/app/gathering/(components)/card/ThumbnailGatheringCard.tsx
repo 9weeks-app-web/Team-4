@@ -7,6 +7,7 @@ import ChipSmall from '../chip/ChipSmall';
 
 interface ThumbnailGatheringCardProps {
   data?: RetrospectCard;
+  button?: boolean;
 }
 
 const ThumbnailGatheringCard = ({
@@ -21,6 +22,7 @@ const ThumbnailGatheringCard = ({
     like: 812,
     hits: 812,
   },
+  button = false,
 }: ThumbnailGatheringCardProps) => {
   const {
     id,
@@ -60,7 +62,7 @@ const ThumbnailGatheringCard = ({
           <div className="flex mr-2">
             <Image
               className="mr-1"
-              src="images/gathering/view.svg"
+              src="/images/gathering/view.svg"
               width={24}
               height={24}
               alt="view"
@@ -70,7 +72,7 @@ const ThumbnailGatheringCard = ({
           <div className="flex ">
             <Image
               className="mr-1"
-              src="images/gathering/like.svg"
+              src="/images/gathering/like.svg"
               width={24}
               height={24}
               alt="view"
@@ -79,7 +81,7 @@ const ThumbnailGatheringCard = ({
           </div>
         </div>
       </div>
-      <ButtonBasic content="프로젝트 회고 보기" />
+      {button && <ButtonBasic content="프로젝트 회고 보기" />}
     </div>
   );
 };

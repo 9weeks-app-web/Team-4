@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface DateProps {
   placeholder: string;
 }
@@ -33,17 +35,26 @@ const Select = ({
   ],
 }: SelectProps) => {
   return (
-    <select
-      className="w-[30%] px-4 py-3 border border-neutral-10 text-neutral-40 text-lg font-medium rounded-xl"
-      id={`${selectName}-select`}
-      name={selectName}
-    >
-      {options.map(({ value, description }) => (
-        <option key={value} value={value}>
-          {description}
-        </option>
-      ))}
-    </select>
+    <div className="relative w-full bg-opacity-0">
+      <select
+        className="w-full px-4 py-3 border border-neutral-10 text-neutral-40 text-lg font-medium rounded-xl appearance-none"
+        id={`${selectName}-select`}
+        name={selectName}
+      >
+        {options.map(({ value, description }) => (
+          <option key={value} value={value}>
+            {description}
+          </option>
+        ))}
+      </select>
+      <Image
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 -z-10"
+        src="/images/gathering/arrow_down.svg"
+        width={24}
+        height={24}
+        alt="arrow"
+      />
+    </div>
   );
 };
 

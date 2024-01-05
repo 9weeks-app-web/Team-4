@@ -1,6 +1,6 @@
 'use client';
 
-import { Children, useEffect, useId, useMemo, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import { apiRequest } from '@/utils/api';
 import { Retrospect, RetrospectCard } from '@/types/gathering';
 import ButtonSimple from '../../button/ButtonSimple';
-import SimpleRetrospectCard from '../../card/ThumbnailGatheringCard';
+import ThumbnailGatheringCard from '../../card/ThumbnailGatheringCard';
 
 const RetrospectSection = () => {
   const { data, isLoading } = useQuery({
@@ -41,18 +41,14 @@ const RetrospectSection = () => {
         navigation
         modules={[Navigation, Pagination]}
       >
-        {isLoading ? (
-          <div>로딩중..</div>
-        ) : (
-          data?.retrospectCardDummy.map(data => (
-            <SwiperSlide key={data.id} className="relative">
-              <div className="max-w-[534px]  px-[47px] py-[35px] border-4 border-primary-50 rounded-2xl">
-                <SimpleRetrospectCard data={data} />
-              </div>
-              <RetrospectPreview retrospectId={data.id} />
-            </SwiperSlide>
-          ))
-        )}
+        {data?.retrospectCardDummy.map(data => (
+          <SwiperSlide key={data.id} className="relative">
+            <div className="max-w-[534px]  px-[47px] py-[35px] border-4 border-primary-50 rounded-2xl">
+              <ThumbnailGatheringCard data={data} button={true} />
+            </div>
+            <RetrospectPreview retrospectId={data.id} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

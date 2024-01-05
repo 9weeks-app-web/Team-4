@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import RetrospectCard from '../../card/ThumbnailGatheringCard';
+import ThumbnailGatheringCard from '../../card/ThumbnailGatheringCard';
 import SmallRespecterCard from '../../card/SmallRespecterCard';
 
 const TodayRespecterSection = () => {
@@ -91,7 +91,7 @@ const FocusRespecter = () => {
         </div>
       </div>
       <div className="flex-1 px-[73px] py-10 border border-neutral-10 rounded-2xl shadow-[0_0_20px_0_rgba(123,137,163,0.12)]">
-        <RetrospectCard />
+        <ThumbnailGatheringCard button={true} />
       </div>
     </div>
   );

@@ -43,7 +43,7 @@ const GatheringPage = ({ searchParams }: GatheringPageProps) => {
           </div>
         </div>
         <div>
-          <ButtonRound content="모임 만들기" />
+          <ButtonRound content="모임 만들기" theme="primary" />
         </div>
       </div>
       {section === 'respecter' ? (
