@@ -37,7 +37,7 @@ const Select = ({
   return (
     <div className="relative w-full bg-opacity-0">
       <select
-        className="w-full px-4 py-3 border border-neutral-10 text-neutral-40 text-lg font-medium rounded-xl appearance-none"
+        className="w-full px-4 py-3 border border-neutral-10 text-neutral-40 text-lg font-medium rounded-xl appearance-none bg-arrow-down bg-right-4 bg-no-repeat"
         id={`${selectName}-select`}
         name={selectName}
       >
@@ -47,13 +47,13 @@ const Select = ({
           </option>
         ))}
       </select>
-      <Image
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 -z-10"
+      {/* <Image
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 "
         src="/images/gathering/arrow_down.svg"
         width={24}
         height={24}
         alt="arrow"
-      />
+      /> */}
     </div>
   );
 };

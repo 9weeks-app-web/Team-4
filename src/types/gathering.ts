@@ -59,7 +59,7 @@ export interface RetrospectCard {
   id: number;
   type: string;
   title: string;
-  content: string;
+  content?: string;
   teamName: string;
   thumbnail: string;
   profileImage: string;

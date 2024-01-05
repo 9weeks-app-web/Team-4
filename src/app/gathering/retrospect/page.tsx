@@ -1,7 +1,7 @@
+import Image from 'next/image';
 import RetrospectBannerSection from './(components)/RetrospectBannerSection';
 import RetrospectGridSection from './(components)/RetrospectGridSection';
 import ButtonRound from '../(components)/button/ButtonRound';
-import Image from 'next/image';
 
 const RetrospectPage = () => {
   return (

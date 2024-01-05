@@ -1,7 +1,7 @@
 'use client';
 
-import { Children, useEffect, useState } from 'react';
 import Image from 'next/image';
+import { Children, useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,10 +12,10 @@ import ButtonSimple from '../../button/ButtonSimple';
 import ThumbnailGatheringCard from '../../card/ThumbnailGatheringCard';
 
 const RetrospectSection = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['RetrospectList'],
+  const { data } = useQuery({
+    queryKey: ['retrospectList'],
     queryFn: async () => {
-      const res = await apiRequest<{ retrospectCardDummy: RetrospectCard[] }>(
+      const res = await apiRequest<{ cardList: RetrospectCard[] }>(
         '/gathering/retrospect',
       );
 
@@ -41,14 +41,16 @@ const RetrospectSection = () => {
         navigation
         modules={[Navigation, Pagination]}
       >
-        {data?.retrospectCardDummy.map(data => (
-          <SwiperSlide key={data.id} className="relative">
-            <div className="max-w-[534px]  px-[47px] py-[35px] border-4 border-primary-50 rounded-2xl">
-              <ThumbnailGatheringCard data={data} button={true} />
-            </div>
-            <RetrospectPreview retrospectId={data.id} />
-          </SwiperSlide>
-        ))}
+        {Children.toArray(
+          data?.cardList.map(data => (
+            <SwiperSlide className="relative">
+              <div className="max-w-[534px]  px-[47px] py-[35px] border-4 border-primary-50 rounded-2xl">
+                <ThumbnailGatheringCard data={data} button={true} />
+              </div>
+              <RetrospectPreview retrospectId={data.id} />
+            </SwiperSlide>
+          )),
+        )}
       </Swiper>
     </section>
   );

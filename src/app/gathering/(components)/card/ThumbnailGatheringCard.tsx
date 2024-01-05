@@ -15,7 +15,8 @@ const ThumbnailGatheringCard = ({
     id: 1,
     type: 'project',
     title: '프로젝트 이름',
-    content: '프로젝트 내용',
+    content:
+      '스나이퍼팩토리의 포트폴리오 아카이빙 서비스, 스팩폴리오입니다. 프로젝트 결과물/회고 요약된 설명이 2줄 제공됩니다.',
     teamName: '팀 이름',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
@@ -47,6 +48,11 @@ const ThumbnailGatheringCard = ({
       />
       <ChipSmall content="교육" />
       <h3 className="my-3 font-semibold text-lg">{title}</h3>
+      {content && (
+        <p className="w-full  mb-3 text-neutral-40 text-sm line-clamp-2 ">
+          {content}
+        </p>
+      )}
       <div className="flex justify-between pb-11">
         <div className="flex">
           <Image

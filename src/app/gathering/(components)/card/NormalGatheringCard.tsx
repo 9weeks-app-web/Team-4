@@ -12,7 +12,27 @@ const TYPE_MAPPER = {
   study: '스터디',
 };
 
-const NormalGatherigCard = ({ data }: NormalGatherigCardProps) => {
+const NormalGatherigCard = ({
+  data = {
+    id: 1,
+    type: 'project',
+    Dday: 3,
+    title: '프로젝트 이름은 1줄까지 표시됩니다.',
+    content: '프로젝트 내용은 2줄까지 표시됩니다.',
+    subject: '프로젝트 주제',
+    teamName: '팀 이름',
+    tag: '태그',
+    member: {
+      planner: 1,
+      designer: 3,
+      frontEnd: 3,
+    },
+    deadline: new Date('2024. 01. 12'),
+    profileImage: 'https://dummyimage.com/100x100/74afe3/fff',
+    comments: 812,
+    hits: 812,
+  },
+}: NormalGatherigCardProps) => {
   const {
     id,
     type,
@@ -38,7 +58,7 @@ const NormalGatherigCard = ({ data }: NormalGatherigCardProps) => {
           <ChipPrimary content={`마감 D-${Dday}`} />
         </div>
         <Image
-          src="images/gathering/bookmark.svg"
+          src="/images/gathering/bookmark.svg"
           width={32}
           height={32}
           alt="bookmark"
@@ -109,7 +129,7 @@ const NormalGatherigCard = ({ data }: NormalGatherigCardProps) => {
             <div className="flex mr-2">
               <Image
                 className="mr-1"
-                src="images/gathering/chat_bubble.svg"
+                src="/images/gathering/chat_bubble.svg"
                 width={24}
                 height={24}
                 alt="chat bubble"
@@ -119,7 +139,7 @@ const NormalGatherigCard = ({ data }: NormalGatherigCardProps) => {
             <div className="flex ">
               <Image
                 className="mr-1"
-                src="images/gathering/view.svg"
+                src="/images/gathering/view.svg"
                 width={24}
                 height={24}
                 alt="view"

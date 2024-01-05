@@ -1,26 +1,21 @@
-'use client';
-
 import Image from 'next/image';
 import GatheringBannerSection from './(components)/section/main/GatheringBannerSection';
 import DeadlineGatheringSection from './(components)/section/main/DeadlineGatheringSection';
 import MainGatheringSection from './(components)/section/main/MainGatheringSection';
 import RetrospectSection from './(components)/section/main/RetrospectSection';
 import RecommendGatheringSection from './(components)/section/main/RecommendGatheringSection';
-import ButtonRound from './(components)/button/ButtonRound';
 import GatheringGuideSection from './(components)/section/main/GatheringGuideSection';
 import AdvertisementSection from './(components)/section/main/AdvertisementSection';
 import TodayRespecterSection from './(components)/section/main/TodayRespecterSection';
 import RespectRankSection from './(components)/section/main/RespectRankSection';
-import { useSearchParams } from 'next/navigation';
+import ButtonRound from './(components)/button/ButtonRound';
 
 interface GatheringPageProps {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams: { section: string };
 }
 
 const GatheringPage = ({ searchParams }: GatheringPageProps) => {
-  // const { section } = searchParams;
-  const search = useSearchParams();
-  const section = search.get('section');
+  const { section } = searchParams;
 
   return (
     <main className="flex flex-col items-center min-h-screen">
