@@ -37,7 +37,7 @@ const ThumbnailGatheringCard = ({
   return (
     <div className="flex flex-col">
       <Image
-        className="aspect-[4/3] pb-6 rounded-2xl"
+        className="aspect-[4/3] w-full pb-6 rounded-2xl"
         src={profileImage}
         alt="projcet image"
         width={380}
