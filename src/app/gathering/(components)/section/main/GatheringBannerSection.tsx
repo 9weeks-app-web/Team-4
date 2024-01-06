@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import ButtonBasic from '../../button/ButtonBasic';
 import ComboBox from '../../input/ComboBox';
@@ -5,35 +7,19 @@ import ComboBox from '../../input/ComboBox';
 const GATHERING_FILTERS = [
   {
     selectName: 'skill',
-    options: [
-      { value: 'default', description: '기술스택' },
-      { value: 'react', description: 'React' },
-      { value: 'next', description: 'Next.js' },
-    ],
+    options: ['기술스택'],
   },
   {
     selectName: 'project',
-    options: [
-      { value: 'default', description: '프로젝트' },
-      { value: 'react', description: 'React' },
-      { value: 'next', description: 'Next.js' },
-    ],
+    options: ['프로젝트'],
   },
   {
     selectName: 'study',
-    options: [
-      { value: 'default', description: '스터디' },
-      { value: 'react', description: 'React' },
-      { value: 'next', description: 'Next.js' },
-    ],
+    options: ['스터디'],
   },
   {
     selectName: 'repecter',
-    options: [
-      { value: 'default', description: '리스팩러' },
-      { value: 'react', description: 'React' },
-      { value: 'next', description: 'Next.js' },
-    ],
+    options: ['리스팩러'],
   },
 ];
 

@@ -53,6 +53,10 @@ export interface GatheringCard {
   comments: number;
   hits: number;
   bookmark?: boolean;
+  skills?: string[];
+  jobs?: string[];
+  positions?: string[];
+  way?: '온/오프라인' | '온라인' | '오프라인';
 }
 
 export interface RetrospectCard {

@@ -13,10 +13,10 @@ const ButtonBasic = ({ content, style, link }: ButtonBasic) => {
     'py-[15px]',
     'text-[18px]',
     'rounded-[12px]',
-    'hover:text-neutral-60',
-    'hover:bg-neutral-10',
     'text-neutral-0',
-    'bg-primary-90',
+    'bg-primary-100',
+    'hover:bg-primary-80',
+    'active:bg-primary-90',
     style,
   );
 

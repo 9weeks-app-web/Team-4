@@ -55,12 +55,16 @@ const MainGatheringSection = () => {
     size: number;
     cardList: GatheringCard[] | RespectCard[];
   }>();
+  const [skill, setSkill] = useState<string | null>(null);
+  const [job, setJob] = useState<string | null>(null);
+  const [position, setPosition] = useState<string | null>(null);
+  const [way, setWay] = useState<string | null>(null);
 
   const { data: gatheringCardList, refetch } = useQuery({
     queryKey: ['gatheringCardGridList'],
     queryFn: async () => {
       const res = await apiRequest<{ size: number; cardList: GatheringCard[] }>(
-        `/gathering?type=${section}&page=${page}`,
+        `/gathering?type=${section}&page=${page}&skill=${skill}&job=${job}&position=${position}&way=${way}`,
       );
 
       return res;
@@ -79,15 +83,13 @@ const MainGatheringSection = () => {
   });
 
   useEffect(() => {
-    (async () => {
-      if (section === 'respecter') {
-        await refetchRespcter();
-        setData(repecterCardList);
-      } else {
-        await refetch();
-        setData(gatheringCardList);
-      }
-    })();
+    if (section === 'respecter') {
+      refetchRespcter();
+      setData(repecterCardList);
+    } else {
+      refetch();
+      setData(gatheringCardList);
+    }
   }, [
     section,
     page,
@@ -100,6 +102,10 @@ const MainGatheringSection = () => {
   useEffect(() => {
     router.push(pathname + '?section=' + section);
   }, [pathname, router, section]);
+
+  useEffect(() => {
+    refetch();
+  }, [skill, job, position, way, refetch]);
 
   return (
     <section className="flex flex-col min-w-[1200px] my-40">
@@ -119,51 +125,51 @@ const MainGatheringSection = () => {
           ))}
         </ul>
       </nav>
-      <div className="flex max-w-[764px] gap-4 mt-5">
-        <ComboBox>
-          <ComboBox.Select
-            selectName="skills"
-            options={[
-              { value: 'default', description: '기술스택' },
-              { value: 'react', description: 'React' },
-              { value: 'next', description: 'Next.js' },
-            ]}
-          />
-        </ComboBox>
-        <ComboBox>
-          <ComboBox.Select
-            selectName="jobs"
-            options={[
-              { value: 'default', description: '직군' },
-              { value: 'desinger', description: '디자이너' },
-              { value: 'developer', description: '개발자' },
-            ]}
-          />
-        </ComboBox>
-        <ComboBox>
-          <ComboBox.Select
-            selectName="position"
-            options={[
-              { value: 'default', description: '포지션' },
-              { value: 'desinger', description: '디자이너' },
-              { value: 'frontEnd', description: '프론트엔드' },
-              { value: 'backEnd', description: '백엔드' },
-            ]}
-          />
-        </ComboBox>
-        <ComboBox>
-          <ComboBox.Select
-            selectName="ways"
-            options={[{ value: 'default', description: '진행방식' }]}
-          />
-        </ComboBox>
-        <ComboBox>
-          <ComboBox.Select
-            selectName="capacity"
-            options={[{ value: 'default', description: '모집현황' }]}
-          />
-        </ComboBox>
-      </div>
+      {section === 'respecter' || (
+        <div
+          className={`flex gap-4 mt-5 ${
+            section === 'study' ? 'max-w-[583px]' : 'max-w-[764px]'
+          }`}
+        >
+          {(section === 'all' || section === 'project') && (
+            <ComboBox>
+              <ComboBox.Select
+                selectName="skills"
+                options={['기술스택', 'JavaScript', 'Java', 'Figma', 'Xd']}
+                setter={setSkill}
+              />
+            </ComboBox>
+          )}
+          <ComboBox>
+            <ComboBox.Select
+              selectName="jobs"
+              options={['직군', '기획', '개발', '디자인']}
+              setter={setJob}
+            />
+          </ComboBox>
+          <ComboBox>
+            <ComboBox.Select
+              selectName="position"
+              options={[
+                '포지션',
+                'PM',
+                '서비스기획',
+                '프론트엔드',
+                '백엔드',
+                '디자이너',
+              ]}
+              setter={setPosition}
+            />
+          </ComboBox>
+          <ComboBox>
+            <ComboBox.Select
+              selectName="ways"
+              options={['진행방식', '온/오프라인', '온라인', '오프라인']}
+              setter={setWay}
+            />
+          </ComboBox>
+        </div>
+      )}
       <div className="flex justify-between mt-12 mb-3">
         <span className="">총 {data?.size}건</span>
         <span className="flex gap-6 text-neutral-30">
