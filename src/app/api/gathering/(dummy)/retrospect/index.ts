@@ -10,7 +10,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -22,7 +22,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -34,7 +34,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -46,7 +46,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -58,7 +58,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -70,7 +70,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -82,7 +82,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -94,7 +94,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -106,7 +106,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -118,7 +118,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -130,7 +130,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -142,7 +142,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -154,7 +154,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -166,7 +166,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -178,7 +178,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -190,7 +190,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -202,7 +202,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -214,7 +214,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -226,7 +226,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -238,7 +238,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -250,7 +250,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -262,7 +262,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -274,7 +274,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -286,7 +286,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -298,7 +298,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -310,7 +310,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -322,7 +322,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -334,7 +334,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
   {
@@ -346,7 +346,7 @@ export const retrospectCardDummy: RetrospectCard[] = [
     teamName: '사벤저스',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 999,
+    likes: 999,
     hits: 999,
   },
 ];

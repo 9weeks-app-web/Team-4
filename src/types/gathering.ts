@@ -63,7 +63,7 @@ export interface RetrospectCard {
   teamName: string;
   thumbnail: string;
   profileImage: string;
-  like: number;
+  likes: number;
   hits: number;
 }
 

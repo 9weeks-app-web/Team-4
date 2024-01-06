@@ -2,12 +2,13 @@
 
 import Image from 'next/image';
 import { RetrospectCard } from '@/types/gathering';
+import { PortfolioCard } from '@/types/portfolio';
 import ButtonBasic from '../button/ButtonBasic';
 import ChipSmall from '../chip/ChipSmall';
 
 interface ThumbnailGatheringCardProps {
-  data?: RetrospectCard;
-  button?: boolean;
+  data?: RetrospectCard & PortfolioCard;
+  button?: string;
 }
 
 const ThumbnailGatheringCard = ({
@@ -20,10 +21,12 @@ const ThumbnailGatheringCard = ({
     teamName: '팀 이름',
     thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fffcom',
-    like: 812,
+    userProfile: 'https://dummyimage.com/100x100/74afe3/fffcom',
+    nickname: 'https://dummyimage.com/100x100/74afe3/fffcom',
+    likes: 812,
     hits: 812,
   },
-  button = false,
+  button,
 }: ThumbnailGatheringCardProps) => {
   const {
     id,
@@ -32,8 +35,10 @@ const ThumbnailGatheringCard = ({
     content,
     teamName,
     thumbnail,
+    userProfile,
+    nickname,
     profileImage,
-    like,
+    likes,
     hits,
   } = data;
 
@@ -41,8 +46,8 @@ const ThumbnailGatheringCard = ({
     <div className="flex flex-col">
       <Image
         className="aspect-[4/3] w-full pb-6 rounded-2xl"
-        src={profileImage}
-        alt="projcet image"
+        src={profileImage || thumbnail}
+        alt="thumbnail"
         width={380}
         height={285}
       />
@@ -57,12 +62,12 @@ const ThumbnailGatheringCard = ({
         <div className="flex">
           <Image
             className="mr-2 rounded-[50%]"
-            src={profileImage}
-            alt="team image"
+            src={profileImage || userProfile}
+            alt="profile"
             width={24}
             height={24}
           />
-          <span>{teamName}</span>
+          <span>{teamName || nickname}</span>
         </div>
         <div className="flex items-center text-neutral-60">
           <div className="flex mr-2">
@@ -81,13 +86,22 @@ const ThumbnailGatheringCard = ({
               src="/images/gathering/like.svg"
               width={24}
               height={24}
-              alt="view"
+              alt="like"
             />
-            {like}
+            {likes}
           </div>
         </div>
       </div>
-      {button && <ButtonBasic content="프로젝트 회고 보기" />}
+      {button && (
+        <ButtonBasic
+          content={button}
+          link={
+            nickname
+              ? `/gathering/portfolio/${id}`
+              : `/gathering/retrospect/${id}`
+          }
+        />
+      )}
     </div>
   );
 };

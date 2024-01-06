@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import ButtonBasic from '../../button/ButtonBasic';
+import ComboBox from '../../input/ComboBox';
 
 const GATHERING_FILTERS = [
   {
@@ -43,7 +44,7 @@ const GatheringBannerSection = () => {
         나와 맞는 모임을 찾아 커리어 스펙트럼을 넓혀보세요!
       </h2>
       <div className="absolute bottom-[-78.5px] min-w-[1200px] h-[157px] ml-[calc((100%-1200px)/2)] px-[53px] py-[48px] bg-neutral-0 rounded-2xl shadow-xl">
-        <div className="flex gap-3 text-lg text-neutral-40 font-medium">
+        <div className="flex gap-3 h-full text-lg text-neutral-40 font-medium">
           <div className="flex flex-[3] px-5 py-[18px] border border-neutral-10 rounded-xl">
             <Image
               src="images/gathering/search.svg"
@@ -57,18 +58,11 @@ const GatheringBannerSection = () => {
             />
           </div>
           {GATHERING_FILTERS.map(({ selectName, options }) => (
-            <select
-              key={selectName}
-              className="flex-[1] px-5 py-[18px] border border-neutral-10 rounded-xl"
-              name={selectName}
-              id={`${selectName}-select`}
-            >
-              {options.map(({ value, description }) => (
-                <option key={value} value={value}>
-                  {description}
-                </option>
-              ))}
-            </select>
+            <div key={selectName} className="flex-[1]">
+              <ComboBox>
+                <ComboBox.Select selectName={selectName} options={options} />
+              </ComboBox>
+            </div>
           ))}
           <ButtonBasic content="모임 찾기" />
         </div>

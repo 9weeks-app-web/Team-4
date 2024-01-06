@@ -35,9 +35,9 @@ const Select = ({
   ],
 }: SelectProps) => {
   return (
-    <div className="relative w-full bg-opacity-0">
+    <div className="relative w-full h-full bg-opacity-0">
       <select
-        className="w-full px-4 py-3 border border-neutral-10 text-neutral-40 text-lg font-medium rounded-xl appearance-none bg-arrow-down bg-right-4 bg-no-repeat"
+        className="w-full h-full px-4 py-3 border border-neutral-10 text-neutral-40 text-lg font-medium rounded-xl appearance-none bg-arrow-down bg-right-4 bg-no-repeat"
         id={`${selectName}-select`}
         name={selectName}
       >

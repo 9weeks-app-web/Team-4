@@ -1,12 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import { Children } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import clsx from 'clsx';
 import RankerCard from '../../card/RankerCard';
 import ChipSmall from '../../chip/ChipSmall';
-import clsx from 'clsx';
-import Image from 'next/image';
 import SmallRespecterCard from '../../card/SmallRespecterCard';
 
 const RespectRankSection = () => {
@@ -44,13 +43,7 @@ const RespectRankSection = () => {
         />
       </div>
       <div className="absolute bottom-[101px] w-full pl-[calc((100%-1200px)/2)] ">
-        <Swiper
-          className="mt-40"
-          spaceBetween={30}
-          slidesPerView={4}
-          navigation
-          modules={[Navigation]}
-        >
+        <Swiper className="mt-40" spaceBetween={30} slidesPerView={4}>
           {Children.toArray(
             Array.from({ length: 6 }).map(() => (
               <SwiperSlide>

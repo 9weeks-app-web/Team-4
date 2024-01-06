@@ -91,3 +91,14 @@ export interface MainMyPortfolio {
     likes: number;
   }[];
 }
+
+export interface PortfolioCard {
+  id: number;
+  title: string;
+  content?: string;
+  thumbnail: string;
+  userProfile: string;
+  nickname: string;
+  hits: number;
+  likes: number;
+}

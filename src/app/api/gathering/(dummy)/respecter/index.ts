@@ -1,4 +1,147 @@
 import { RespectCard } from '@/types/gathering';
+import { PortfolioCard } from '@/types/portfolio';
+
+export const todayRespecterDummy: {
+  respecter: RespectCard & { projects: number };
+  portfolio: PortfolioCard;
+}[] = [
+  {
+    respecter: {
+      id: 1,
+      userId: 123,
+      nickname: '박창협',
+      profileImage: 'https://dummyimage.com/100x100/74afe3/fff',
+      spectrumImage: '/images/gathering/spectrum.svg',
+      portfolioImages: [
+        'https://dummyimage.com/100x100/74afe3/fff',
+        'https://dummyimage.com/100x100/74afe3/fff',
+        'https://dummyimage.com/100x100/74afe3/fff',
+      ],
+      major: 'UX/UI',
+      minor: '웹디자인',
+      badge: [
+        '/images/gathering/badge1.svg',
+        '/images/gathering/badge2.svg',
+        '/images/gathering/badge3.svg',
+        '/images/gathering/badge4.svg',
+      ],
+      following: 999,
+      follower: 999,
+      projects: 999,
+    },
+    portfolio: {
+      id: 1,
+      title: '작업제목',
+      thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
+      userProfile: 'https://dummyimage.com/100x100/74afe3/fff',
+      nickname: '박창협',
+      hits: 999,
+      likes: 999,
+    },
+  },
+  {
+    respecter: {
+      id: 1,
+      userId: 123,
+      nickname: '박태영',
+      profileImage: 'https://dummyimage.com/100x100/74afe3/fff',
+      spectrumImage: '/images/gathering/spectrum.svg',
+      portfolioImages: [
+        'https://dummyimage.com/100x100/74afe3/fff',
+        'https://dummyimage.com/100x100/74afe3/fff',
+        'https://dummyimage.com/100x100/74afe3/fff',
+      ],
+      major: 'UX/UI',
+      minor: '웹디자인',
+      badge: [
+        '/images/gathering/badge1.svg',
+        '/images/gathering/badge2.svg',
+        '/images/gathering/badge3.svg',
+        '/images/gathering/badge4.svg',
+      ],
+      following: 999,
+      follower: 999,
+      projects: 999,
+    },
+    portfolio: {
+      id: 1,
+      title: '작업제목',
+      thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
+      userProfile: 'https://dummyimage.com/100x100/74afe3/fff',
+      nickname: '박태영',
+      hits: 999,
+      likes: 999,
+    },
+  },
+  {
+    respecter: {
+      id: 1,
+      userId: 123,
+      nickname: '안선영',
+      profileImage: 'https://dummyimage.com/100x100/74afe3/fff',
+      spectrumImage: '/images/gathering/spectrum.svg',
+      portfolioImages: [
+        'https://dummyimage.com/100x100/74afe3/fff',
+        'https://dummyimage.com/100x100/74afe3/fff',
+        'https://dummyimage.com/100x100/74afe3/fff',
+      ],
+      major: 'UX/UI',
+      minor: '웹디자인',
+      badge: [
+        '/images/gathering/badge1.svg',
+        '/images/gathering/badge2.svg',
+        '/images/gathering/badge3.svg',
+        '/images/gathering/badge4.svg',
+      ],
+      following: 999,
+      follower: 999,
+      projects: 999,
+    },
+    portfolio: {
+      id: 1,
+      title: '작업제목',
+      thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
+      userProfile: 'https://dummyimage.com/100x100/74afe3/fff',
+      nickname: '안선영',
+      hits: 999,
+      likes: 999,
+    },
+  },
+  {
+    respecter: {
+      id: 1,
+      userId: 123,
+      nickname: '정진',
+      profileImage: 'https://dummyimage.com/100x100/74afe3/fff',
+      spectrumImage: '/images/gathering/spectrum.svg',
+      portfolioImages: [
+        'https://dummyimage.com/100x100/74afe3/fff',
+        'https://dummyimage.com/100x100/74afe3/fff',
+        'https://dummyimage.com/100x100/74afe3/fff',
+      ],
+      major: 'UX/UI',
+      minor: '웹디자인',
+      badge: [
+        '/images/gathering/badge1.svg',
+        '/images/gathering/badge2.svg',
+        '/images/gathering/badge3.svg',
+        '/images/gathering/badge4.svg',
+      ],
+      following: 999,
+      follower: 999,
+      projects: 999,
+    },
+    portfolio: {
+      id: 1,
+      title: '작업제목',
+      thumbnail: 'https://dummyimage.com/100x100/74afe3/fff',
+      userProfile: 'https://dummyimage.com/100x100/74afe3/fff',
+      nickname: '정진',
+      hits: 999,
+      likes: 999,
+    },
+  },
+];
 
 export const respectGridCardDummy: RespectCard[] = [
   {

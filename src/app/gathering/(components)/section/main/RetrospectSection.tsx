@@ -45,7 +45,10 @@ const RetrospectSection = () => {
           data?.cardList.map(data => (
             <SwiperSlide className="relative">
               <div className="max-w-[534px]  px-[47px] py-[35px] border-4 border-primary-50 rounded-2xl">
-                <ThumbnailGatheringCard data={data} button={true} />
+                <ThumbnailGatheringCard
+                  data={data}
+                  button="프로젝트 회고 보기"
+                />
               </div>
               <RetrospectPreview retrospectId={data.id} />
             </SwiperSlide>

@@ -1,11 +1,13 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 
 interface ButtonBasic {
   content: string;
   style?: string[];
+  link?: string;
 }
 
-const ButtonBasic = ({ content, style }: ButtonBasic) => {
+const ButtonBasic = ({ content, style, link }: ButtonBasic) => {
   const className = clsx(
     'px-[30px]',
     'py-[15px]',
@@ -18,7 +20,11 @@ const ButtonBasic = ({ content, style }: ButtonBasic) => {
     style,
   );
 
-  return <button className={className}>{content}</button>;
+  return (
+    <button className={className}>
+      {link ? <Link href={link}>{content}</Link> : content}
+    </button>
+  );
 };
 
 export default ButtonBasic;
