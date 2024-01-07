@@ -49,6 +49,7 @@ const config: Config = {
     },
     backgroundPosition: {
       'right-4': 'right 1rem center',
+      center: 'center',
     },
     extend: {
       backgroundImage: {
@@ -56,6 +57,7 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'arrow-down': "url('/images/gathering/arrow_down.svg')",
+        'banner-sticky': "url('/images/gathering/sticky_banner.svg')",
       },
     },
   },

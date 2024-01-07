@@ -3,7 +3,7 @@ import { RespectCard } from '@/types/gathering';
 import ChipSmall from '../chip/ChipSmall';
 
 interface SmallRespecterCardProps {
-  data: RespectCard;
+  data?: RespectCard;
 }
 
 const SmallRespecterCard = ({
