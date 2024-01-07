@@ -8,7 +8,7 @@ import { GatheringCard } from '@/types/gathering';
 import LargeGatherigCard from '../../card/LargeGatheringCard';
 
 const DeadlineGatheringSection = () => {
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ['GatheringCardList'],
     queryFn: async () => {
       const res = await apiRequest<{ gatheringCardDummy: GatheringCard[] }>(
@@ -35,15 +35,11 @@ const DeadlineGatheringSection = () => {
         navigation
         modules={[Navigation]}
       >
-        {isLoading ? (
-          <div>로딩중..</div>
-        ) : (
-          data?.gatheringCardDummy.map(data => (
-            <SwiperSlide key={data.id}>
-              <LargeGatherigCard data={data} />
-            </SwiperSlide>
-          ))
-        )}
+        {data?.gatheringCardDummy.map(data => (
+          <SwiperSlide key={data.id}>
+            <LargeGatherigCard data={data} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

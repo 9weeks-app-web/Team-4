@@ -5,17 +5,19 @@ interface ButtonRound {
   content: string;
   theme: 'white' | 'primary' | 'neutral';
   link?: string;
+  style?: string[];
 }
 
-const ButtonRound = ({ content, theme, link }: ButtonRound) => {
+const ButtonRound = ({ content, theme, link, style }: ButtonRound) => {
   const className = clsx(
     'px-[30px]',
     'py-[15px]',
     'text-[18px]',
-    'border',
     'rounded-[100px]',
     'bg-transparent',
+    style,
     theme === 'white' && [
+      'border',
       'border-neutral-0',
       'text-neutral-0',
       'hover:bg-primary-0',
@@ -23,6 +25,7 @@ const ButtonRound = ({ content, theme, link }: ButtonRound) => {
       'active:bg-neutral-5',
     ],
     theme === 'primary' && [
+      'border',
       'border-primary-80',
       'text-primary-80',
       'hover:text-neutral-0',
