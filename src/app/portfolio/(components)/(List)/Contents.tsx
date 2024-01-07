@@ -1,18 +1,25 @@
 'use client';
 
-import { PortolioList } from '@/types/portfolio';
+import { PortfolioList } from '@/types/portfolio';
 import { apiRequest } from '@/utils/api';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import ModalWrapper from '../(Modal)';
+import PortfolioDetail from '../(detail)';
 
 const PortfolioListContents = ({ category }: { category: string }) => {
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('latest');
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [contentId, setContentId] = useState<number>();
+  const [modalMargin, setModalMargin] = useState<string>('m-auto');
+
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['PortfolioList'],
     queryFn: async () => {
-      const response = await apiRequest<PortolioList>(
+      const response = await apiRequest<PortfolioList>(
         `portfolios?category=${category}&page=${page}&sort=${sort}`,
         'GET',
       );
@@ -30,6 +37,10 @@ const PortfolioListContents = ({ category }: { category: string }) => {
     },
   });
 
+  const modalHandler = () => {
+    setModalIsOpen(prev => !prev);
+  };
+
   useEffect(() => {
     refetch();
     countRefetch();
@@ -44,6 +55,23 @@ const PortfolioListContents = ({ category }: { category: string }) => {
   } else if (data && data.portfolioList) {
     return (
       <div className="w-full h-full flex flex-col">
+        <div className="w-full h-full">
+          {modalIsOpen && (
+            <ModalWrapper
+              width="w-full"
+              onCloseModal={modalHandler}
+              isWrapperNoPadding={true}
+              m={modalMargin}
+            >
+              {contentId && (
+                <PortfolioDetail
+                  portfolioId={contentId}
+                  setModalMargin={setModalMargin}
+                />
+              )}
+            </ModalWrapper>
+          )}
+        </div>
         <div className="flex mb-4">
           <div>총 {countData && countData.count}건</div>
           <div className="ml-auto">
@@ -82,7 +110,13 @@ const PortfolioListContents = ({ category }: { category: string }) => {
         <div className="w-full h-full grid gap-8 grid-cols-4">
           {data.portfolioList.map(e => (
             <div className={`w-full h-96`} key={e.portfolioId}>
-              <div className={`w-full h-96 flex flex-col`}>
+              <button
+                onClick={() => {
+                  setContentId(e.portfolioId);
+                  modalHandler();
+                }}
+                className={`w-full h-96 flex flex-col`}
+              >
                 {/* 썸네일 영역 */}
                 <div className={`w-full h-52 relative mb-2`}>
                   <Image
@@ -119,10 +153,9 @@ const PortfolioListContents = ({ category }: { category: string }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             </div>
           ))}
-          di
         </div>
         <div className="flex w-full justify-center h-10">
           <div className="flex h-full items-center">
