@@ -7,7 +7,11 @@ interface ButtonBasic {
   link?: string;
 }
 
-const ButtonBasic = ({ content, style, link }: ButtonBasic) => {
+const ButtonBasic = ({
+  content,
+  style,
+  link = '/gathering/project/12',
+}: ButtonBasic) => {
   const className = clsx(
     'px-[30px]',
     'py-[15px]',

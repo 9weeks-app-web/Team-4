@@ -223,13 +223,12 @@ const MainGatheringSection = () => {
             <button
               key={num}
               className={clsx(
-                page === num && [
-                  'text-neutral-0',
-                  'bg-primary-100',
-                  'rounded-[50%]',
-                ],
+                page === num
+                  ? ['text-neutral-0', 'bg-primary-100']
+                  : 'hover:bg-neutral-5',
                 'w-10',
                 'h-10',
+                'rounded-[50%]',
               )}
               onClick={() => setPage(num)}
             >

@@ -45,7 +45,7 @@ const SmallRespecterCard = ({
   } = data;
 
   return (
-    <div className="relative w-full px-[22px] py-5 border border-stroke-10 bg-neutral-0 rounded-xl">
+    <div className="relative w-full px-[22px] py-5 border border-stroke-10 bg-neutral-0 rounded-xl hover:border-2 hover:border-primary-100 hover:shadow-[0_0_20px_0_rgba(123,137,163,0.12)] hover:px-[21px] hover:py-[19px] cursor-pointer">
       <div className="absolute">
         <Image
           className="rounded-[50%]"

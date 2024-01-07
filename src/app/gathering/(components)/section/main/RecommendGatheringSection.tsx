@@ -34,7 +34,7 @@ const RecommendGatheringSection = () => {
           <ButtonRound content="교육 강좌 보러가기" theme="primary" />
         </div>
       </div>
-      <section className="min-w-[1200px] py-[50px] bg-primary-80">
+      <section className="w-screen py-[50px] bg-primary-80">
         <div className="flex flex-col px-[calc((100%-1200px)/2)]">
           <p className="text-primary-30 text-lg font-bold">신규 모임</p>
           <h3 className="w-56 py-4 text-2xl text-neutral-0 font-bold break-keep">
