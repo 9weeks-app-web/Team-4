@@ -69,8 +69,6 @@ const PortfoliosLeftComponentContainer = ({
               className="pb-[12px] pt-[12px]"
             />
           </div>
-          
-
         </div>
         <div className="absolute -right-7 top-[45%]">
           <button
