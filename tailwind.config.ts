@@ -71,6 +71,9 @@ const config: Config = {
       animation: {
         stretch: 'stretch .5s ease-in-out',
       },
+      fontFamily: {
+        Pretendard: ['Pretendard'],
+      },
     },
   },
   plugins: [],
