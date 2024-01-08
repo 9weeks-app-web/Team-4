@@ -1,16 +1,19 @@
 import { CommunityDetail } from '@/types/community';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export interface CardProps {
   dummy: CommunityDetail;
+  category: string;
 }
-const Card: React.FC<CardProps> = ({ dummy }) => {
+const Card: React.FC<CardProps> = ({ dummy, category }) => {
   const [likeHovered, setLikeHovered] = useState(false);
   const [chatHovered, setChatHovered] = useState(false);
   const [eyeHovered, setEyeHovered] = useState(false);
+
   return (
-    <div className=" p-5 mb-4 rounded-2xl border border-neutral-5 text-sm">
+    <div className=" p-5 mb-4 rounded-2xl border border-neutral-5 text-sm w-[483px] h-[262px]">
       <div className="flex justify-between mb-[13px]">
         <div className="flex items-center">
           <Image
@@ -26,12 +29,14 @@ const Card: React.FC<CardProps> = ({ dummy }) => {
           {dummy.createdAt.toISOString().split('T')[0]}
         </div>
       </div>
-      <div className="mb-5">
-        <div className=" font-bold text-lg mb-2">{dummy.title}</div>
-        <div className=" line-clamp-2 text-sm text-neutral-80">
-          {dummy.content}
+      <Link href={`/community/${category}/${dummy.id}`}>
+        <div className="mb-5">
+          <div className=" font-bold text-lg mb-2">{dummy.title}</div>
+          <div className=" line-clamp-2 text-sm text-neutral-80 h-11">
+            {dummy.content}
+          </div>
         </div>
-      </div>
+      </Link>
 
       <div className="flex mb-5">
         {dummy.tags?.map((tag, index) => (
@@ -53,7 +58,11 @@ const Card: React.FC<CardProps> = ({ dummy }) => {
             onMouseLeave={() => setLikeHovered(false)}
           >
             <Image
-              src={likeHovered ? '/images/like_hover.png' : '/images/like.png'}
+              src={
+                likeHovered
+                  ? '/images/community/like_hover.png'
+                  : '/images/community/like.png'
+              }
               alt="Star Image"
               width={24}
               height={24}
@@ -63,7 +72,7 @@ const Card: React.FC<CardProps> = ({ dummy }) => {
             <div
               className={`${
                 likeHovered ? 'text-hover-red' : ''
-              } text-sm text-neutral-60 font-medium`}
+              } text-sm font-medium`}
             >
               {dummy.likes}
             </div>
@@ -74,7 +83,11 @@ const Card: React.FC<CardProps> = ({ dummy }) => {
             onMouseLeave={() => setChatHovered(false)}
           >
             <Image
-              src={chatHovered ? '/images/chat_hover.png' : '/images/chat.png'}
+              src={
+                chatHovered
+                  ? '/images/community/chat_hover.png'
+                  : '/images/community/chat.png'
+              }
               alt="Star Image"
               width={24}
               height={24}
@@ -83,7 +96,7 @@ const Card: React.FC<CardProps> = ({ dummy }) => {
             <div
               className={`${
                 chatHovered ? 'text-hover-green' : ''
-              } text-sm text-neutral-60 font-medium`}
+              } text-sm font-medium`}
             >
               {dummy.commentCounts}
             </div>
@@ -94,7 +107,11 @@ const Card: React.FC<CardProps> = ({ dummy }) => {
             onMouseLeave={() => setEyeHovered(false)}
           >
             <Image
-              src={eyeHovered ? '/images/eye_hover.png' : '/images/eye.png'}
+              src={
+                eyeHovered
+                  ? '/images/community/eye_hover.png'
+                  : '/images/community/eye.png'
+              }
               alt="Eye Image"
               width={24}
               height={24}
@@ -103,7 +120,7 @@ const Card: React.FC<CardProps> = ({ dummy }) => {
             <div
               className={` ${
                 eyeHovered ? ' text-hover-purple' : ''
-              } text-sm text-neutral-60 font-medium`}
+              } text-sm font-medium`}
             >
               {dummy.hits}
             </div>

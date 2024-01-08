@@ -23,7 +23,7 @@ const Post: React.FC<PostProps> = () => {
     <div>
       <div className="flex p-[6px] mb-2 h-9">
         <Image
-          src="/images/star.png"
+          src="/images/community/star.png"
           alt="Star Image"
           width={24}
           height={24}
@@ -69,7 +69,7 @@ const Post: React.FC<PostProps> = () => {
       <div className="flex justify-between">
         <div className="flex items-center">
           <Image
-            src="/images/earth.png"
+            src="/images/community/earth.png"
             alt="public&private"
             width={24}
             height={24}

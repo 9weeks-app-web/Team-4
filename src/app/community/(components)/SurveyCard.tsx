@@ -50,7 +50,7 @@ const SurveyCard = () => {
           </div>
 
           <div className="border border-neutral-10 rounded-2xl p-8 text-sm mb-12">
-            <div className="mb-3 font-bold bg-primary-100 text-neutral-0 p-2 inline-block rounded-lg">
+            <div className="mb-3 font-bold bg-primary-80 text-neutral-0 p-2 inline-block rounded-lg">
               마감 D-
               {Math.ceil(
                 (survey.deadline.getTime() - new Date().getTime()) /

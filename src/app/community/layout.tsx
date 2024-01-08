@@ -10,7 +10,12 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const pathname = usePathname();
-  if (pathname === '/community/post') {
+  const category = pathname.split('/')[2];
+  const id = pathname.split('/')[3];
+  if (
+    pathname === '/community/post' ||
+    pathname === `/community/${category}/${id}`
+  ) {
     return (
       <div className="flex justify-center items-center mt-[25px]">
         <main className=" w-[1200px] p-4">{children}</main>

@@ -13,6 +13,7 @@ import {
 import Link from 'next/link';
 import { CommunityDetail } from '@/types/community';
 import Image from 'next/image';
+import RightArrow from './(components)/imageComponents/Right';
 
 const Community = () => {
   const jobCategories: string[] = [
@@ -45,7 +46,6 @@ const Community = () => {
   const sortByHitDesc = (a: CommunityDetail, b: CommunityDetail) =>
     b.likes - a.likes;
   const hotDummys = allDummys.sort(sortByHitDesc).slice(0, 6);
-  console.log(allDummys);
 
   return (
     <div className="flex justify-center items-center font-sans">
@@ -54,8 +54,12 @@ const Community = () => {
           <div className="flex justify-between">
             <h1 className="font-bold text-[26px] mb-8">핫한 게시글</h1>
             <div className="flex items-center">
-              <div className="mr-4 text-2xl"> &#60;</div>
-              <div className="text-2xl"> &#62;</div>
+              <div className="w-6 h-6 mr-4">
+                <div className="text-2xl"> &#60;</div>
+              </div>
+              <div className="w-6 h-6">
+                <div className="text-2xl"> &#62;</div>
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-[30px] ">
@@ -67,24 +71,19 @@ const Community = () => {
         <section className="mb-20">
           <div className="flex justify-between items-start">
             <h1 className="font-bold text-[26px] mb-8">자유주제</h1>
-            <div className="flex justify-center   px-4 py-3 rounded-[10px] hover:bg-neutral-5 transition ease-in-out duration-500">
-              <Link
-                href="/community/freesubject"
-                className="text-lg text-neutral-50"
-              >
+            <Link
+              href="/community/freesubject"
+              className="text-lg text-neutral-50"
+            >
+              <div className="flex justify-center   px-4 py-3 rounded-[10px] hover:bg-neutral-5 transition ease-in-out duration-500">
                 더보기
-              </Link>
-              <Image
-                src="/images/right.png"
-                alt="right"
-                width={24}
-                height={24}
-              />
-            </div>
+                <RightArrow />
+              </div>
+            </Link>
           </div>
           <div className="grid grid-cols-2 gap-[30px]">
             {CommunityDummys.slice(0, 2).map(dummy => (
-              <Card key={dummy.id} dummy={dummy} />
+              <Card dummy={dummy} key={dummy.id} category="freesubject" />
             ))}
           </div>
         </section>
@@ -107,22 +106,17 @@ const Community = () => {
                   </button>
                 ))}
               </div>
-              <div className="flex justify-center   px-4 py-3 rounded-[10px] hover:bg-neutral-5 transition ease-in-out duration-500">
-                <Link href="/community/qna" className="text-lg text-neutral-50">
+              <Link href="/community/qna" className="text-lg text-neutral-50">
+                <div className="flex justify-center   px-4 py-3 rounded-[10px] hover:bg-neutral-5 transition ease-in-out duration-500">
                   더보기
-                </Link>
-                <Image
-                  src="/images/right.png"
-                  alt="right"
-                  width={24}
-                  height={24}
-                />
-              </div>
+                  <RightArrow />
+                </div>
+              </Link>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-[30px]">
             {filteredQnADummys.slice(0, 2).map(qna => (
-              <Card key={qna.id} dummy={qna} />
+              <Card key={qna.id} dummy={qna} category="qna" />
             ))}
           </div>
         </section>
@@ -130,20 +124,12 @@ const Community = () => {
         <section className="mb-20">
           <div className="flex justify-between">
             <h1 className="font-bold text-3xl mb-4">설문조사</h1>
-            <div className="flex justify-center   px-4 py-3 rounded-[10px] hover:bg-neutral-5 transition ease-in-out duration-500">
-              <Link
-                href="/community/survey"
-                className="text-lg text-neutral-50"
-              >
+            <Link href="/community/survey" className="text-lg text-neutral-50">
+              <div className="flex justify-center   px-4 py-3 rounded-[10px] hover:bg-neutral-5 transition ease-in-out duration-500">
                 더보기
-              </Link>
-              <Image
-                src="/images/right.png"
-                alt="right"
-                width={24}
-                height={24}
-              />
-            </div>
+                <RightArrow />
+              </div>
+            </Link>
           </div>
           <div className="grid grid-cols-2 gap-[30px]">
             {surveyDummyData.slice(0, 2).map(survey => (
@@ -169,24 +155,19 @@ const Community = () => {
                 </button>
               ))}
             </div>
-            <div className="flex justify-center   px-4 py-3 rounded-[10px] hover:bg-neutral-5 transition ease-in-out duration-500">
-              <Link
-                href="/community/jobboard"
-                className="text-lg text-neutral-50"
-              >
+            <Link
+              href="/community/jobboard"
+              className="text-lg text-neutral-50"
+            >
+              <div className="flex justify-center   px-4 py-3 rounded-[10px] hover:bg-neutral-5 transition ease-in-out duration-500">
                 더보기
-              </Link>
-              <Image
-                src="/images/right.png"
-                alt="right"
-                width={24}
-                height={24}
-              />
-            </div>
+                <RightArrow />
+              </div>
+            </Link>
           </div>
           <div className="grid grid-cols-2 gap-[30px]">
             {filteredJobDummys.slice(0, 2).map(job => (
-              <Card key={job.id} dummy={job} />
+              <Card key={job.id} dummy={job} category="jobboard" />
             ))}
           </div>
         </section>

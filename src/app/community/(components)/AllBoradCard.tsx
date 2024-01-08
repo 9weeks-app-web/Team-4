@@ -1,16 +1,16 @@
-import React from 'react';
-import FreeCard from './FreeCard';
+// import React from 'react';
+// import FreeCard from './FreeCard';
 
-export interface BoardProps {
-  title: string;
-}
+// export interface BoardProps {
+//   title: string;
+// }
 
-const BoardCard: React.FC<BoardProps> = ({ title }) => {
-  return (
-    <section>
-      <FreeCard title={title} />
-    </section>
-  );
-};
+// const BoardCard: React.FC<BoardProps> = ({ title }) => {
+//   return (
+//     <section>
+//       <FreeCard title={title} />
+//     </section>
+//   );
+// };
 
-export default BoardCard;
+// export default BoardCard;
