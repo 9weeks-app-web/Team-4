@@ -41,19 +41,19 @@ const FloatingSection = () => {
           <ButtonRound
             content="회고 작성하기"
             theme="neutral"
-            link="/gathering/retrospect/new"
+            link="/gathering/retrospect/new/"
             style={['h-20']}
           />
           <ButtonRound
             content="스터디 만들기"
             theme="neutral"
-            link="/gathering/study/new"
+            link="/gathering/study/new/"
             style={['h-20']}
           />
           <ButtonRound
             content="프로젝트 만들기"
             theme="neutral"
-            link="/gathering/project/new"
+            link="/gathering/project/new/"
             style={['h-20']}
           />
         </div>

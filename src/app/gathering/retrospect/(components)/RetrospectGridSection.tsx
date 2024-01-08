@@ -5,10 +5,10 @@ import { Children, useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import clsx from 'clsx';
 import { apiRequest } from '@/utils/api';
-import { GatheringCard, RetrospectCard } from '@/types/gathering';
+import { RetrospectCard } from '@/types/gathering';
 import ComboBox from '../../(components)/input/ComboBox';
-import NormalGatherigCard from '../../(components)/card/NormalGatheringCard';
 import ThumbnailGatheringCard from '../../(components)/card/ThumbnailGatheringCard';
+import { PortfolioCard } from '@/types/portfolio';
 
 const ORDERS = [
   {
@@ -52,16 +52,10 @@ const RetrospectGridSection = () => {
       </h3>
       <div className="flex max-w-[296px] gap-4 mt-5">
         <ComboBox>
-          <ComboBox.Select
-            selectName="ways"
-            options={[{ value: 'default', description: '직군' }]}
-          />
+          <ComboBox.Select selectName="ways" options={['직군']} />
         </ComboBox>
         <ComboBox>
-          <ComboBox.Select
-            selectName="capacity"
-            options={[{ value: 'default', description: '포지션' }]}
-          />
+          <ComboBox.Select selectName="capacity" options={['포지션']} />
         </ComboBox>
       </div>
       <div className="flex justify-between mt-12 mb-3">
@@ -80,7 +74,11 @@ const RetrospectGridSection = () => {
       </div>
       <div className="grid grid-cols-3 grid-flow-row gap-x-[30px] gap-y-12 w-full">
         {Children.toArray(
-          data?.cardList.map(data => <ThumbnailGatheringCard data={data} />),
+          data?.cardList.map(data => (
+            <ThumbnailGatheringCard
+              data={data as RetrospectCard & PortfolioCard}
+            />
+          )),
         )}
       </div>
       {data && (

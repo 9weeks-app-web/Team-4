@@ -1,8 +1,7 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
 import Image from 'next/image';
-import ButtonBasic from '@/app/gathering/(components)/button/ButtonBasic';
+import { createContext, useContext, useState } from 'react';
 
 interface ImageSectionProps {
   children: React.ReactNode;
@@ -10,7 +9,7 @@ interface ImageSectionProps {
 }
 
 interface ImageSectionContextValue {
-  imageSrc: string;
+  imageSrc: string | undefined;
   handleChangeImage: HandleChangeImage;
 }
 
@@ -23,9 +22,7 @@ const ImageSectionContext = createContext<ImageSectionContextValue | null>(
 );
 
 const ImageSection = ({ children, title }: ImageSectionProps) => {
-  const [imageSrc, setImageSrc] = useState(
-    'https://dummyimage.com/100x100/74afe3/fff',
-  );
+  const [imageSrc, setImageSrc] = useState<string>();
 
   const handleChangeImage: HandleChangeImage = e => {
     if (e.target.files === null) return;
@@ -45,8 +42,8 @@ const ImageSection = ({ children, title }: ImageSectionProps) => {
 
   return (
     <ImageSectionContext.Provider value={{ imageSrc, handleChangeImage }}>
-      <section>
-        <h3 className="text-2xl mb-[30px]">{title}</h3>
+      <section className="text-[26px] font-bold mb-[27px]">
+        <h3 className="mb-[27px]">{title}</h3>
         {children}
       </section>
     </ImageSectionContext.Provider>
@@ -65,17 +62,19 @@ const SquareImage = () => {
   return (
     <div className="flex">
       <Image
-        className="bg-background-blue"
-        src={context.imageSrc}
+        className="bg-background-blue aspect-square"
+        src={context.imageSrc || '/images/gathering/team_profile.svg'}
         alt="team profile"
-        width={350}
-        height={350}
+        width={358}
+        height={358}
       />
       <label
-        className="self-end ml-4  text-neutral-60 border-neutral-30 rounded-md"
+        className="self-end ml-[30px]  text-neutral-60 border-neutral-30 rounded-md"
         htmlFor="sqaure-image"
       >
-        <ButtonBasic content="이미지 업로드" />
+        <div className="px-[30px] py-[15px] text-[18px] rounded-[12px] font-medium text-neutral-60 bg-neutral-10 hover:text-neutral-0 hover:bg-primary-80 active:bg-primary-90 cursor-pointer">
+          이미지 업로드
+        </div>
       </label>
       <input
         className="w-0 h-0"
@@ -98,17 +97,25 @@ const CircleImage = () => {
   return (
     <div className="flex">
       <Image
-        className="rounded-[50%] bg-background-blue"
-        src={context.imageSrc}
+        className="rounded-[50%] bg-background-blue aspect-square"
+        src={context.imageSrc || '/images/gathering/profile.svg'}
         alt="team profile"
         width={72}
         height={72}
       />
       <label
-        className="self-end w-[72px] h-[72px] ml-8 bg-neutral-10 text-neutral-60 border-neutral-30 rounded-[50%]"
+        className="self-end ml-8 bg-neutral-10 text-neutral-60 border-neutral-30 rounded-[50%]"
         htmlFor="circle-upload"
       >
-        <div className="text-[70px] text-center leading-[62px]">+</div>
+        <div className="flex justify-center items-center w-[72px] h-[72px] rounded-[50%] bg-background-blue cursor-pointer">
+          <Image
+            className=""
+            src="/images/gathering/blue_plus.svg"
+            alt="plus"
+            width={48}
+            height={48}
+          />
+        </div>
       </label>
       <input
         className="w-0 h-0"
