@@ -1,10 +1,10 @@
-import MidiumHead from "@/app/mypage/(components)/head/MidiumHead"
+import MediumHead from "@/app/mypage/(components)/head/MediumHead"
 import BadgeCard from "../card/BadgeCard"
 import BasicButton from "@/app/mypage/(components)/button/BasicButton"
 const RepresentBadgeSection = () => {
     return (
         <>
-            <MidiumHead title="대표 뱃지" content="프로필에 표시될 대표뱃지를 선택해보세요." />
+            <MediumHead title="대표 뱃지" content="프로필에 표시될 대표뱃지를 선택해보세요." />
             <div className="text-end space-x-4 pb-[48px]">
                 <BasicButton color="gray" content="편집" />
             </div>

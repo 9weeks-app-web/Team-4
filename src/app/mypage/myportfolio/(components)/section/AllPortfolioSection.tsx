@@ -1,14 +1,14 @@
 import PortfolioCard from "@/app/mypage/(components)/card/common/PortfolioCard"
 import BasicButton from "../../../(components)/button/BasicButton"
 import PaginationButton from "@/app/mypage/(components)/button/PaginationButton"
-import MidiumHead from "@/app/mypage/(components)/head/MidiumHead"
+import MediumHead from "@/app/mypage/(components)/head/MediumHead"
 import SelectBoxButton from "@/app/mypage/(components)/button/SelectBoxButton"
 
 const AllPortfolioSection = () => {
     return (
         <>
             <div className="pt-[110px] mb-8">
-                <MidiumHead title="모든 포트폴리오" content="" />
+                <MediumHead title="모든 포트폴리오" content="" />
                 <div className="flex justify-end space-x-4">
                     <SelectBoxButton options={['최신순', '오래된순', '인기순']} />
                     <BasicButton color="gray" content="공개 여부 설정" />

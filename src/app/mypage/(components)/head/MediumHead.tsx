@@ -1,5 +1,5 @@
 
-const MidiumHead = ({ title, content }: { title: string, content: string }) => {
+const MediumHead = ({ title, content }: { title: string, content: string }) => {
     return (
         <div className="flex flex-col">
             <div className="text-[22px] font-semibold pb-[20px]">{title}</div>
@@ -8,4 +8,4 @@ const MidiumHead = ({ title, content }: { title: string, content: string }) => {
     )
 }
 
-export default MidiumHead
+export default MediumHead
