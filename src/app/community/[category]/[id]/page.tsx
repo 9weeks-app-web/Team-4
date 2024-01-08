@@ -1,108 +1,211 @@
+'use client';
+import { usePathname } from 'next/navigation';
+import {
+  CommunityDummys,
+  JobDummys,
+  QnADummys,
+} from '../../api/community/(dummys)';
+import Image from 'next/image';
+import BadgeImage from '../../(components)/imageComponents/Badge';
+import ProfileImage from '../../(components)/imageComponents/Profile';
+import { useEffect, useRef, useState } from 'react';
+import LikeButton from '../../(components)/imageComponents/Like';
+import ChatButton from '../../(components)/imageComponents/Chat';
+import EyeButton from '../../(components)/imageComponents/Eye';
+import BookMarkButton from '../../(components)/imageComponents/Bookmark';
+import EmojiModal from '../../(components)/emojiModal/EmojiModal';
+import { DummyComment } from '../../api/community/(dummys)/comment';
+import CommentCard from '../../(components)/Comment';
+
 const Details = () => {
+  const pathname = usePathname();
+  const category = pathname.split('/')[2];
+  const id = pathname.split('/')[3];
+
+  const [showEmojiModal, setShowEmojiModal] = useState(false);
+  const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
+
+  const handleLikeClick = () => {
+    setShowEmojiModal(!showEmojiModal);
+  };
+  const handleEmojiClick = () => {
+    setShowEmojiModal(false);
+  };
+
+  const handleShareClick = () => {
+    setShareDropdownOpen(!shareDropdownOpen);
+  };
+
+  const handleCopyLink = () => {
+    setShareDropdownOpen(false);
+  };
+
+  const handleFacebookShare = () => {
+    setShareDropdownOpen(false);
+  };
+
+  const handleTwitterShare = () => {
+    setShareDropdownOpen(false);
+  };
+
+  const handleLinkedInShare = () => {
+    setShareDropdownOpen(false);
+  };
+
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        setShowEmojiModal(false);
+      }
+    };
+
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, [showEmojiModal]);
+
+  const dummy =
+    category === 'freesubject'
+      ? CommunityDummys.find(item => item.id === Number(id))
+      : category === 'qna'
+        ? QnADummys.find(item => item.id === Number(id))
+        : category === 'jobboard'
+          ? JobDummys.find(item => item.id === Number(id))
+          : null;
+  if (!dummy) {
+    return <div>Not Found</div>;
+  }
+
+  const dummyComment = DummyComment;
   return (
     <div>
-      <div className="flex">
-        <div className="flex justify-center items-center mr-2 w-12 h-12 border rounded-full"></div>
+      <div className="flex mb-[30px]">
+        <ProfileImage src={dummy?.profileImg} alt={dummy?.nickname} />
         <div>
           <div className="flex">
-            <div className="mr-2">하으니</div>
-            <div>뱃지</div>
+            <div className="mr-2 text-neutral-80 text-xl font-medium">
+              {dummy.nickname}
+            </div>
+            <BadgeImage src={dummy.badge} />
           </div>
-          <div className="flex">
-            <div>UX/UI디자이너</div>
-            <div>・약 2시간 전</div>
+          <div className="flex text-neutral-40 font-medium ">
+            <div>{dummy.major}</div>
+            <div>・</div>
+            <div>{dummy.createdAt.toISOString().split('T')[0]}</div>
           </div>
         </div>
       </div>
       <div className=" bg-neutral-0  border-neutral-30 rounded-2xl my-4">
-        <div className=" font-bold text-xl mb-4">
-          부트캠프 객관적인 현실 궁금합니다.
-        </div>
+        <div className=" font-bold text-[28px] mb-5">{dummy.title}</div>
 
-        <div className=" mb-8">
-          개발과 무관한 전공이고, 대학교 동아리에서 창업 경진대회 준비를
-          하다가개발에 관심히 생겨 이후 독학 중입니다.말이 독학이지 클론 코딩
-          몇번 해본게 전부라,현재 개발자 취업 준비 중이라고 제 입으로 말하기도
-          부끄러운 상태입니다.내년 안으로 취업이 목표라 여러 생각들이 많아,
-          현직자 분들이 많이 모여있는 곳에 질문을 드립니다.1. 부트캠프를
-          수강하려 하는데, 정말 98% 수료율, 99% 취업률 등이 진실인가요?
-          부트캠프를 수강하신 선배님들 입장에서는 이러한 수치가 정말인지?
-          부트캠프 전반적인 분위기가 어떤지 궁금합니다.2. 부트캠프는 배민 네이버
-          사피 등 대기업에서 운영하는 것이 아니면 절대 가지마라고 하던데
-          정말인가요? 사실 일년안으로 개발자 취업을 생각중이라 올해안에 꼭
-          부트캠프에 입학을 희망하고 있습니다. 대기업에서 연계 운영하는
-          부트캠프의 경우 탈락의 위험성도 생각을 안할 수가 없어 조금 불안한게
-          사실인데 위의 부트캠프들 아니면 절대 가지 않는게 맞을까요? 3. 현재
-          오프라인 부트캠프 위주로 생각하고 있는데 오프라인 부트캠프는 위코드,
-          바닐라코딩 두개가 유명하더군요. 혹시 두개 들어보신 선배님들이 있다면
-          전체적인 분위기는 어떤지, 어떻게 생각하시는지 알려주시면
-          감사하겠습니다. 그외 부트캠프를 통해서 비전공자 개발자 취업에 성공하신
-          개발자 분들이 있다면 지혜를 나눠주시면 좋을 것 같습니다. 부트캠프
-          고르는 팁 등등 알려주시면 내년도 등록시에 참고하겠습니다.
+        <div className=" font-medium text-xl mb-[84px] text-neutral-100">
+          {dummy.content}
         </div>
-        <div className="flex justify-between mb-4">
-          <div>공유하기</div>
-          <div>신고하기</div>
-        </div>
-        <div className="flex justify-between mb-4 bg-primary-10 rounded-xl p-4">
-          <div className="flex">
-            <div className="flex justify-center items-center mr-2 w-12 h-12 border rounded-full"></div>
-            <div>
-              <div className="flex">
-                <div className="mr-2">하으니</div>
-                <div>뱃지</div>
+        <div className="flex justify-between items-center mb-4 text-lg">
+          <div className="flex items-center px-4 py-[10px] text-neutral-80 relative z-20">
+            <Image
+              src="/images/community/Vector.png"
+              alt="share"
+              width={19.25}
+              height={21}
+              className="mr-4 h-[21px]"
+            />
+
+            <button onClick={handleShareClick}>공유하기</button>
+            {shareDropdownOpen && (
+              <div className="absolute top-full right-0 bg-white border rounded shadow-md mt-2 bg-neutral-0">
+                <button
+                  className=" px-4 py-2 w-full text-left"
+                  onClick={handleCopyLink}
+                >
+                  링크 복사
+                </button>
+                <button
+                  className=" px-4 py-2 w-full text-left"
+                  onClick={handleFacebookShare}
+                >
+                  페이스북에 공유
+                </button>
+                <button
+                  className=" px-4 py-2 w-full text-left"
+                  onClick={handleTwitterShare}
+                >
+                  트위터에 공유
+                </button>
+                <button
+                  className=" px-4 py-2 w-full text-left"
+                  onClick={handleLinkedInShare}
+                >
+                  링크드인에 공유
+                </button>
               </div>
-              <div className="flex">
-                <div>UX/UI디자이너</div>
+            )}
+          </div>
+          <div className=" text-neutral-40">신고하기</div>
+        </div>
+        <div className="flex justify-between items-center mb-12 bg-primary-10 rounded-xl p-5 h-[92px]">
+          <div className="flex justify-between w-full h-[52px]">
+            <div className="flex">
+              <ProfileImage src={dummy.profileImg} alt={dummy.nickname} />
+              <div>
+                <div className="flex">
+                  <div className="mr-2">{dummy.nickname}</div>
+                  <BadgeImage src={dummy.badge} />
+                </div>
+                <div className="flex">
+                  <div>{dummy.major}</div>
+                </div>
               </div>
             </div>
+            <button className="flex justify-center items-center text-lg font-medium bg-primary-80 rounded-[10px] text-neutral-0 px-4 py-[10px]">
+              <Image
+                src="/images/community/plus.png"
+                alt="plus"
+                width={12}
+                height={12}
+                className="mr-4 flex"
+              />
+              팔로우
+            </button>
           </div>
+        </div>
+        <div className="flex justify-around border rounded-2xl border-neutral-30 p-[10px] mb-[47px] h-[68px] z-10">
+          <div className="flex items-center h-12 justify-evenly  text-neutral-60 font-medium text-lg relative">
+            <LikeButton postLikes={dummy.likes} onLikeClick={handleLikeClick} />
 
-          <button className="bg-primary-80 rounded-xl text-neutral-0 p-2">
-            + 팔로우
-          </button>
-        </div>
-        <div className="flex justify-around border rounded-2xl border-neutral-30 p-4 mb-12">
-          <div>코맨트</div>
-          <div>좋아요</div>
-          <div>뷰</div>
-          <div>스크랩</div>
-        </div>
-        <div className="flex mb-12 ">
-          <div className="flex justify-center items-center mr-2 w-12 h-12 border rounded-full mb-4"></div>
-          <div className="w-full h-8">
-            <input
-              type="text"
-              placeholder="댓글을 입력하세요"
-              className="border p-2 w-full rounded-2xl"
+            <EmojiModal
+              showEmojiModal={showEmojiModal}
+              onClick={handleEmojiClick}
             />
           </div>
+          <ChatButton commentCounts={dummy.commentCounts} />
+          <EyeButton hits={dummy.hits} />
+          <BookMarkButton bookmarks={dummy.bookmarks} />
         </div>
-        <div className="flex mb-3">
-          <div className="flex justify-center items-center mr-2 w-12 h-12 border rounded-full"></div>
-          <div>
-            <div className="flex">
-              <div className="mr-2">하으니</div>
-              <div>뱃지</div>
-            </div>
-            <div className="flex">
-              <div>UX/UI디자이너</div>
-              <div>・약 2시간 전</div>
-            </div>
-          </div>
-        </div>
-        <div className="ml-12">
-          <p className="mb-4">
-            취업률, 수강률은 케바케라는 점 다시 한번 강조 드리면서 일단 부트텐트
-            사이트에 가셔서 본인에게 맞는 부트캠프를 찾아보는게 좋을 것
-            같습니다.
-          </p>
+        <div className="flex items-center mb-12 relative">
+          <ProfileImage src={dummy.profileImg} alt={dummy.nickname} />
 
-          <div className="flex">
-            <div className="mr-3">좋아요</div>
-            <div>댓글달기</div>
-          </div>
+          <input
+            type="text"
+            placeholder="댓글을 입력하세요"
+            className="py-[10px] pr-[10px] pl-4 w-full rounded-2xl bg-background-5"
+          />
+          <Image
+            src="/images/community/btn.png"
+            alt="comment button"
+            width={28}
+            height={28}
+            className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
+          />
         </div>
+        <CommentCard dummyComment={dummyComment} />
       </div>
     </div>
   );

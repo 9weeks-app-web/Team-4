@@ -41,10 +41,20 @@ const config: Config = {
         50: '#A9A9A9',
         5: '#F8F8F9',
         blue: '#F5F8FF',
+        pike: '#FFE5EB',
+        green: '#E3FFFA',
+        purple: '#EFE8FF',
+        orange: '#FFECCF',
       },
       system: {
         warning: '#FF0000',
         success: '#07A320',
+      },
+      hover: {
+        red: '#FF527C',
+        green: '#06C9A6',
+        purple: '#925EFF',
+        orange: '#FF9900',
       },
     },
     backgroundPosition: {
