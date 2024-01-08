@@ -17,7 +17,7 @@ const GatheringGuideSection = () => {
         <p className="text-lg text-neutral-60 mb-6">
           알림 설정하면 내 관심사와 맞는 모임을 빠르게 알려드러요
         </p>
-        <ButtonRound content="알림받기" />
+        <ButtonRound content="알림받기" theme="neutral" />
         <Image
           className="absolute right-0 top-[13px]"
           src="images/gathering/bell.svg"

@@ -28,7 +28,7 @@ const AdvertisementSection = () => {
         <Image
           className="self-center"
           src="/images/gathering/SFAC.svg"
-          alt="person"
+          alt="SFAC"
           width={170}
           height={44}
         />

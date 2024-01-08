@@ -27,6 +27,7 @@ export interface PortfolioContent {
   description: string;
   tags: string[];
   tools: string[];
+  bookmark: string[];
   programs?: string;
   collaborators?: string[];
 }
@@ -55,7 +56,7 @@ export interface PortfolioDetail extends Portfolio {
   createAt: Date;
 }
 
-export interface PortolioList {
+export interface PortfolioList {
   page: number;
   endPage: number;
   portfolioList: Omit<PortfolioDetail, 'content' | 'portfolio'>[];
@@ -90,4 +91,15 @@ export interface MainMyPortfolio {
     hits: number;
     likes: number;
   }[];
+}
+
+export interface PortfolioCard {
+  id: number;
+  title: string;
+  content?: string;
+  thumbnail: string;
+  userProfile: string;
+  nickname: string;
+  hits: number;
+  likes: number;
 }

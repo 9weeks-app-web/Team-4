@@ -1,21 +1,21 @@
 'use client';
 
-import { Children, useEffect, useId, useMemo, useState } from 'react';
 import Image from 'next/image';
+import { Children, useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import clsx from 'clsx';
 import { apiRequest } from '@/utils/api';
 import { Retrospect, RetrospectCard } from '@/types/gathering';
-import LargeRetrospectCard from '../../card/LargeRetrospectCard';
 import ButtonSimple from '../../button/ButtonSimple';
+import ThumbnailGatheringCard from '../../card/ThumbnailGatheringCard';
 
 const RetrospectSection = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['RetrospectList'],
+  const { data } = useQuery({
+    queryKey: ['retrospectList'],
     queryFn: async () => {
-      const res = await apiRequest<{ retrospectCardDummy: RetrospectCard[] }>(
+      const res = await apiRequest<{ cardList: RetrospectCard[] }>(
         '/gathering/retrospect',
       );
 
@@ -24,7 +24,7 @@ const RetrospectSection = () => {
   });
 
   return (
-    <section className="w-full min-w-[1200px] px-[calc((100%-1200px)/2)]">
+    <section className="w-full min-w-[1200px] px-[calc((100%-1200px)/2)] mt-10 mb-[160px]">
       <p className="pb-4 text-primary-100">프로젝트 회고</p>
       <div className="flex justify-between">
         <h3 className="w-[310px] text-[28px] font-bold break-keep">
@@ -41,15 +41,18 @@ const RetrospectSection = () => {
         navigation
         modules={[Navigation, Pagination]}
       >
-        {isLoading ? (
-          <div>로딩중..</div>
-        ) : (
-          data?.retrospectCardDummy.map(data => (
-            <SwiperSlide key={data.id} className="relative">
-              <LargeRetrospectCard data={data} />
+        {Children.toArray(
+          data?.cardList.map(data => (
+            <SwiperSlide className="relative">
+              <div className="max-w-[534px]  px-[47px] py-[35px] border-4 border-primary-50 rounded-2xl">
+                <ThumbnailGatheringCard
+                  data={data}
+                  button="프로젝트 회고 보기"
+                />
+              </div>
               <RetrospectPreview retrospectId={data.id} />
             </SwiperSlide>
-          ))
+          )),
         )}
       </Swiper>
     </section>

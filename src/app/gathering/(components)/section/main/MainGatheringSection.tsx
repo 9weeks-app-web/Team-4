@@ -1,13 +1,15 @@
 'use client';
 
+import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
 import { Children, useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
 import { apiRequest } from '@/utils/api';
-import { GatheringCard } from '@/types/gathering';
+import { GatheringCard, RespectCard } from '@/types/gathering';
 import NormalGatherigCard from '../../card/NormalGatheringCard';
 import ComboBox from '../../input/ComboBox';
-import Image from 'next/image';
+import RespecterCard from '../../card/RespecterCard';
 
 const SECTIONS = [
   {
@@ -23,7 +25,7 @@ const SECTIONS = [
     content: '스터디',
   },
   {
-    id: 'repecter',
+    id: 'respecter',
     content: '리스팩러',
   },
 ];
@@ -44,14 +46,36 @@ const ORDERS = [
 ];
 
 const MainGatheringSection = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [section, setSection] = useState('all');
   const [order, setOrder] = useState('new');
   const [page, setPage] = useState(1);
-  const { data, refetch, isLoading } = useQuery({
-    queryKey: ['GatheringCardGridList'],
+  const [data, setData] = useState<{
+    size: number;
+    cardList: GatheringCard[] | RespectCard[];
+  }>();
+  const [skill, setSkill] = useState<string | null>(null);
+  const [job, setJob] = useState<string | null>(null);
+  const [position, setPosition] = useState<string | null>(null);
+  const [way, setWay] = useState<string | null>(null);
+
+  const { data: gatheringCardList, refetch } = useQuery({
+    queryKey: ['gatheringCardGridList'],
     queryFn: async () => {
       const res = await apiRequest<{ size: number; cardList: GatheringCard[] }>(
-        `/gathering?type=${section}&page=${page}`,
+        `/gathering?type=${section}&page=${page}&skill=${skill}&job=${job}&position=${position}&way=${way}`,
+      );
+
+      return res;
+    },
+  });
+
+  const { data: repecterCardList, refetch: refetchRespcter } = useQuery({
+    queryKey: ['respectCardGridList'],
+    queryFn: async () => {
+      const res = await apiRequest<{ size: number; cardList: RespectCard[] }>(
+        `/gathering/respecter?page=${page}`,
       );
 
       return res;
@@ -59,8 +83,29 @@ const MainGatheringSection = () => {
   });
 
   useEffect(() => {
+    if (section === 'respecter') {
+      refetchRespcter();
+      setData(repecterCardList);
+    } else {
+      refetch();
+      setData(gatheringCardList);
+    }
+  }, [
+    section,
+    page,
+    gatheringCardList,
+    repecterCardList,
+    refetchRespcter,
+    refetch,
+  ]);
+
+  useEffect(() => {
+    router.push(pathname + '?section=' + section);
+  }, [pathname, router, section]);
+
+  useEffect(() => {
     refetch();
-  }, [section, page]);
+  }, [skill, job, position, way, refetch]);
 
   return (
     <section className="flex flex-col min-w-[1200px] my-40">
@@ -80,51 +125,51 @@ const MainGatheringSection = () => {
           ))}
         </ul>
       </nav>
-      <div className="flex max-w-[764px] gap-4 mt-5">
-        <ComboBox>
-          <ComboBox.Select
-            selectName="skills"
-            options={[
-              { value: 'default', description: '기술스택' },
-              { value: 'react', description: 'React' },
-              { value: 'next', description: 'Next.js' },
-            ]}
-          />
-        </ComboBox>
-        <ComboBox>
-          <ComboBox.Select
-            selectName="jobs"
-            options={[
-              { value: 'default', description: '직군' },
-              { value: 'desinger', description: '디자이너' },
-              { value: 'developer', description: '개발자' },
-            ]}
-          />
-        </ComboBox>
-        <ComboBox>
-          <ComboBox.Select
-            selectName="position"
-            options={[
-              { value: 'default', description: '포지션' },
-              { value: 'desinger', description: '디자이너' },
-              { value: 'frontEnd', description: '프론트엔드' },
-              { value: 'backEnd', description: '백엔드' },
-            ]}
-          />
-        </ComboBox>
-        <ComboBox>
-          <ComboBox.Select
-            selectName="ways"
-            options={[{ value: 'default', description: '진행방식' }]}
-          />
-        </ComboBox>
-        <ComboBox>
-          <ComboBox.Select
-            selectName="capacity"
-            options={[{ value: 'default', description: '모집현황' }]}
-          />
-        </ComboBox>
-      </div>
+      {section === 'respecter' || (
+        <div
+          className={`flex gap-4 mt-5 ${
+            section === 'study' ? 'max-w-[583px]' : 'max-w-[764px]'
+          }`}
+        >
+          {(section === 'all' || section === 'project') && (
+            <ComboBox>
+              <ComboBox.Select
+                selectName="skills"
+                options={['기술스택', 'JavaScript', 'Java', 'Figma', 'Xd']}
+                setter={setSkill}
+              />
+            </ComboBox>
+          )}
+          <ComboBox>
+            <ComboBox.Select
+              selectName="jobs"
+              options={['직군', '기획', '개발', '디자인']}
+              setter={setJob}
+            />
+          </ComboBox>
+          <ComboBox>
+            <ComboBox.Select
+              selectName="position"
+              options={[
+                '포지션',
+                'PM',
+                '서비스기획',
+                '프론트엔드',
+                '백엔드',
+                '디자이너',
+              ]}
+              setter={setPosition}
+            />
+          </ComboBox>
+          <ComboBox>
+            <ComboBox.Select
+              selectName="ways"
+              options={['진행방식', '온/오프라인', '온라인', '오프라인']}
+              setter={setWay}
+            />
+          </ComboBox>
+        </div>
+      )}
       <div className="flex justify-between mt-12 mb-3">
         <span className="">총 {data?.size}건</span>
         <span className="flex gap-6 text-neutral-30">
@@ -139,13 +184,15 @@ const MainGatheringSection = () => {
           ))}
         </span>
       </div>
-      <div className="grid grid-cols-3 grid-flow-row gap-x-[30px] gap-y-12">
-        {isLoading ? (
-          <div>로딩중..</div>
-        ) : (
-          Children.toArray(
-            data?.cardList.map(data => <NormalGatherigCard data={data} />),
-          )
+      <div className="grid grid-cols-3 grid-flow-row gap-x-[30px] gap-y-12 w-full">
+        {Children.toArray(
+          data?.cardList.map(data =>
+            section === 'respecter' ? (
+              <RespecterCard data={data as RespectCard} />
+            ) : (
+              <NormalGatherigCard data={data as GatheringCard} />
+            ),
+          ),
         )}
       </div>
       {data && (
@@ -176,13 +223,12 @@ const MainGatheringSection = () => {
             <button
               key={num}
               className={clsx(
-                page === num && [
-                  'text-neutral-0',
-                  'bg-primary-100',
-                  'rounded-[50%]',
-                ],
+                page === num
+                  ? ['text-neutral-0', 'bg-primary-100']
+                  : 'hover:bg-neutral-5',
                 'w-10',
                 'h-10',
+                'rounded-[50%]',
               )}
               onClick={() => setPage(num)}
             >
