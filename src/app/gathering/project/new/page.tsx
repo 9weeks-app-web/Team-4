@@ -9,6 +9,7 @@ import Counter from '../../(components)/input/Counter';
 import Input from '../../(components)/input/Input';
 import Textarea from '../../(components)/input/Textarea';
 import ButtonBasic from '../../(components)/button/ButtonBasic';
+import ChartSection from '../../(components)/section/create/ChartSection';
 
 const CreateGatheringPage = () => {
   return (
@@ -19,7 +20,7 @@ const CreateGatheringPage = () => {
         </p>
         <h2 className="text-2xl">프로젝트 생성</h2>
       </header>
-      <main className="flex flex-col w-full px-[20%] min-h-screen">
+      <main className="flex flex-col w-full px-[calc((100%-1200px)/2)] min-h-screen">
         <div className="w-full h-3 my-7 bg-primary-10 rounded-md">
           <div className="w-[30%] h-3 bg-primary-100 rounded-md"></div>
         </div>
@@ -119,7 +120,7 @@ const GatheringForm = () => {
         <Counter />
         <ButtonBasic content="추가" />
       </MultipleSection>
-      <div className="h-32 border">이런사람을 선호해요!</div>
+      <ChartSection />
       <MultipleSection title="기술스택*">
         <ComboBox>
           <ComboBox.Select selectName="imsi" />

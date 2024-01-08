@@ -47,11 +47,29 @@ const config: Config = {
         success: '#07A320',
       },
     },
+    backgroundPosition: {
+      'right-4': 'right 1rem center',
+      center: 'center',
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'arrow-down': "url('/images/gathering/arrow_down.svg')",
+        'banner-sticky': "url('/images/gathering/sticky_banner.svg')",
+        pencil: "url('/images/gathering/pencil.svg')",
+        x: "url('/images/gathering/x.svg')",
+      },
+      keyframes: {
+        stretch: {
+          '0%': { transform: 'translate(0, 160%)' },
+          '70%': { transform: 'translate(0, -10%)' },
+          '100%': { transform: 'translate(0, 0)' },
+        },
+      },
+      animation: {
+        stretch: 'stretch .5s ease-in-out',
       },
     },
   },
