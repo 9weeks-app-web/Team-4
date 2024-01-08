@@ -1,9 +1,12 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
 const RootHeader = () => {
   return (
-    <div className="-top-8 sticky w-full  border-b-stroke-10 flex flex-col justify-center border-b-2 h-24 z-50">
+    <div className="-top-[55px] sticky w-full  border-b-stroke-10 flex flex-col justify-center border-b-2 h-[155px] z-50">
       <div className="w-full flex justify-center bg-neutral-5">
         <div className="max-w-[90%] w-full">
-          <nav className="w-full h-8 flex items-center">
+          <nav className="w-full h-[55px] flex items-center">
             <ol className="flex">
               <li className="mr-8">스팩폴리오</li>
               <li>스팩로그</li>
@@ -13,23 +16,72 @@ const RootHeader = () => {
       </div>
       <div className="w-full flex justify-center bg-neutral-0">
         <div className="max-w-[90%] w-full">
-          <nav className="w-full h-16 flex items-center ">
+          <nav className="w-full h-[100px] flex items-center ">
             <ol className="flex h-full items-center">
-              <li className="mr-8 font-bold md:font-extrabold text-2xl md:text-4xl">
-                SFAC
+              <li className="mr-8 text-[24px] font-[500] flex">
+                <Link href={'/'} className="flex">
+                  <Image
+                    src="/portfolios/sfacfolio_logo.svg"
+                    alt="스팩폴리오 로고"
+                    width={24}
+                    height={24}
+                    className="mr-[11.9px]"
+                  />
+                  SFACFOLIO
+                </Link>
               </li>
-              <li className="mr-8 font-semibold md:font-bold md:text-2xl">
-                포트폴리오
+              <li className="mr-8 text-[18px] font-[700]">
+                <Link href={'/portfolio'}>포트폴리오</Link>
               </li>
-              <li className="mr-8 font-semibold md:font-bold md:text-2xl">
-                프로젝트/스터디
+              <li className="mr-8 text-[18px] font-[700]">
+                <Link href={'/community'}>커뮤니티</Link>
               </li>
-              <li className="mr-8 font-semibold md:font-bold md:text-2xl">
-                채용공고
+              <li className="mr-8 text-[18px] font-[700]">
+                <Link href={'/gathering'}>모임</Link>
               </li>
+              <li className="mr-8 text-[18px] font-[700]">채용</li>
             </ol>
-            <ol className="flex ml-auto">
-              <li className="mr-8">
+            <div className="flex ml-[130px] w-[485px] h-[52px] border px-[20px] py-[16px] border-neutral-10 rounded-xl">
+              <Image
+                src="/portfolios/search.svg"
+                alt="검색아이콘"
+                width={24}
+                height={24}
+                className="mr-[12px]"
+              />
+              <input
+                className="w-full"
+                placeholder="스펙트럼처럼 넓어지는 나의 스펙, 스팩폴리오!"
+              />
+            </div>
+            <ol className="flex ml-auto items-center">
+              <li className="mr-[20px]">
+                <Image
+                  src={'/portfolios/mail.svg'}
+                  alt="메일"
+                  width={32}
+                  height={32}
+                ></Image>
+              </li>
+              <li className="mr-[20px]">
+                <Image
+                  src={'/portfolios/bell.svg'}
+                  alt="메일"
+                  width={32}
+                  height={32}
+                ></Image>
+              </li>
+              <li className="">
+                <Link href={'/mypage'}>
+                  <Image
+                    src={'/portfolios/login.svg'}
+                    alt="메일"
+                    width={32}
+                    height={32}
+                  ></Image>
+                </Link>
+              </li>
+              {/* <li className="mr-8">
                 <button className="w-24 h-10 rounded-lg bg-background-100 text-neutral-0">
                   회원가입
                 </button>
@@ -38,7 +90,12 @@ const RootHeader = () => {
                 <button className="w-24 h-10 rounded-lg bg-background-100 text-neutral-0">
                   로그인
                 </button>
-              </li>
+              </li> */}
+            </ol>
+            <ol>
+              <button className="bg-neutral-5 text-neutral-60 text-[18px] font-[700] w-[192px] h-[55px] rounded-xl ml-[36px]">
+                <Link href={'/portfolio/upload'}>새로운 작업 업로드</Link>
+              </button>
             </ol>
           </nav>
         </div>

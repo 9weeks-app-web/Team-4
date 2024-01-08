@@ -1,4 +1,7 @@
 'use client';
+
+import Image from 'next/image';
+
 const PortfoliosRightComponentContainer = () => {
   return (
     <div className="w-[264px] ml-[30px] mr-[60px] h-full pt-[97px] text-[16px] font-[500]">
@@ -8,19 +11,51 @@ const PortfoliosRightComponentContainer = () => {
           className={`border w-full border-neutral-10 rounded-xl bg-neutral-0 h-[200px] mt-[8px] flex-col flex`}
         >
           <div className={`flex w-full h-[100px]`}>
-            <div className="flex-1 w-full flex justify-center items-center h-full p-[16px]">
-              이미지
+            <div className="flex-1 w-full flex justify-center items-center border-r border-neutral-10 h-full p-[16px]">
+              <button className="flex flex-col items-center justify-center">
+                <Image
+                  src={'/portfolios/image.svg'}
+                  alt="이미지 업로드"
+                  width={24}
+                  height={24}
+                />
+                <div className="mt-[8px]">이미지</div>
+              </button>
             </div>
-            <div className="flex-1 w-full flex justify-center items-center h-full p-[16px]">
-              텍스트
+            <div className="flex-1 w-full border-b border-neutral-10 flex justify-center items-center h-full p-[16px]">
+              <button className="flex flex-col items-center justify-center">
+                <Image
+                  src={'/portfolios/text.svg'}
+                  alt="텍스트 업로드"
+                  width={24}
+                  height={24}
+                />
+                <div className="mt-[8px]">텍스트</div>
+              </button>
             </div>
           </div>
           <div className={`flex w-full h-[100px]`}>
-            <div className="flex-1 w-full flex justify-center items-center h-full p-[16px]">
-              동영상
+            <div className="flex-1 w-full flex border-r border-t border-neutral-10 justify-center items-center h-full p-[16px]">
+              <button className="flex flex-col items-center justify-center">
+                <Image
+                  src={'/portfolios/movie.svg'}
+                  alt="텍스트 업로드"
+                  width={24}
+                  height={24}
+                />
+                <div className="mt-[8px]">동영상</div>
+              </button>
             </div>
             <div className="flex-1 w-full flex justify-center items-center h-full p-[16px]">
-              임베드
+              <button className="flex flex-col items-center justify-center">
+                <Image
+                  src={'/portfolios/embed.svg'}
+                  alt="임베드 업로드"
+                  width={24}
+                  height={24}
+                />
+                <div className="mt-[8px]">임베드</div>
+              </button>
             </div>
           </div>
         </div>
@@ -44,9 +79,21 @@ const PortfoliosRightComponentContainer = () => {
         </div>
       </div>
       <div className="flex flex-col w-full">
-        <button>업로드</button>
-        <button>임시저장</button>
-        <button>미리보기</button>
+        <button className="bg-primary-80 text-neutral-0 text-[18px] font-[700] w-full h-[52px] rounded-xl mt-[28px] mb-[16px]">
+          업로드
+        </button>
+        <button className="bg-neutral-10 text-neutral-30 text-[18px] font-[700] w-full h-[52px] rounded-xl">
+          임시저장
+        </button>
+        <button className="flex p-[10px] mt-[18px] w-full justify-center">
+          <Image
+            src="/portfolios/preview_upload.svg"
+            alt="미리보기"
+            width={24}
+            height={24}
+          />
+          미리보기
+        </button>
       </div>
     </div>
   );
