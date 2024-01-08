@@ -22,25 +22,27 @@ const CommentCard: React.FC<CommentCardProps> = ({ dummyComment }) => {
   });
 
   const [isCommentOpen, setIsCommentOpen] = useState<boolean>(false);
+  const [showReply, setShowReply] = useState<boolean>(false);
 
   const [replyCount, setReplyCount] = useState<number[]>(
     dummyComment.map(() => 0),
   );
 
   useEffect(() => {
-    // 처음 렌더링 될 때 SubDummyComment[0].id와 비교하여 초기화
-    if (
-      dummyComment.length > 0 &&
-      dummyComment[0].id === SubDummyComment[0].id
-    ) {
-      const updatedReplyCount = dummyComment.map(() => SubDummyComment.length);
-      setReplyCount(updatedReplyCount);
-    }
+    const updatedReplyCount = dummyComment.map((comment, index) =>
+      comment.id === SubDummyComment[index]?.id ? SubDummyComment.length : 0,
+    );
+
+    setReplyCount(updatedReplyCount);
   }, [dummyComment]);
 
-  const handleReplyClick = (commentId: number) => {
+  const handleCommentClick = (commentId: number) => {
     setReplyState({ id: commentId, content: '' });
     setIsCommentOpen(prev => !prev);
+  };
+  const handleReplyClick = (commentId: number) => {
+    setReplyState({ id: commentId, content: '' });
+    setShowReply(prev => !prev);
   };
 
   const handleCommentSubmit = () => {
@@ -78,7 +80,7 @@ const CommentCard: React.FC<CommentCardProps> = ({ dummyComment }) => {
               <div className="flex mb-4">
                 <CommentLikeButton />
                 <CommentButton
-                  onClick={() => handleReplyClick(dummy.id)}
+                  onClick={() => handleCommentClick(dummy.id)}
                   isCommentOpen={isCommentOpen && replyState.id === dummy.id}
                 />
               </div>
@@ -92,7 +94,7 @@ const CommentCard: React.FC<CommentCardProps> = ({ dummyComment }) => {
                   : null}
               </span>
 
-              {isCommentOpen && replyState.id === dummy.id && (
+              {showReply && replyState.id === dummy.id && (
                 <div className="mt-4">
                   <SubCommentCard subDummyComment={SubDummyComment} />
                 </div>
