@@ -1,6 +1,6 @@
-import eyeImg from "/public/images/eye.png"
-import chatBubbleImg from "/public/images/chat.png"
-import likeImg from "/public/images/like.png"
+import eyeImg from "/public/images/community/eye.png"
+import chatBubbleImg from "/public/images/community/chat.png"
+import likeImg from "/public/images/community/like.png"
 import Image from 'next/image'
 
 const PostCard = () => {
