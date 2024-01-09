@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Input from '@/app/gathering/(components)/input/Input';
 import Section from '../../(components)/section/post/Section';
