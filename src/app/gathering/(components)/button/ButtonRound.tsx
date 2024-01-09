@@ -41,7 +41,7 @@ const ButtonRound = ({ content, theme, link, style }: ButtonRound) => {
   );
 
   return link ? (
-    <Link className="rounded-2xl" href={link}>
+    <Link className="w-full" href={link}>
       <button className={className}>{content}</button>
     </Link>
   ) : (
