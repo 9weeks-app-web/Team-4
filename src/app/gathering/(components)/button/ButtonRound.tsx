@@ -40,10 +40,12 @@ const ButtonRound = ({ content, theme, link, style }: ButtonRound) => {
     ],
   );
 
-  return (
-    <button className={className}>
-      {link ? <Link href={link}>{content}</Link> : content}
-    </button>
+  return link ? (
+    <Link className="rounded-2xl" href={link}>
+      <button className={className}>{content}</button>
+    </Link>
+  ) : (
+    <button className={className}>{content}</button>
   );
 };
 
