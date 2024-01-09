@@ -1,5 +1,6 @@
 'use client';
 
+import useScroll from '@/hooks/useScroll';
 import Image from 'next/image';
 import { Dispatch, SetStateAction } from 'react';
 
@@ -7,10 +8,12 @@ const PortfoliosLeftComponentContainer = ({
   bookmarks,
   pictures,
   setPreviewState,
+  moveToSection,
 }: {
   bookmarks: string[];
   pictures: string[];
   setPreviewState: Dispatch<SetStateAction<boolean>>;
+  moveToSection: (e: string) => void;
 }) => {
   return (
     <div className="w-[380px] h-[980px] bg-neutral-0  flex relative flex-col">
@@ -21,6 +24,9 @@ const PortfoliosLeftComponentContainer = ({
         <div className="flex pb-[29px] border-b border-neutral-10 mb-[32px]">
           {bookmarks.map((e, i) => (
             <button
+              onClick={() => {
+                moveToSection(e);
+              }}
               key={i}
               className=" mr-[8px] border border-neutral-10 rounded-full px-[20px] py-[12px] min-w-fit h-[38px] flex justify-center items-center"
             >

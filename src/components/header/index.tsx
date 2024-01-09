@@ -6,10 +6,28 @@ const RootHeader = () => {
     <div className="-top-[55px] sticky w-full  border-b-stroke-10 flex flex-col justify-center border-b-2 h-[155px] z-50">
       <div className="w-full flex justify-center bg-neutral-5">
         <div className="max-w-[90%] w-full">
-          <nav className="w-full h-[55px] flex items-center">
+          <nav className="w-full h-[55px] flex">
             <ol className="flex">
-              <li className="mr-8">스팩폴리오</li>
-              <li>스팩로그</li>
+              <Image
+                src={'left.svg'}
+                alt="이미지"
+                width={10}
+                height={10}
+                className="mt-auto"
+              />
+              <li className="w-[118px] h-[43px] px-[20px] py-[9px] mt-auto rounded-t-xl border border-neutral-0 bg-neutral-0">
+                스팩폴리오
+              </li>
+              <Image
+                src={'right.svg'}
+                alt="이미지"
+                width={10}
+                height={10}
+                className="mt-auto"
+              />
+              <li className="w-[118px] h-[43px] px-[20px] py-[9px] mt-auto ml-[10px]">
+                스팩로그
+              </li>
             </ol>
           </nav>
         </div>

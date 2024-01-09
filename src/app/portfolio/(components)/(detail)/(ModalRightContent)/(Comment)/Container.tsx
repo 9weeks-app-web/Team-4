@@ -75,6 +75,7 @@ const ModalRightComment = ({
         <div>
           <div className="border-b border-stroke-10">
             <RightContentComment
+              bookmarks={['데스크 리서치', '유저 리서치']}
               content="일러스트랑 그래픽들은 무슨 툴 쓰신걸까요..?"
               createAt={new Date('2024-01-04')}
               job="UI/UX"

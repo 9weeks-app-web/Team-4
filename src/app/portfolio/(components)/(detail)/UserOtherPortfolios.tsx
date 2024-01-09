@@ -21,12 +21,9 @@ const UserOtherPortfolios = ({
         Omit<PortfolioList, 'page' | 'endPage'>
       >(`portfolios/users?userId=${userId}&portfolioId=${portfolioId}`);
 
-      console.log(response);
-
       return response;
     },
   });
-  console.log(data);
   if (isFetching) {
     return <div>불러오는 중...</div>;
   } else if (data && data.portfolioList) {

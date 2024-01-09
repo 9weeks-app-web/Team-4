@@ -132,7 +132,7 @@ const PortfolioListContents = ({ category }: { category: string }) => {
                 </div>
                 <div className="ml-2 mt-2 text-lg font-semibold">{e.title}</div>
                 {/* 프로필, 조회수, 좋아요 영역 */}
-                <div className="flex mt-2">
+                <div className="flex mt-2 w-full">
                   <div className="relative w-6 h-6">
                     <Image
                       src={e.profileImg}
@@ -144,11 +144,25 @@ const PortfolioListContents = ({ category }: { category: string }) => {
                   <div className="ml-2 text-sm ">{e.nickname}</div>
                   <div className={`ml-auto flex text-neutral-60`}>
                     <div className="flex">
-                      <div className="mr-1">👁️</div>
+                      <div className="mr-1">
+                        <Image
+                          src={'/portfolios/hit.svg'}
+                          width={24}
+                          height={24}
+                          alt="조회수"
+                        />
+                      </div>
                       <div className="mr-2">{e.hit}</div>
                     </div>
                     <div className="flex">
-                      <div className="mr-1">❤️</div>
+                      <div className="mr-1">
+                        <Image
+                          src={'/portfolios/like.svg'}
+                          width={24}
+                          height={24}
+                          alt="좋아요"
+                        />
+                      </div>
                       <div>{e.like}</div>
                     </div>
                   </div>

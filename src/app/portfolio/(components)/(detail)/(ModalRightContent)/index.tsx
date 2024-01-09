@@ -40,7 +40,7 @@ const ModalRightContent = ({
     <div
       className={`flex flex-col text-neutral-0 ${
         commentHandler
-          ? 'w-[360px] ml-[30px] overflow-hidden '
+          ? 'w-[360px] ml-[30px] overflow-hidden'
           : 'w-[90px] right-[248px] fixed overflow-hidden'
       } `}
     >

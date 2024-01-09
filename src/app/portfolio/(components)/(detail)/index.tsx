@@ -8,6 +8,7 @@ import Image from 'next/image';
 import UserOtherPortfolios from './UserOtherPortfolios';
 import ModalRightContent from './(ModalRightContent)';
 import { Dispatch, SetStateAction } from 'react';
+import useScroll from '@/hooks/useScroll';
 
 const PortfolioDetail = ({
   portfolioId,
@@ -26,13 +27,14 @@ const PortfolioDetail = ({
       return response;
     },
   });
+  const { moveToSection } = useScroll();
 
   if (isFetching) {
     return <div>로딩중...</div>;
   } else if (data !== undefined) {
     return (
-      <div className="w-full h-full flex">
-        <div className="w-full">
+      <div className="w-full h-full flex ">
+        <div className="w-full ">
           {/* 헤더 영역 */}
           <div className="flex p-6">
             <div className="w-16 h-16 relative">
@@ -52,12 +54,16 @@ const PortfolioDetail = ({
           {/* 태그 영역 */}
           <div className="flex p-[12px] h-[76px] items-center sticky -top-[40px] z-10 bg-neutral-0 border-b-2 border-neutral-20">
             {data.content.bookmark.map((e, index) => (
-              <div
+              <button
+                onClick={() => {
+                  moveToSection(e);
+                }}
                 className="mr-2 flex px-[20px] p-3 border h-8 items-center border-neutral-10 w-fit rounded-full"
                 key={index}
+                // id={e}
               >
                 {e}
-              </div>
+              </button>
             ))}
           </div>
           {/* 컨텐츠 영역 */}
@@ -70,6 +76,11 @@ const PortfolioDetail = ({
                     alt="포트폴리오 이미지"
                     className="w-full h-auto"
                   />
+                )}
+                {e.type === 'text' && (
+                  <div className="w-[0px] h-[0px] invisible" id={e.content}>
+                    {e.content}
+                  </div>
                 )}
               </div>
             ))}

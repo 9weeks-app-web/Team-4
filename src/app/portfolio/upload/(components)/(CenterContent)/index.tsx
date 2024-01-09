@@ -1,18 +1,26 @@
 'use client';
 
 import Image from 'next/image';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import {
+  Dispatch,
+  RefObject,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
 
 const PortfoliosCenterComponentContainer = ({
   bookmarks,
   pictures,
   setPreviewState,
   previewState,
+  elementRef,
 }: {
   previewState: boolean;
   bookmarks: string[];
   pictures: string[];
   setPreviewState: Dispatch<SetStateAction<boolean>>;
+  elementRef: RefObject<HTMLDivElement>;
 }) => {
   return (
     <div
@@ -38,9 +46,12 @@ const PortfoliosCenterComponentContainer = ({
         className={`${
           previewState ? `h-[883px] ` : `h-[848px] mb-[36px]`
         } w-full mt-auto  bg-neutral-0 overflow-y-auto flex flex-col items-center text-[16px] font-[700] -tracking-[.096px]`}
+        ref={elementRef}
       >
         <div>
-          <div className="mt-[12px]">유저 리서치</div>
+          <div className="mt-[12px]" id="유저 리서치">
+            유저 리서치
+          </div>
           <Image
             src="/portfolios/1.png"
             alt="스크린샷"
@@ -50,7 +61,9 @@ const PortfoliosCenterComponentContainer = ({
           />
         </div>
         <div>
-          <div className="mt-[12px]">퍼소나</div>
+          <div className="mt-[12px]" id="퍼소나">
+            퍼소나
+          </div>
           <Image
             src="/portfolios/2.png"
             alt="스크린샷"
@@ -70,7 +83,9 @@ const PortfoliosCenterComponentContainer = ({
         </div>
 
         <div>
-          <div className="mt-[12px]">저니맵</div>
+          <div className="mt-[12px]" id="저니맵">
+            저니맵
+          </div>
           <Image
             src="/portfolios/4.png"
             alt="스크린샷"

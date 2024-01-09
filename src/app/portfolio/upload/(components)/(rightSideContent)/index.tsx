@@ -2,9 +2,17 @@
 
 import Image from 'next/image';
 
-const PortfoliosRightComponentContainer = () => {
+
+const PortfoliosRightComponentContainer = ({
+ 
+}: {
+
+}) => {
   return (
-    <div className="w-[264px] ml-[30px] mr-[60px] h-full pt-[97px] text-[16px] font-[500]">
+    <div
+      className="w-[264px] ml-[30px] mr-[60px] h-full pt-[97px] text-[16px] font-[500]"
+      
+    >
       <div className="h-[229px]">
         <div className="h-[21px]">콘텐츠 추가</div>
         <div
@@ -60,23 +68,46 @@ const PortfoliosRightComponentContainer = () => {
           </div>
         </div>
       </div>
-      <div className="px-[16px] mt-[12px] w-full h-[250px] border border-neutral-10 rounded-xl bg-neutral-0 mb-[24px]">
-        <div>
-          <div>콘텐츠 간격</div>
+      <div className=" mt-[12px] w-full h-[250px] border border-neutral-10 rounded-xl bg-neutral-0 mb-[24px]">
+        <div className="h-[144px] w-full border-b p-[16px] border-stroke-10">
+          <div className="mb-[16px]">콘텐츠 간격</div>
+          <input
+            type="range"
+            className="w-full h-1 bg-gray-200 rounded-xl cursor-pointer accent-neutral-100"
+          ></input>
+          <input className="w-full h-[32px]" value={'0px'} readOnly></input>
         </div>
-        <div>
-          <div>배경색 변경</div>
+        <div className="p-[16px] ">
+          <div className="mb-[16px]">배경색 변경</div>
+          <button className="w-full h-[32px] border border-stroke-10 flex">
+            <div className="bg-neutral-0 border-r w-[48px] h-full border-stroke-10"></div>
+            <div className="h-full flex items-center px-[8px]">#FFFFFF</div>
+          </button>
         </div>
       </div>
 
       <div className="mb-[8px]">편집</div>
       <div className="h-[100px] w-full flex border border-neutral-10 rounded-xl bg-neutral-0">
-        <div className="flex-1 w-full flex justify-center items-center h-full p-[16px] border-r border-neutral-10">
+        <button className="flex-1 w-full flex flex-col justify-center items-center h-full p-[16px] border-r border-neutral-10">
+          <Image
+            className="mb-[8px]"
+            src={'/portfolios/bookmark_upload.svg'}
+            width={24}
+            height={24}
+            alt="북마크 이미지"
+          />
           북마크
-        </div>
-        <div className="flex-1 w-full flex justify-center items-center h-full p-[16px]">
+        </button>
+        <button className="flex-1 w-full flex flex-col justify-center items-center h-full p-[16px]">
+          <Image
+            className="mb-[8px]"
+            src={'/portfolios/image_edit.svg'}
+            width={24}
+            height={24}
+            alt="북마크 이미지"
+          />
           이미지편집
-        </div>
+        </button>
       </div>
       <div className="flex flex-col w-full">
         <button className="bg-primary-80 text-neutral-0 text-[18px] font-[700] w-full h-[52px] rounded-xl mt-[28px] mb-[16px]">

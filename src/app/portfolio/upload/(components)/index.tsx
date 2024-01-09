@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import PortfoliosCenterComponentContainer from './(CenterContent)';
 import PortfoliosLeftComponentContainer from './(leftSideContent)';
 import PortfoliosRightComponentContainer from './(rightSideContent)';
 import Image from 'next/image';
+import useOtherElementScroll from '@/hooks/useOtherElementScroll';
 
 const PortfoliosUploadCompoent = () => {
   const [previewState, setPreviewState] = useState<boolean>(false);
@@ -19,6 +20,8 @@ const PortfoliosUploadCompoent = () => {
     '/portfolios/3.png',
     '/portfolios/4.png',
   ]);
+  const elementRef = useRef<HTMLDivElement>(null);
+  const { moveToSection } = useOtherElementScroll(elementRef);
   return (
     <div className="w-full h-full flex">
       {previewState ? (
@@ -26,6 +29,7 @@ const PortfoliosUploadCompoent = () => {
           bookmarks={bookmarks}
           pictures={pictures}
           setPreviewState={setPreviewState}
+          moveToSection={moveToSection}
         />
       ) : (
         <button
@@ -48,6 +52,7 @@ const PortfoliosUploadCompoent = () => {
         pictures={pictures}
         setPreviewState={setPreviewState}
         previewState={previewState}
+        elementRef={elementRef}
       />
       <PortfoliosRightComponentContainer />
     </div>
