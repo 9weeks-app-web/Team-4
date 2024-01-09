@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import clsx from 'clsx';
 import { apiRequest } from '@/utils/api';
 import { Retrospect, RetrospectCard } from '@/types/gathering';
+import { PortfolioCard } from '@/types/portfolio';
 import ButtonSimple from '../../button/ButtonSimple';
 import ThumbnailGatheringCard from '../../card/ThumbnailGatheringCard';
 
@@ -46,7 +47,7 @@ const RetrospectSection = () => {
             <SwiperSlide className="relative">
               <div className="max-w-[534px]  px-[47px] py-[35px] border-4 border-primary-50 rounded-2xl">
                 <ThumbnailGatheringCard
-                  data={data}
+                  data={data as RetrospectCard & PortfolioCard}
                   button="프로젝트 회고 보기"
                 />
               </div>
@@ -93,7 +94,7 @@ const RetrospectPreview = ({ retrospectId }: RetrospectPreviewProps) => {
           Children.toArray(
             data?.retrospect.members.map(({ userId, userProfile, name }) => (
               <div
-                className="flex flex-col items-center gap-2"
+                className="flex flex-col items-center gap-2 cursor-pointer"
                 onClick={() => setFocusMemberId(userId)}
               >
                 <Image
