@@ -13,10 +13,23 @@ const CommunityDummys: CommunityDetail[] = [
       'https://dummyimage.com/600x400/f078b0/ffffff&text=A',
       'https://dummyimage.com/600x400/887ef7/ffffff&text=B',
       'https://dummyimage.com/600x400/42e0ff/ffffff&text=C',
+      'https://dummyimage.com/600x400/42e0ff/ffffff&text=C',
+      'https://dummyimage.com/600x400/42e0ff/ffffff&text=C',
     ],
     pictureCount: 5,
-    content:
-      '개발과 무관한 전공이고, 대학교 동아리에서 창업 경진대회 준비를 하다가개발에 관심히 생겨 이후 독학 중입니다.말이 독학이지 클론 코딩 몇번 해본게 전부라,현재 개발자 취업 준비 중이라고 제 입으로 말하기도 부끄러운 상태입니다.내년 안으로 취업이 목표라 여러 생각들이 많아, 현직자 분들이 많이 모여있는 곳에 질문을 드립니다.1. 부트캠프를 수강하려 하는데, 정말 98% 수료율, 99% 취업률 등이 진실인가요? 부트캠프를 수강하신 선배님들 입장에서는 이러한 수치가 정말인지? 부트캠프 전반적인 분위기가 어떤지 궁금합니다.2. 부트캠프는 배민 네이버 사피 등 대기업에서 운영하는 것이 아니면 절대 가지마라고 하던데 정말인가요? 사실 일년안으로 개발자 취업을 생각중이라 올해안에 꼭 부트캠프에 입학을 희망하고 있습니다. 대기업에서 연계 운영하는 부트캠프의 경우 탈락의 위험성도 생각을 안할 수가 없어 조금 불안한게 사실인데 위의 부트캠프들 아니면 절대 가지 않는게 맞을까요? 3. 현재 오프라인 부트캠프 위주로 생각하고 있는데 오프라인 부트캠프는 위코드, 바닐라코딩 두개가 유명하더군요. 혹시 두개 들어보신 선배님들이 있다면 전체적인 분위기는 어떤지, 어떻게 생각하시는지 알려주시면 감사하겠습니다. 그외 부트캠프를 통해서 비전공자 개발자 취업에 성공하신  개발자 분들이 있다면 지혜를 나눠주시면 좋을 것 같습니다. 부트캠프 고르는 팁 등등 알려주시면 내년도 등록시에 참고하겠습니다.',
+    content: `
+    개발과 무관한 전공이고, 대학교 동아리에서 창업 경진대회 준비를 하다가 개발에 관심히 생겨 이후 독학 중입니다. 말이 독학이지 클론 코딩 몇번 해본게 전부라, 현재 개발자 취업 준비 중이라고 제 입으로 말하기도 부끄러운 상태입니다.
+    내년 안으로 취업이 목표라 여러 생각들이 많아, 현직자 분들이 많이 모여있는 곳에 질문을 드립니다.
+    
+    1. 부트캠프를 수강하려 하는데, 정말 98% 수료율, 99% 취업률 등이 진실인가요?
+    부트캠프를 수강하신 선배님들 입장에서는 이러한 수치가 정말인지?
+    부트캠프 전반적인 분위기가 어떤지 궁금합니다.
+    
+    2. 부트캠프는 배민 네이버 사피 등 대기업에서 운영하는 것이 아니면 절대 가지마라고 하던데 정말인가요? 사실 일년안으로 개발자 취업을 생각중이라 올해안에 꼭 부트캠프에 입학을 희망하고 있습니다. 대기업에서 연계 운영하는 부트캠프의 경우 탈락의 위험성도 생각을 안할 수가 없어 조금 불안한게 사실인데 위의 부트캠프들 아니면 절대 가지 않는게 맞을까요?
+    
+    3. 현재 오프라인 부트캠프 위주로 생각하고 있는데 오프라인 부트캠프는 위코드, 바닐라코딩 두개가 유명하더군요. 혹시 두개 들어보신 선배님들이 있다면 전체적인 분위기는 어떤지, 어떻게 생각하시는지 알려주시면 감사하겠습니다.
+    그외 부트캠프를 통해서 비전공자 개발자 취업에 성공하신 개발자 분들이 있다면 지혜를 나눠주시면 좋을 것 같습니다. 부트캠프 고르는 팁 등등 알려주시면 내년도 등록시에 참고하겠습니다.
+  `,
     commentCounts: 326,
     likes: 812,
     reactions: {
@@ -617,7 +630,7 @@ const surveyDummyData: SurveyDummyData[] = [
     profileImg: 'https://dummyimage.com/600x400/33ff57/ffffff&text=+',
     major: 'UX/UI 디자이너',
     date: new Date('2024-01-01'),
-    deadline: new Date('2024-01-10'),
+    deadline: new Date('2024-01-15'),
     title: 'UXUI 관련 설문조사',
     content: 'UXUI 관련 설문조사에 참여해주세요!',
     time: '3분',
@@ -631,7 +644,7 @@ const surveyDummyData: SurveyDummyData[] = [
     profileImg: 'https://dummyimage.com/600x400/576bff/ffffff&text=+',
     major: '프론트엔드 개발자',
     date: new Date('2024-01-02'),
-    deadline: new Date('2024-01-12'),
+    deadline: new Date('2024-01-17'),
     title: '프론트엔드 기술 설문조사',
     content: '프론트엔드 기술에 관한 설문조사에 참여해주세요!',
     time: '5분',
@@ -645,7 +658,7 @@ const surveyDummyData: SurveyDummyData[] = [
     profileImg: 'https://dummyimage.com/600x400/ffdb58/ffffff&text=+',
     major: '백엔드 개발자',
     date: new Date('2024-01-03'),
-    deadline: new Date('2024-01-15'),
+    deadline: new Date('2024-01-20'),
     title: '백엔드 기술 설문조사',
     content: '백엔드 기술에 관한 설문조사에 참여해주세요!',
     time: '7분',
@@ -659,7 +672,7 @@ const surveyDummyData: SurveyDummyData[] = [
     profileImg: 'https://dummyimage.com/600x400/9acd32/ffffff&text=+',
     major: '데이터 과학자',
     date: new Date('2024-01-04'),
-    deadline: new Date('2024-01-18'),
+    deadline: new Date('2024-01-25'),
     title: '데이터 분석 도구 설문조사',
     content: '데이터 분석 도구에 관한 설문조사에 참여해주세요!',
     time: '1분',

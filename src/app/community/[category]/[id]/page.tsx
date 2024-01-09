@@ -105,7 +105,7 @@ const Details = () => {
       <div className=" bg-neutral-0  border-neutral-30 rounded-2xl my-4">
         <div className=" font-bold text-[28px] mb-5">{dummy.title}</div>
 
-        <div className=" font-medium text-xl mb-[84px] text-neutral-100">
+        <div className=" font-medium text-xl mb-[84px] text-neutral-100 whitespace-pre-line">
           {dummy.content}
         </div>
         <div className="flex justify-between items-center mb-4 text-lg">

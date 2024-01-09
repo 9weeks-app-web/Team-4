@@ -14,7 +14,7 @@ const SurveyCard = () => {
   const slicedDummys = surveyDummyData.slice(startIndex, endIndex);
 
   return (
-    <div className="my-11">
+    <div>
       <div className=" font-bold text-[28px] my-8">설문조사</div>
       {slicedDummys.map(survey => (
         <div key={survey.id}>
