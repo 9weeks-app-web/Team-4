@@ -70,7 +70,7 @@ const GatheringForm = () => {
 
   return (
     <form
-      className="flex flex-col gap-[80px] mt-12"
+      className="flex flex-col gap-12 mt-12"
       onSubmit={e => e.preventDefault()}
     >
       <SingleSection title="유형" required style={['max-w-[800px]']}>
@@ -117,7 +117,7 @@ const GatheringForm = () => {
         <MyMarkdownEditor
           value={summary}
           onChange={setSummary}
-          placeholder="어떤 프로젝트인지 이해하기 쉽도록 명확하게 작성해주세요 (60자 이내)"
+          placeholder="어떤 프로젝트인지 이해하기 쉽도록 명확하게 작성해주세요.(60자 이내)"
         />
       </SingleSection>
       <SingleSection title="프로젝트 설명" required>
@@ -134,6 +134,22 @@ const GatheringForm = () => {
             onChange={date => setStartDate(date)}
             dateFormat="yyyy.MM.dd"
             showIcon
+            icon={
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M5.46967 8.46967C5.76256 8.17678 6.23744 8.17678 6.53033 8.46967L12 13.9393L17.4697 8.46967C17.7626 8.17678 18.2374 8.17678 18.5303 8.46967C18.8232 8.76256 18.8232 9.23744 18.5303 9.53033L12.5303 15.5303C12.2374 15.8232 11.7626 15.8232 11.4697 15.5303L5.46967 9.53033C5.17678 9.23744 5.17678 8.76256 5.46967 8.46967Z"
+                  fill="#999999"
+                />
+              </svg>
+            }
             toggleCalendarOnIconClick
             placeholderText="시작일"
           />
@@ -144,12 +160,28 @@ const GatheringForm = () => {
             onChange={date => setEndDate(date)}
             dateFormat="yyyy.MM.dd"
             showIcon
+            icon={
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M5.46967 8.46967C5.76256 8.17678 6.23744 8.17678 6.53033 8.46967L12 13.9393L17.4697 8.46967C17.7626 8.17678 18.2374 8.17678 18.5303 8.46967C18.8232 8.76256 18.8232 9.23744 18.5303 9.53033L12.5303 15.5303C12.2374 15.8232 11.7626 15.8232 11.4697 15.5303L5.46967 9.53033C5.17678 9.23744 5.17678 8.76256 5.46967 8.46967Z"
+                  fill="#999999"
+                />
+              </svg>
+            }
             toggleCalendarOnIconClick
             placeholderText="종료일"
           />
         </div>
       </MultipleSection>
-      <MultipleSection title="모임일정" required style={['max-w-[790px]']}>
+      <MultipleSection title="모임 일정" required style={['max-w-[790px]']}>
         <ComboBox>
           <ComboBox.Select
             selectName="every"
@@ -163,11 +195,11 @@ const GatheringForm = () => {
           />
         </ComboBox>
       </MultipleSection>
-      <MultipleSection title="모임지역" required style={['max-w-[790px]']}>
+      <MultipleSection title="모임 지역" required style={['max-w-[790px]']}>
         <ComboBox>
           <ComboBox.Select
             selectName="way"
-            options={['모임방법', '온/오프라인', '오프라인', '온라인']}
+            options={['모임 방법', '온/오프라인', '오프라인', '온라인']}
           />
         </ComboBox>
         <ComboBox>
@@ -240,7 +272,7 @@ const GatheringForm = () => {
         />
       </MultipleSection>
       <ChartSection />
-      <MultipleSection title="기술스택" required style={['max-w-[790px]']}>
+      <MultipleSection title="기술 스택" required style={['max-w-[790px]']}>
         <ComboBox>
           <ComboBox.Select
             selectName="imsi"
@@ -273,6 +305,22 @@ const GatheringForm = () => {
             onChange={date => setStartDate(date)}
             dateFormat="yyyy.MM.dd"
             showIcon
+            icon={
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M5.46967 8.46967C5.76256 8.17678 6.23744 8.17678 6.53033 8.46967L12 13.9393L17.4697 8.46967C17.7626 8.17678 18.2374 8.17678 18.5303 8.46967C18.8232 8.76256 18.8232 9.23744 18.5303 9.53033L12.5303 15.5303C12.2374 15.8232 11.7626 15.8232 11.4697 15.5303L5.46967 9.53033C5.17678 9.23744 5.17678 8.76256 5.46967 8.46967Z"
+                  fill="#999999"
+                />
+              </svg>
+            }
             toggleCalendarOnIconClick
             placeholderText="시작일"
           />
@@ -283,6 +331,22 @@ const GatheringForm = () => {
             onChange={date => setEndDate(date)}
             dateFormat="yyyy.MM.dd"
             showIcon
+            icon={
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M5.46967 8.46967C5.76256 8.17678 6.23744 8.17678 6.53033 8.46967L12 13.9393L17.4697 8.46967C17.7626 8.17678 18.2374 8.17678 18.5303 8.46967C18.8232 8.76256 18.8232 9.23744 18.5303 9.53033L12.5303 15.5303C12.2374 15.8232 11.7626 15.8232 11.4697 15.5303L5.46967 9.53033C5.17678 9.23744 5.17678 8.76256 5.46967 8.46967Z"
+                  fill="#999999"
+                />
+              </svg>
+            }
             toggleCalendarOnIconClick
             placeholderText="종료일"
           />
@@ -290,7 +354,7 @@ const GatheringForm = () => {
       </MultipleSection>
       <section>
         <h3 className="relative w-fit text-[26px] font-bold mb-[27px]">
-          연락방법
+          연락 방법
           <span className="absolute -right-2 top-0 text-system-warning text-sm font-medium">
             *
           </span>
@@ -314,7 +378,7 @@ const GatheringForm = () => {
           <Input.Tag />
         </Input>
       </SingleSection>
-      <div className="flex  justify-center gap-[29px] w-full my-10">
+      <div className="flex  justify-center gap-[29px] w-full my-20">
         <ButtonBasic
           content="임시저장"
           theme="neutral"

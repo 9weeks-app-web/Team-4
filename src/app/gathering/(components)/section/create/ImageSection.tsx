@@ -1,11 +1,13 @@
 'use client';
 
+import clsx from 'clsx';
 import Image from 'next/image';
 import { createContext, useContext, useState } from 'react';
 
 interface ImageSectionProps {
   children: React.ReactNode;
   title: string;
+  required?: boolean;
 }
 
 interface ImageSectionContextValue {
@@ -21,7 +23,11 @@ const ImageSectionContext = createContext<ImageSectionContextValue | null>(
   null,
 );
 
-const ImageSection = ({ children, title }: ImageSectionProps) => {
+const ImageSection = ({
+  children,
+  title,
+  required = false,
+}: ImageSectionProps) => {
   const [imageSrc, setImageSrc] = useState<string>();
 
   const handleChangeImage: HandleChangeImage = e => {
@@ -42,8 +48,15 @@ const ImageSection = ({ children, title }: ImageSectionProps) => {
 
   return (
     <ImageSectionContext.Provider value={{ imageSrc, handleChangeImage }}>
-      <section className="text-[26px] font-bold mb-[27px]">
-        <h3 className="mb-[27px]">{title}</h3>
+      <section className="relative text-[26px] font-bold mb-[27px]">
+        <h3 className="relative w-fit text-[26px] font-bold mb-[27px]">
+          {title}
+          {required && (
+            <span className="absolute -right-2 top-0 text-system-warning text-sm font-medium">
+              *
+            </span>
+          )}
+        </h3>
         {children}
       </section>
     </ImageSectionContext.Provider>
@@ -52,7 +65,13 @@ const ImageSection = ({ children, title }: ImageSectionProps) => {
 
 export default ImageSection;
 
-const SquareImage = () => {
+const SquareImage = ({
+  subTitle,
+  ratio,
+}: {
+  subTitle?: string;
+  ratio?: string;
+}) => {
   const context = useContext(ImageSectionContext);
 
   if (!context) {
@@ -60,30 +79,40 @@ const SquareImage = () => {
   }
 
   return (
-    <div className="flex">
-      <Image
-        className="bg-background-blue aspect-square"
-        src={context.imageSrc || '/images/gathering/team_profile.svg'}
-        alt="team profile"
-        width={358}
-        height={358}
-      />
-      <label
-        className="self-end ml-[30px]  text-neutral-60 border-neutral-30 rounded-md"
-        htmlFor="sqaure-image"
-      >
-        <div className="px-[30px] py-[15px] text-[18px] rounded-[12px] font-medium text-neutral-60 bg-neutral-10 hover:text-neutral-0 hover:bg-primary-80 active:bg-primary-90 cursor-pointer">
-          이미지 업로드
+    <>
+      {subTitle && (
+        <div className="absolute top-10 text-neutral-30 text-[20px] font-medium">
+          {subTitle}
         </div>
-      </label>
-      <input
-        className="w-0 h-0"
-        id="sqaure-image"
-        type="file"
-        accept="image/*"
-        onChange={context.handleChangeImage}
-      />
-    </div>
+      )}
+      <div className="flex">
+        <Image
+          className={clsx(
+            'bg-background-blue',
+            subTitle && [`aspect-[${ratio}]`, 'mt-5'],
+          )}
+          src={context.imageSrc || '/images/gathering/team_profile.svg'}
+          alt="team profile"
+          width={ratio ? 483 : 358}
+          height={358}
+        />
+        <label
+          className="self-end ml-[30px] text-neutral-60 border-neutral-30 rounded-md"
+          htmlFor="sqaure-image"
+        >
+          <div className="px-[30px] py-[15px] text-[18px] rounded-[12px] font-medium text-neutral-60 bg-neutral-10 hover:text-neutral-0 hover:bg-primary-80 active:bg-primary-90 cursor-pointer">
+            이미지 업로드
+          </div>
+        </label>
+        <input
+          className="w-0 h-0"
+          id="sqaure-image"
+          type="file"
+          accept="image/*"
+          onChange={context.handleChangeImage}
+        />
+      </div>
+    </>
   );
 };
 

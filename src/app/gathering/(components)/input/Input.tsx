@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Children,
   Dispatch,
@@ -13,7 +15,7 @@ import ChipPrimary from '../chip/ChipPrimary';
 
 interface InputProps {
   children?: ReactNode;
-  placeholder: string;
+  placeholder?: string;
   style?: string[];
 }
 
