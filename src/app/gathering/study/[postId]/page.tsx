@@ -3,7 +3,7 @@ import GatheringDetailHeader from '../../(components)/section/post/GatheringDeta
 import GatheringInfoSection from '../../(components)/section/post/GatheringInfoSection';
 import Section from '../../(components)/section/post/Section';
 import TeamInfo from '../../(components)/section/post/TeamInfo';
-import Comment from '../../(components)/section/post/Comment';
+import Comment from '../../(components)/section/post/CommentSection';
 import RecommendGathering from '../../(components)/section/post/RecommendGathering';
 
 const GatheringDetailPage = () => {

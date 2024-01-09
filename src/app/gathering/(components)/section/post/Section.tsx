@@ -6,9 +6,9 @@ interface SectionProps {
 
 const Section = ({ children, title, line }: SectionProps) => {
   return (
-    <section className="mt-[80px]">
-      <h3 className={line ? 'text-2xl' : 'text-2xl mb-[30px]'}>{title}</h3>
-      {line && <div className="h-[1px] my-[20px] bg-neutral-10" />}
+    <section className="mt-[48px]">
+      <h3 className="text-[26px] font-bold mb-[27px]">{title}</h3>
+      {line && <div className="h-[1px] mb-[20px] bg-neutral-10" />}
       {children}
     </section>
   );

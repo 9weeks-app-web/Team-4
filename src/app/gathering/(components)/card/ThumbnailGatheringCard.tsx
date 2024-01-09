@@ -83,10 +83,10 @@ const ThumbnailGatheringCard = ({
           <div className="flex ">
             <Image
               className="mr-1"
-              src="/images/gathering/like.svg"
+              src="/images/gathering/heart.svg"
               width={24}
               height={24}
-              alt="like"
+              alt="heart"
             />
             {likes}
           </div>

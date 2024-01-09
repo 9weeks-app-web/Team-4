@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 
-interface ButtonRound {
+interface ButtonRoundProps {
   content: string;
   theme: 'white' | 'primary' | 'neutral';
   link?: string;
   style?: string[];
 }
 
-const ButtonRound = ({ content, theme, link, style }: ButtonRound) => {
+const ButtonRound = ({ content, theme, link, style }: ButtonRoundProps) => {
   const className = clsx(
     'px-[30px]',
     'py-[15px]',
