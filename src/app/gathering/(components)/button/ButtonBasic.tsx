@@ -36,10 +36,12 @@ const ButtonBasic = ({
     style,
   );
 
-  return (
-    <button className={className}>
-      {link ? <Link href={link}>{content}</Link> : content}
-    </button>
+  return link ? (
+    <Link className="w-fit" href={link}>
+      <button className={className}>{content}</button>
+    </Link>
+  ) : (
+    <button className={className}>{content}</button>
   );
 };
 

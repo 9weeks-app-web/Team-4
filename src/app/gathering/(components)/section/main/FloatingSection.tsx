@@ -8,7 +8,7 @@ const FloatingSection = () => {
   const [toggleButton, setToggleButton] = useState(false);
 
   return (
-    <button
+    <div
       className={clsx(
         'fixed',
         'right-[50px]',
@@ -18,6 +18,7 @@ const FloatingSection = () => {
         'bg-no-repeat',
         'bg-center',
         'rounded-[50%]',
+        'cursor-pointer',
         'z-10',
         toggleButton
           ? [
@@ -58,7 +59,7 @@ const FloatingSection = () => {
           />
         </div>
       )}
-    </button>
+    </div>
   );
 };
 
