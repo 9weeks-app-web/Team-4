@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, createContext, useState } from 'react';
 import DatePicker from 'react-datepicker';
+import clsx from 'clsx';
 import MyMarkdownEditor from '@/app/community/(components)/MarkDownEditor';
 import SingleSection from '../../(components)/section/create/SingleSection';
 import MultipleSection from '../../(components)/section/create/MultipleSection';
@@ -16,8 +17,15 @@ import ButtonBasic from '../../(components)/button/ButtonBasic';
 import ChartSection from '../../(components)/section/create/ChartSection';
 import 'react-datepicker/dist/react-datepicker.css';
 
+export const PercentContext = createContext<{
+  items: number;
+  count: number;
+  setter: Dispatch<SetStateAction<number>>;
+} | null>(null);
+
 const CreateProjectPage = () => {
   const router = useRouter();
+  const [count, setCount] = useState(1);
 
   const changePage = (type: string) => {
     const path = type === '프로젝트' ? 'project' : 'study';
@@ -27,35 +35,55 @@ const CreateProjectPage = () => {
 
   return (
     <>
-      <header className="flex flex-col justify-center w-full h-[130px] px-[calc((100%-1200px)/2)] font-semibold bg-background-blue">
-        <p className="text-[23px] text-neutral-40">
-          나만의 프로젝트를 스팩폴리오와 함께해요
-        </p>
-        <h2 className="mt-[3px] text-[28px]">프로젝트 생성</h2>
-      </header>
-      <main className="flex flex-col w-full px-[calc((100%-1200px)/2)] min-h-screen">
-        <div className="w-full h-3 my-7 bg-primary-10 rounded-md">
-          <div className="w-[30%] h-3 bg-primary-100 rounded-md"></div>
-        </div>
-        <div>
-          <div className="flex gap-2 w-[120px]">
-            <Image
-              src="/images/gathering/star.svg"
-              width={22}
-              height={22}
-              alt="start"
+      <PercentContext.Provider value={{ items: 13, count, setter: setCount }}>
+        <header className="flex flex-col justify-center w-full h-[130px] px-[calc((100%-1200px)/2)] font-semibold bg-background-blue">
+          <p className="text-[23px] text-neutral-40">
+            나만의 프로젝트를 스팩폴리오와 함께해요
+          </p>
+          <h2 className="mt-[3px] text-[28px]">프로젝트 생성</h2>
+        </header>
+        <main className="flex flex-col w-full px-[calc((100%-1200px)/2)] min-h-screen">
+          <div className="w-full h-3 my-7 bg-primary-10 rounded-md">
+            <div
+              className={clsx(
+                'h-3',
+                'bg-primary-100',
+                'rounded-md',
+                'transition-all',
+                'duration-1000',
+                count === 1 && 'w-[10%]',
+                count === 2 && 'w-[20%]',
+                count === 3 && 'w-[30%]',
+                count === 4 && 'w-[40%]',
+                count === 5 && 'w-[50%]',
+                count === 6 && 'w-[60%]',
+                count === 7 && 'w-[70%]',
+                count === 8 && 'w-[80%]',
+                count === 9 && 'w-[90%]',
+                count >= 10 && 'w-[100%]',
+              )}
             />
-            <ComboBox>
-              <ComboBox.SelectSimple
-                selectName="post-type"
-                options={['프로젝트', '프로젝트', '스터디']}
-                setter={changePage}
-              />
-            </ComboBox>
           </div>
-          <GatheringForm />
-        </div>
-      </main>
+          <div>
+            <div className="flex gap-2 w-[120px]">
+              <Image
+                src="/images/gathering/star.svg"
+                width={22}
+                height={22}
+                alt="start"
+              />
+              <ComboBox>
+                <ComboBox.SelectSimple
+                  selectName="post-type"
+                  options={['프로젝트', '프로젝트', '스터디']}
+                  setter={changePage}
+                />
+              </ComboBox>
+            </div>
+            <GatheringForm />
+          </div>
+        </main>
+      </PercentContext.Provider>
     </>
   );
 };

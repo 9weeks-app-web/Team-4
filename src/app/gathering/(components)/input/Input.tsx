@@ -11,8 +11,8 @@ import {
   useState,
 } from 'react';
 import clsx from 'clsx';
-import ChipPrimary from '../chip/ChipPrimary';
 import Image from 'next/image';
+import { PercentContext } from '../../project/new/page';
 
 interface InputProps {
   children?: ReactNode;
@@ -26,8 +26,11 @@ const InputContext = createContext<{
 } | null>(null);
 
 const Input = ({ children, placeholder, style }: InputProps) => {
+  const context = useContext(PercentContext);
   const inputRef = useRef<HTMLInputElement>(null);
   const [tags, setTags] = useState<string[]>([]);
+  const [isInputData, setIsInputData] = useState(false);
+
   const className = clsx(
     'w-full',
     'h-full',
@@ -59,6 +62,10 @@ const Input = ({ children, placeholder, style }: InputProps) => {
         placeholder={placeholder}
         ref={inputRef}
         onKeyUp={handleEnterUp}
+        onChange={() => {
+          isInputData || context?.setter(prev => prev + 1);
+          setIsInputData(true);
+        }}
       />
       {children}
     </InputContext.Provider>
