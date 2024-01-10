@@ -6,6 +6,7 @@ import ModalRightComment from './(Comment)/Container';
 import { PortfolioPageCategory } from '@/types/portfolio';
 import ModalWrapper from '../../../../../components/(Modal)';
 import PortfoliosCollection from './(Collection)/Collection';
+import useScroll from '@/hooks/useScroll';
 
 const ModalRightContent = ({
   portfolioId,
@@ -28,7 +29,7 @@ const ModalRightContent = ({
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [collectionModalOpen, setCollectionModalOpen] =
     useState<boolean>(false);
-
+  const { moveToSection } = useScroll();
   useEffect(() => {
     if (commentHandler) {
       setModalMargin('my-auto ml-[165px]');
@@ -230,6 +231,7 @@ const ModalRightContent = ({
           <button
             onClick={() => {
               setCommentHandler(prev => !prev);
+              moveToSection('topScroll');
             }}
             className="w-full mb-[32px] flex items-center flex-col"
           >

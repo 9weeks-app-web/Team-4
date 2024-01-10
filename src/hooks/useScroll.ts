@@ -1,7 +1,7 @@
 const useScroll = () => {
   const moveToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return { moveToSection };

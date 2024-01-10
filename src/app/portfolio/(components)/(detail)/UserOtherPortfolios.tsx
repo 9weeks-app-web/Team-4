@@ -37,14 +37,15 @@ const UserOtherPortfolios = ({
           modules={[Navigation, Pagination]}
         >
           {data.portfolioList.map(e => (
-            <SwiperSlide key={e.portfolioId} className="z-1">
+            <SwiperSlide key={e.portfolioId} className='relative'>
               <div className="min-w-[30%]  w-full h-[340px] flex flex-col items-center z-1">
-                <div className="max-w-[337px] w-full h-[252px] relative">
+                <div className="max-w-[337px] w-full h-[252px]">
                   <Image
                     src={e.thumbnail}
                     className="rounded-xl"
                     alt="포트폴리오 썸네일"
-                    fill
+                    width={338}
+                    height={252}
                   />
                 </div>
                 <div className="mt-auto max-w-[337px] p-1 w-full text-neutral-0 z-1">

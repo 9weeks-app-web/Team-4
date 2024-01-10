@@ -50,7 +50,7 @@ const ModalWrapper = ({
   return (
     <>
       <div
-        className={`fixed ${backgroundZIndex} inset-0 rouned bg-[rgba(0,0,0,0.3)]`}
+        className={`fixed ${backgroundZIndex} inset-0 rouned bg-[rgba(0,0,0,0.8)]`}
       />
       <div
         onMouseDown={handleMouseDown}
