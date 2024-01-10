@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import clsx from 'clsx';
 
-interface ButtonBasic {
+interface ButtonBasicProps {
   content: string;
   style?: string[];
   link?: string;
@@ -13,7 +13,7 @@ const ButtonBasic = ({
   style,
   link = '/gathering/project/12',
   theme = 'primary',
-}: ButtonBasic) => {
+}: ButtonBasicProps) => {
   const className = clsx(
     'px-[30px]',
     'py-[15px]',

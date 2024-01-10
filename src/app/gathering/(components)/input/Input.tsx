@@ -12,6 +12,7 @@ import {
 } from 'react';
 import clsx from 'clsx';
 import ChipPrimary from '../chip/ChipPrimary';
+import Image from 'next/image';
 
 interface InputProps {
   children?: ReactNode;
@@ -70,29 +71,26 @@ const Tag = () => {
   const context = useContext(InputContext);
 
   return (
-    <div className="flex gap-4 mt-3">
+    <div className="flex gap-3 mt-6">
       {Children.toArray(
         context &&
           context.tags.map((tag, index) => (
-            <ChipPrimary
-              content={tag}
-              style={[
-                'flex',
-                'items-center',
-                'text-[24px]',
-                'px-3',
-                'py-4',
-                'font-medium',
-                'rounded-lg',
-              ]}
-            >
+            <div className="flex items-center pl-4 py-1 bg-primary-5 text-neutral-60 text-base font-medium rounded-[100px]">
+              {tag}
               <button
-                className="w-3 h-3 ml-2 bg-[url(/images/gathering/X.svg)] bg-no-repeat bg-center"
+                className="ml-1 mr-[10px]"
                 onClick={() =>
                   context.setTags(tags => tags.filter((_, i) => i !== index))
                 }
-              />
-            </ChipPrimary>
+              >
+                <Image
+                  src="/images/gathering/x.svg"
+                  width={24}
+                  height={24}
+                  alt="x"
+                />
+              </button>
+            </div>
           )),
       )}
     </div>

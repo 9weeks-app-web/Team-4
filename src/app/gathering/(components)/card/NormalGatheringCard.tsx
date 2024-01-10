@@ -5,7 +5,7 @@ import ChipPrimary from '../chip/ChipPrimary';
 import Link from 'next/link';
 
 interface NormalGatherigCardProps {
-  data: GatheringCard;
+  data?: GatheringCard;
   link?: string;
 }
 

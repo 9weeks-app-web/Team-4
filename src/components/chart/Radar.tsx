@@ -38,7 +38,7 @@ const options = {
         color: '#B3B3B3',
       },
       angleLines: {
-        display: false,
+        // display: false,
       },
       suggestedMin: 0,
       suggestedMax: 5,
@@ -49,9 +49,15 @@ const options = {
       display: false,
     },
   },
-  animation: {
-    // duration: 0,
-  },
+  // animation: {
+  //   tension: {
+  //     duration: 1500,
+  //     easing: 'linear',
+  //     from: 0.1,
+  //     to: -0.1,
+  //     loop: true,
+  //   },
+  // },
 };
 
 interface RadarProps {
@@ -67,11 +73,12 @@ const Radar = ({
     labels: labels,
     datasets: [
       {
-        // label: '선호도',
+        label: '선호도',
         data: inputs,
         backgroundColor: 'rgba(25, 106, 255, 0.1)',
         borderColor: 'rgba(25, 106, 255, 1)',
         borderWidth: 3,
+        pointHoverBorderWidth: 10,
       },
     ],
   };
