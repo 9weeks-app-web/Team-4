@@ -52,7 +52,7 @@ const GatheringDetailPage = () => {
         </div>
         <GatheringInfoSection />
         <Section title="팀 정보">
-          <TeamInfo teamName="팀 이름" postType="recruit" />
+          <TeamInfo teamName="4vengers" postType="projcet" />
         </Section>
         <Section title="프로젝트 요약" line={true}>
           <Markdown
@@ -123,7 +123,7 @@ const GatheringDetailPage = () => {
           </button>
           <button className="text-neutral-40">신고하기</button>
         </div>
-        <div className="flex items-center justify-center gap-[154px] py-[22px] px-[10] mt-8 border border-neutral-10 rounded-md">
+        <div className="flex items-center justify-center gap-[154px] py-[22px] px-[10] mt-8 text-neutral-60 border border-neutral-10 rounded-md">
           <button className="flex items-center gap-[6px]">
             <Image
               src="/images/gathering/like.svg"

@@ -14,7 +14,7 @@ interface TeamInfoProps {
     isLeader: boolean;
   }[];
   preference?: {};
-  postType: 'recruit' | 'retrospect';
+  postType: 'projcet' | 'study' | 'retrospect';
 }
 
 const MEMBERS = [
@@ -87,7 +87,7 @@ const TeamInfo = ({
                   height={24}
                 />
                 <span className="min-w-28 ml-4">{position}</span>
-                {isLeader || (
+                {postType === 'projcet' && !isLeader && (
                   <>
                     <span className="w-8 text-neutral-50 font-medium mr-4">
                       {i === 1 && '1 / 1'}
@@ -110,7 +110,7 @@ const TeamInfo = ({
           )}
         </div>
       </div>
-      {postType === 'recruit' && (
+      {postType !== 'retrospect' && (
         <div>
           <div className="mt-8 mb-7 text-lg">*이런 사람을 선호해요!</div>
           <div className="w-[474px] p-[50px] aspect-square border border-neutral-10 rounded-md">
