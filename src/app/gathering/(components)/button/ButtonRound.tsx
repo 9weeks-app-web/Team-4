@@ -20,9 +20,10 @@ const ButtonRound = ({ content, theme, link, style }: ButtonRoundProps) => {
       'border',
       'border-neutral-0',
       'text-neutral-0',
-      'hover:bg-primary-0',
-      'hover:text-neutral-90',
+      'hover:bg-neutral-0',
+      'hover:text-primary-80',
       'active:bg-neutral-5',
+      'active:text-primary-80',
     ],
     theme === 'primary' && [
       'border',
