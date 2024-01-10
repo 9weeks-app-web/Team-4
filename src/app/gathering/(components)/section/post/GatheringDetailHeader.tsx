@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import ButtonBasic from '../../button/ButtonBasic';
+import Modal from '@/components/modal/Modal';
+import Application from '../../modal/Application';
 
 interface GatheringDetailHeaderProps {
   title: string;
@@ -13,6 +15,11 @@ interface GatheringDetailHeaderProps {
 const GatheringDetailHeader = ({ title, type }: GatheringDetailHeaderProps) => {
   const router = useRouter();
   const [toggleBookmark, setToggleBookmark] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const openModal = () => {
+    setOpen(prev => !prev);
+  };
 
   return (
     <>
@@ -40,7 +47,11 @@ const GatheringDetailHeader = ({ title, type }: GatheringDetailHeaderProps) => {
             content="모집 신청하기"
             theme="neutral"
             style={['h-[50px]', 'leading-[0px]']}
+            onClick={openModal}
           />
+          <Modal isOpen={open} setOpen={setOpen} title="모집 신청">
+            <Application />
+          </Modal>
         </div>
       </div>
     </>

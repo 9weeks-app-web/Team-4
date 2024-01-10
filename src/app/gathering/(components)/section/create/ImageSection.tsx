@@ -3,6 +3,8 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import { createContext, useContext, useState } from 'react';
+import Modal from '@/components/modal/Modal';
+import Addition from '../../modal/Addition';
 
 interface ImageSectionProps {
   children: React.ReactNode;
@@ -118,6 +120,11 @@ const SquareImage = ({
 
 const CircleImage = () => {
   const context = useContext(ImageSectionContext);
+  const [open, setOpen] = useState(false);
+
+  const openModal = () => {
+    setOpen(prev => !prev);
+  };
 
   if (!context) {
     throw Error('No Context!');
@@ -132,27 +139,18 @@ const CircleImage = () => {
         width={72}
         height={72}
       />
-      <label
-        className="self-end ml-8 bg-neutral-10 text-neutral-60 border-neutral-30 rounded-[50%]"
-        htmlFor="circle-upload"
-      >
-        <div className="flex justify-center items-center w-[72px] h-[72px] rounded-[50%] bg-background-blue cursor-pointer">
-          <Image
-            className=""
-            src="/images/gathering/blue_plus.svg"
-            alt="plus"
-            width={48}
-            height={48}
-          />
-        </div>
-      </label>
-      <input
-        className="w-0 h-0"
-        id="circle-upload"
-        type="file"
-        accept="image/*"
-        onChange={context.handleChangeImage}
-      />
+      <div className="flex justify-center items-center w-[72px] h-[72px] ml-8 rounded-[50%] bg-background-blue cursor-pointer">
+        <Image
+          src="/images/gathering/blue_plus.svg"
+          alt="plus"
+          width={48}
+          height={48}
+          onClick={openModal}
+        />
+      </div>
+      <Modal isOpen={open} setOpen={setOpen} title="모임 참여자">
+        <Addition />
+      </Modal>
     </div>
   );
 };

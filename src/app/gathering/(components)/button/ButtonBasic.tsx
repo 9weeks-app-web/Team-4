@@ -1,18 +1,21 @@
 import Link from 'next/link';
 import clsx from 'clsx';
+import { MouseEventHandler } from 'react';
 
 interface ButtonBasicProps {
   content: string;
   style?: string[];
   link?: string;
   theme?: 'primary' | 'neutral';
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 const ButtonBasic = ({
   content,
   style,
-  link = '/gathering/project/12',
+  link,
   theme = 'primary',
+  onClick,
 }: ButtonBasicProps) => {
   const className = clsx(
     'px-[30px]',
@@ -41,7 +44,9 @@ const ButtonBasic = ({
       <button className={className}>{content}</button>
     </Link>
   ) : (
-    <button className={className}>{content}</button>
+    <button className={className} onClick={onClick}>
+      {content}
+    </button>
   );
 };
 

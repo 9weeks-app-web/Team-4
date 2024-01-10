@@ -18,10 +18,11 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body className={`${inter.className} font-Pretendard`}>
+      <body className={`relative ${inter.className} font-Pretendard`}>
         <Provider>
           <RootHeader />
           {children}
+          <div id="modal"></div>
         </Provider>
       </body>
     </html>
