@@ -6,11 +6,13 @@ import MarkdownIt from 'markdown-it';
 interface MyMarkdownEditorProps {
   value: string;
   onChange: (text: string) => void;
+  placeholder?: string;
 }
 
 const MyMarkdownEditor: React.FC<MyMarkdownEditorProps> = ({
   value,
   onChange,
+  placeholder,
 }) => {
   const mdParser = new MarkdownIt();
 
@@ -24,6 +26,7 @@ const MyMarkdownEditor: React.FC<MyMarkdownEditorProps> = ({
       value={value}
       onChange={handleEditorChange}
       renderHTML={text => mdParser.render(text)}
+      placeholder={placeholder}
     />
   );
 };

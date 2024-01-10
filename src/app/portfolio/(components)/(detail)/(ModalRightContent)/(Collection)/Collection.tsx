@@ -18,9 +18,10 @@ const PortfoliosCollection = ({
           <div className="w-full h-[174px] mb-[20px] mt-[32px] mx-[24] flex flex-col">
             <div className="flex">
               <div className="font-semibold text-[22px] mb-[24px] h-[48px]">
-                새 컬렉션 만들기 
+                새 컬렉션 만들기
               </div>
-              <button className='ml-auto mb-auto'
+              <button
+                className="ml-auto mb-auto"
                 onClick={() => {
                   setCollectionModalOpen(false);
                 }}
@@ -61,7 +62,8 @@ const PortfoliosCollection = ({
           <div className="w-full px-[24px] pt-[32px] pb-[40px]">
             <div className="flex">
               <div className="font-semibold text-[22px]">컬렉션 저장</div>
-              <button className='ml-auto'
+              <button
+                className="ml-auto"
                 onClick={() => {
                   setCollectionModalOpen(false);
                 }}

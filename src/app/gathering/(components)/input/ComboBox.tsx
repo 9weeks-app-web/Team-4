@@ -1,6 +1,6 @@
 'use client';
 
-import { Dispatch, SetStateAction } from 'react';
+import { Children, Dispatch, SetStateAction } from 'react';
 
 interface DateProps {
   placeholder: string;
@@ -9,7 +9,7 @@ interface DateProps {
 interface SelectProps {
   selectName: string;
   options?: string[];
-  setter?: Dispatch<SetStateAction<string | null>>;
+  setter?: Dispatch<SetStateAction<string | null>> | ((type: string) => void);
 }
 
 const ComboBox = ({ children }: { children: React.ReactNode }) => {
@@ -18,39 +18,55 @@ const ComboBox = ({ children }: { children: React.ReactNode }) => {
 
 export default ComboBox;
 
-const Date = ({ placeholder }: DateProps) => {
-  return (
-    <input
-      className="w-[30%] px-2 py-1 border border-neutral-30 rounded-md before:content-[attr(data-placeholder)] before:w-full"
-      type="date"
-      placeholder="123"
-      data-placeholder={placeholder}
-    />
-  );
-};
-
 const Select = ({
   selectName,
   options = ['기술스택', 'React', 'Next.js'],
   setter,
 }: SelectProps) => {
   return (
-    <div className="relative w-full h-full bg-opacity-0">
+    <div className="relative w-full h-full">
       <select
-        className="w-full h-full px-4 py-3 border border-neutral-10 text-neutral-40 text-lg font-medium rounded-xl appearance-none bg-arrow-down bg-right-4 bg-no-repeat"
+        className="w-full h-full px-4 py-3 border border-neutral-10 text-neutral-40 text-lg font-medium rounded-xl appearance-none bg-arrow-down bg-right-1 bg-no-repeat cursor-pointer"
         id={`${selectName}-select`}
         name={selectName}
         onChange={e => setter && setter(e.target.value)}
       >
-        {options.map((option, i) => (
-          <option key={option} value={option} hidden={!i}>
-            {option}
-          </option>
-        ))}
+        {Children.toArray(
+          options.map((option, i) => (
+            <option value={option} hidden={!i}>
+              {option}
+            </option>
+          )),
+        )}
       </select>
     </div>
   );
 };
 
-ComboBox.Date = Date;
+const SelectSimple = ({
+  selectName,
+  options = ['기술스택', 'React', 'Next.js'],
+  setter,
+}: SelectProps) => {
+  return (
+    <div className="relative w-full h-full">
+      <select
+        className="w-full h-full px-2 py-1 text-neutral-50 font-semibold appearance-none bg-arrow-down bg-right-0 bg-no-repeat cursor-pointer"
+        id={`${selectName}-select`}
+        name={selectName}
+        onChange={e => setter && setter(e.target.value)}
+      >
+        {Children.toArray(
+          options.map((option, i) => (
+            <option value={option} hidden={!i}>
+              {option}
+            </option>
+          )),
+        )}
+      </select>
+    </div>
+  );
+};
+
 ComboBox.Select = Select;
+ComboBox.SelectSimple = SelectSimple;

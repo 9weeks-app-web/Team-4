@@ -1,5 +1,6 @@
 import { Children, useState } from 'react';
 import Radar from '@/components/chart/Radar';
+import clsx from 'clsx';
 
 const RADIO_INPUTS = [
   '성실성',
@@ -11,37 +12,7 @@ const RADIO_INPUTS = [
 ];
 
 const ChartSection = () => {
-  const [radio1, setRadio1] = useState(0);
-  const [radio2, setRadio2] = useState(0);
-  const [radio3, setRadio3] = useState(0);
-  const [radio4, setRadio4] = useState(0);
-  const [radio5, setRadio5] = useState(0);
-  const [radio6, setRadio6] = useState(0);
-
-  const handleClickRadio = (name: string, value: number) => {
-    switch (name) {
-      case '성실성':
-        setRadio1(value);
-        break;
-      case '참여도':
-        setRadio2(value);
-        break;
-      case '작업속도':
-        setRadio3(value);
-        break;
-      case '포용성':
-        setRadio4(value);
-        break;
-      case '의사소통':
-        setRadio5(value);
-        break;
-      case '직무경험':
-        setRadio6(value);
-        break;
-      default:
-        break;
-    }
-  };
+  const [radio, setRadio] = useState([0, 0, 0, 0, 0, 0]);
 
   return (
     <section className="flex flex-col">
@@ -53,7 +24,16 @@ const ChartSection = () => {
       </p>
       <div className="flex gap-[150px] border px-[100px] py-[60px] border-neutral-10 rounded-xl">
         <div className="flex-1">
-          <Radar inputs={[radio1, radio2, radio3, radio4, radio5, radio6]} />
+          <Radar
+            inputs={[
+              radio[0],
+              radio[1],
+              radio[2],
+              radio[3],
+              radio[4],
+              radio[5],
+            ]}
+          />
         </div>
         <div className="flex flex-col flex-1">
           <div className="flex h-full">
@@ -66,19 +46,47 @@ const ChartSection = () => {
             </div>
             <div className="flex flex-col justify-between w-full">
               {Children.toArray(
-                RADIO_INPUTS.map(name => (
+                RADIO_INPUTS.map((name, index) => (
                   <div className="relative flex justify-between">
                     <div className="absolute top-[11px] w-full h-[2px] bg-neutral-10" />
-                    {Array.from({ length: 5 }, (_, i) => 1 + i).map(v => (
-                      <input
-                        className="relative w-6 h-6 appearance-none border-2 border-neutral-10  ring-[2.5px] ring-inset ring-neutral-0 bg-neutral-10  rounded-[50%] checked:bg-primary-100 checked:border-primary-100
-                        "
-                        type="radio"
-                        name={name}
-                        value={v}
-                        onClick={() => handleClickRadio(name, v)}
-                      />
-                    ))}
+                    {Children.toArray(
+                      Array.from({ length: 5 }, (_, i) => 1 + i).map((v, i) => (
+                        <input
+                          className={clsx(
+                            'relative',
+                            'w-6',
+                            'h-6',
+                            'appearance-none',
+                            'border-2',
+                            'border-neutral-10',
+                            'ring-[2.5px]',
+                            'ring-inset',
+                            'ring-neutral-0',
+                            'bg-neutral-10',
+                            'rounded-[50%]',
+                            'cursor-pointer',
+                            'checked:bg-primary-100',
+                            'checked:border-primary-100',
+                            'active:bg-primary-70',
+                            'active:border-primary-70',
+                            radio[index] !== i + 1 && [
+                              'hover:bg-primary-30',
+                              'hover:border-primary-30',
+                            ],
+                          )}
+                          type="radio"
+                          name={name}
+                          value={v}
+                          onClick={() =>
+                            setRadio(prev => {
+                              const arr = [...prev];
+                              arr[index] = v;
+                              return arr;
+                            })
+                          }
+                        />
+                      )),
+                    )}
                   </div>
                 )),
               )}

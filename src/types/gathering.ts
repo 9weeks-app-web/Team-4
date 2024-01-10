@@ -131,6 +131,7 @@ export interface Retrospect {
     userId: number;
     name: string;
     userProfile: string;
+    spectrumImage?: string;
     level?: number;
     position?: string;
     isLeader?: boolean;

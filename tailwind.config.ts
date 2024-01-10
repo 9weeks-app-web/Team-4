@@ -58,7 +58,8 @@ const config: Config = {
       },
     },
     backgroundPosition: {
-      'right-4': 'right 1rem center',
+      'right-0': 'right 0 center',
+      'right-1': 'right 1rem center',
       center: 'center',
     },
     extend: {
@@ -80,6 +81,9 @@ const config: Config = {
       },
       animation: {
         stretch: 'stretch .5s ease-in-out',
+      },
+      fontFamily: {
+        Pretendard: ['Pretendard'],
       },
     },
   },

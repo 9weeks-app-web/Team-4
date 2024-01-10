@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 
-interface ButtonRound {
+interface ButtonRoundProps {
   content: string;
   theme: 'white' | 'primary' | 'neutral';
   link?: string;
   style?: string[];
 }
 
-const ButtonRound = ({ content, theme, link, style }: ButtonRound) => {
+const ButtonRound = ({ content, theme, link, style }: ButtonRoundProps) => {
   const className = clsx(
     'px-[30px]',
     'py-[15px]',
@@ -40,10 +40,12 @@ const ButtonRound = ({ content, theme, link, style }: ButtonRound) => {
     ],
   );
 
-  return (
-    <button className={className}>
-      {link ? <Link href={link}>{content}</Link> : content}
-    </button>
+  return link ? (
+    <Link className="w-full" href={link}>
+      <button className={className}>{content}</button>
+    </Link>
+  ) : (
+    <button className={className}>{content}</button>
   );
 };
 
