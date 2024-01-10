@@ -10,9 +10,9 @@ import {
   CommunityDummys,
   JobDummys,
 } from './api/community/(dummys)';
+import ChatDummy from './api/community/(dummys)/chat';
 import Link from 'next/link';
 import { CommunityDetail } from '@/types/community';
-import Image from 'next/image';
 import RightArrow from './(components)/imageComponents/Right';
 import ChatCard from './(components)/ChatCard';
 
@@ -45,14 +45,16 @@ const Community = () => {
       : false,
   );
 
-  const filteredJobChatDummys = JobDummys.filter(dummy =>
-    activeJobChatCategory === '전체' ||
-    activeJobChatCategory === 'UX/UI' ||
-    activeJobChatCategory === '서비스 기획' ||
-    activeJobChatCategory === '웹 디자인' ||
-    activeJobChatCategory === '편집 디자인'
-      ? dummy.type === activeJobChatCategory
-      : false,
+  const filteredJobChatDummys = ChatDummy.filter(dummy =>
+    activeJobChatCategory === '전체'
+      ? activeJobChatCategory === '전체' ||
+        ['UX/UI', '서비스 기획', '웹 디자인', '편집 디자인'].includes(dummy.tag)
+      : activeJobChatCategory === 'UX/UI' ||
+          activeJobChatCategory === '서비스 기획' ||
+          activeJobChatCategory === '웹 디자인' ||
+          activeJobChatCategory === '편집 디자인'
+        ? dummy.tag === activeJobChatCategory
+        : false,
   );
 
   const filteredQnADummys = QnADummys.filter(dummy =>
@@ -219,8 +221,9 @@ const Community = () => {
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-[30px]">
-            <ChatCard />
-            <ChatCard />
+            {filteredJobChatDummys.slice(0, 2).map(job => (
+              <ChatCard key={job.id} dummy={job} />
+            ))}
           </div>
         </section>
       </div>

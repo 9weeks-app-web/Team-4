@@ -94,7 +94,7 @@ const FreeCard: React.FC<BoardProps> = ({ post }) => {
                 </div>
               ))}
             </div>
-            <div className="flex mb-5">
+            <div className="flex mb-5 h-8">
               {post.tags?.map((tag, index) => (
                 <div
                   key={index}
