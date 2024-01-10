@@ -11,14 +11,23 @@ export async function GET(req: Request) {
     res.cardList = retrospectCardDummy.slice(12 * page - 12, 12 * page);
   } else {
     const data = retrospectCardDummy.map(
-      ({ id, type, title, teamName, thumbnail, profileImage, like, hits }) => ({
+      ({
         id,
         type,
         title,
         teamName,
         thumbnail,
         profileImage,
-        like,
+        likes,
+        hits,
+      }) => ({
+        id,
+        type,
+        title,
+        teamName,
+        thumbnail,
+        profileImage,
+        likes,
         hits,
       }),
     );

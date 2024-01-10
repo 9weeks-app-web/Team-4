@@ -1,3 +1,5 @@
+import PortfoliosBannerList from './List';
+
 const PortfolioBanner = () => {
   return (
     <div className="bg-primary-5 w-full h-[557px] ">
@@ -14,7 +16,12 @@ const PortfolioBanner = () => {
       </div> */}
       <div className="w-full h-full flex justify-center items-center">
         <div className="w-full max-w-[1200px]">
-          홍길동님의 관심사와 비슷한 포트폴리오를 가져왔어요
+          <div className="text-[26px] font-[700] mb-[32px]">
+            홍길동님의 관심사와 비슷한 포트폴리오를 가져왔어요
+          </div>
+          <div>
+            <PortfoliosBannerList />
+          </div>
         </div>
       </div>
     </div>

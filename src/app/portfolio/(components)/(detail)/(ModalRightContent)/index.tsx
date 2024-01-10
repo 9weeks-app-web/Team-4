@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import ModalRightComment from './(Comment)/Container';
 import { PortfolioPageCategory } from '@/types/portfolio';
-import ModalWrapper from '../../(Modal)';
+import ModalWrapper from '../../../../../components/(Modal)';
 import PortfoliosCollection from './(Collection)/Collection';
 
 const ModalRightContent = ({

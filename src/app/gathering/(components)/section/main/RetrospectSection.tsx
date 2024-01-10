@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import clsx from 'clsx';
 import { apiRequest } from '@/utils/api';
 import { Retrospect, RetrospectCard } from '@/types/gathering';
+import { PortfolioCard } from '@/types/portfolio';
 import ButtonSimple from '../../button/ButtonSimple';
 import ThumbnailGatheringCard from '../../card/ThumbnailGatheringCard';
 
@@ -31,7 +32,7 @@ const RetrospectSection = () => {
           프로젝트를 완성한 팀원들의 회고를 들어보세요!
         </h3>
         <div className="self-end">
-          <ButtonSimple content="회고 더보기" />
+          <ButtonSimple content="회고 더보기" link="/gathering/retrospect/" />
         </div>
       </div>
       <Swiper
@@ -44,9 +45,9 @@ const RetrospectSection = () => {
         {Children.toArray(
           data?.cardList.map(data => (
             <SwiperSlide className="relative">
-              <div className="max-w-[534px]  px-[47px] py-[35px] border-4 border-primary-50 rounded-2xl">
+              <div className="max-w-[534px] px-[70px] py-[35px] border-4 border-primary-50 rounded-2xl">
                 <ThumbnailGatheringCard
-                  data={data}
+                  data={data as RetrospectCard & PortfolioCard}
                   button="프로젝트 회고 보기"
                 />
               </div>
@@ -93,7 +94,7 @@ const RetrospectPreview = ({ retrospectId }: RetrospectPreviewProps) => {
           Children.toArray(
             data?.retrospect.members.map(({ userId, userProfile, name }) => (
               <div
-                className="flex flex-col items-center gap-2"
+                className="flex flex-col items-center gap-2 cursor-pointer"
                 onClick={() => setFocusMemberId(userId)}
               >
                 <Image
@@ -121,7 +122,19 @@ const RetrospectPreview = ({ retrospectId }: RetrospectPreviewProps) => {
             alt="profile"
           />
           <div className="font-medium">
-            <div className="text-neutral-80 text-xl ">{focusMember?.name}</div>
+            <div className="flex items-center gap-1">
+              <div className="text-neutral-80 text-xl ">
+                {focusMember?.name}
+              </div>
+              {focusMember?.spectrumImage && (
+                <Image
+                  src={focusMember?.spectrumImage}
+                  width={20}
+                  height={23}
+                  alt="spectrum"
+                />
+              )}
+            </div>
             <div className="text-neutral-40">
               {focusMember?.isLeader && '팀장 · '}
               {focusMember?.position}

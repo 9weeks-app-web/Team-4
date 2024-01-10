@@ -58,7 +58,8 @@ const config: Config = {
       },
     },
     backgroundPosition: {
-      'right-4': 'right 1rem center',
+      'right-0': 'right 0 center',
+      'right-1': 'right 1rem center',
       center: 'center',
     },
     extend: {

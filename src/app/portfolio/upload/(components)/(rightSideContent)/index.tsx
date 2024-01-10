@@ -2,17 +2,9 @@
 
 import Image from 'next/image';
 
-
-const PortfoliosRightComponentContainer = ({
- 
-}: {
-
-}) => {
+const PortfoliosRightComponentContainer = ({}: {}) => {
   return (
-    <div
-      className="w-[264px] ml-[30px] mr-[60px] h-full pt-[97px] text-[16px] font-[500]"
-      
-    >
+    <div className="w-[264px] ml-[30px] mr-[60px] h-full pt-[97px] text-[16px] font-[500]">
       <div className="h-[229px]">
         <div className="h-[21px]">콘텐츠 추가</div>
         <div

@@ -15,7 +15,7 @@ const RootHeader = () => {
                 height={10}
                 className="mt-auto"
               />
-              <li className="w-[118px] h-[43px] px-[20px] py-[9px] mt-auto rounded-t-xl border border-neutral-0 bg-neutral-0">
+              <li className="w-[120px] -tracking-[.108px] text-[18px] font-[700] h-[43px] px-[20px] py-[9px] mt-auto rounded-t-xl border border-neutral-0 bg-neutral-0">
                 스팩폴리오
               </li>
               <Image
@@ -25,7 +25,7 @@ const RootHeader = () => {
                 height={10}
                 className="mt-auto"
               />
-              <li className="w-[118px] h-[43px] px-[20px] py-[9px] mt-auto ml-[10px]">
+              <li className="w-[118px] text-[18px] font-[500] text-neutral-30 h-[43px] px-[20px] py-[9px] mt-auto ml-[10px]">
                 스팩로그
               </li>
             </ol>
@@ -36,7 +36,7 @@ const RootHeader = () => {
         <div className="max-w-[90%] w-full">
           <nav className="w-full h-[100px] flex items-center ">
             <ol className="flex h-full items-center">
-              <li className="mr-8 text-[24px] font-[500] flex">
+              <li className="mr-8 text-[24px] font-[900] flex">
                 <Link href={'/'} className="flex">
                   <Image
                     src="/portfolios/sfacfolio_logo.svg"
