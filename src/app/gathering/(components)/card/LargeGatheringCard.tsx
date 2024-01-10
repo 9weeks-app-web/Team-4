@@ -63,8 +63,8 @@ const LargeGatherigCard = ({
             )}
             {member?.PM && (
               <span>
-                <span className="px-[6px]">·</span>
                 PM <strong className="text-primary-100">{member.PM}</strong>
+                <span className="px-[6px]">·</span>
               </span>
             )}
             {member?.designer && (
