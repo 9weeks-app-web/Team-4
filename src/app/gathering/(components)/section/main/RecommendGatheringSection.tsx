@@ -15,7 +15,7 @@ const RecommendGatheringSection = () => {
   const section = search.get('section');
 
   const { data, refetch } = useQuery({
-    queryKey: ['RecommendCardList'],
+    queryKey: ['recommendCardList'],
     queryFn: async () => {
       const res = await apiRequest<{ cardList: GatheringCard[] }>(
         `/gathering/deadline?type=${section === 'study' ? 'study' : 'project'}`,

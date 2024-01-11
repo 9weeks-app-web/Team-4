@@ -401,7 +401,7 @@ const GatheringForm = () => {
           </div>
         </div>
       </section>
-      <SingleSection title="키워드 설정">
+      <SingleSection title="태그 설정">
         <Input placeholder="#키워드 + Enter" style={['min-h-[54px]']}>
           <Input.Tag />
         </Input>
