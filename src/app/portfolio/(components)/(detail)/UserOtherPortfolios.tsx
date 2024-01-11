@@ -37,7 +37,7 @@ const UserOtherPortfolios = ({
           modules={[Navigation, Pagination]}
         >
           {data.portfolioList.map(e => (
-            <SwiperSlide key={e.portfolioId} className='relative'>
+            <SwiperSlide key={e.portfolioId} className="relative">
               <div className="min-w-[30%]  w-full h-[340px] flex flex-col items-center z-1">
                 <div className="max-w-[337px] w-full h-[252px]">
                   <Image

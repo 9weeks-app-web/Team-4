@@ -274,7 +274,11 @@ const PortfolioDetail = ({
                       className="flex mt-[24px] px-[24px] border h-12 items-center border-neutral-10 w-fit rounded-full"
                     >
                       <div className="w-[24px] relative h-[24px] flex items-center overflow-hidden rounded-full border border-neutral-10 mr-2">
-                        <Image src="/images/gathering/figma.svg" alt="이미지" fill />
+                        <Image
+                          src="/images/gathering/figma.svg"
+                          alt="이미지"
+                          fill
+                        />
                       </div>
                       <div>{e}</div>
                     </div>
