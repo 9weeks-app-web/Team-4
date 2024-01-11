@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { gatheringGridCardDummy } from './(dummy)';
+import { gatheringCardDummy } from './(dummy)';
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -11,7 +11,7 @@ export async function GET(req: Request) {
   const _way = searchParams.get('way');
   const res = { size: 0, cardList: {} };
 
-  let data = gatheringGridCardDummy;
+  let data = gatheringCardDummy;
 
   if (skill && skill !== 'null') {
     data = data.filter(({ skills }) => skills?.includes(skill));

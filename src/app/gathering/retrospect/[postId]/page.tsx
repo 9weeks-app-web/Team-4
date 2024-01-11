@@ -1,15 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import Input from '@/app/gathering/(components)/input/Input';
+import { useState } from 'react';
+import Markdown from 'react-markdown';
 import Section from '../../(components)/section/post/Section';
 import TeamInfo from '../../(components)/section/post/TeamInfo';
 import Comment from '../../(components)/section/post/CommentSection';
 import RecommendGathering from '../../(components)/section/post/RecommendGathering';
-import { useState } from 'react';
-import Markdown from 'react-markdown';
 import ChipRound from '../../(components)/chip/ChipRound';
-import Link from 'next/link';
 
 const INTRODUCTION_MD = `
 눈 운동을 도와주는 eyeLong은 사용자들이 눈의 건강과 시력 개선을 위해 꾸준한 운동을 할 수 있도록 도와줍니다.
@@ -204,30 +202,26 @@ const RetrospectDetailHeader = ({
   const [toggleBookmark, setToggleBookmark] = useState(false);
 
   return (
-    <header className="relative px-[calc((100%-1200px)/2)] h-[600px] text-neutral-0">
-      <Image
-        className="brightness-[0.4]"
-        src="/images/gathering/retrospect_banner.svg"
-        fill
-        alt="bookmark"
-      />
-      <div className="absolute bottom-0 w-[calc(100%-(100%-1200px))]">
-        <h2 className="text-[51px] font-bold">{title}</h2>
-        <p className="mt-2 text-[23px] text-neutral-20 font-semibold">
-          {type} | {field}
-        </p>
-        <div className="relative flex justify-between mt-[35px] mb-9 text-[20px] font-medium text-neutral-20">
-          <p>{createdAt}</p>
-          <Image
-            className="absolute bottom-4 right-0 cursor-pointer"
-            src={`/images/gathering/${
-              toggleBookmark ? 'bookmark_0_fill' : 'bookmark_0'
-            }.svg`}
-            width={40}
-            height={40}
-            alt="bookmark"
-            onClick={() => setToggleBookmark(prev => !prev)}
-          />
+    <header className="relative h-[600px] text-neutral-0 bg-[url(/images/gathering/retrospect_banner.svg)] bg-no-repeat bg-center">
+      <div className="w-full h-full px-[calc((100%-1200px)/2)] backdrop-brightness-50">
+        <div className="absolute bottom-0 w-[calc(100%-(100%-1200px))]">
+          <h2 className="text-[51px] font-bold">{title}</h2>
+          <p className="mt-2 text-[23px] text-neutral-20 font-semibold">
+            {type} | {field}
+          </p>
+          <div className="relative flex justify-between mt-[35px] mb-9 text-[20px] font-medium text-neutral-20">
+            <p>{createdAt}</p>
+            <Image
+              className="absolute bottom-4 right-0 cursor-pointer"
+              src={`/images/gathering/${
+                toggleBookmark ? 'bookmark_0_fill' : 'bookmark_0'
+              }.svg`}
+              width={40}
+              height={40}
+              alt="bookmark"
+              onClick={() => setToggleBookmark(prev => !prev)}
+            />
+          </div>
         </div>
       </div>
     </header>

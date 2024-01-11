@@ -2,10 +2,6 @@
 
 import { Children, Dispatch, SetStateAction } from 'react';
 
-interface DateProps {
-  placeholder: string;
-}
-
 interface SelectProps {
   selectName: string;
   options?: string[];

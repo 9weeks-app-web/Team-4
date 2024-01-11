@@ -115,7 +115,9 @@ const MainGatheringSection = () => {
             <li key={id}>
               <button
                 className={clsx(
-                  section === id && ['text-neutral-100', 'border-b-2'],
+                  section === id
+                    ? ['text-neutral-100', 'border-b-2']
+                    : 'hover:text-neutral-80',
                 )}
                 onClick={() => setSection(id)}
               >
@@ -135,7 +137,7 @@ const MainGatheringSection = () => {
             <ComboBox>
               <ComboBox.Select
                 selectName="skills"
-                options={['기술스택', 'JavaScript', 'Java', 'Figma', 'Xd']}
+                options={['기술스택', 'React', 'Spring', 'Figma', 'Xd']}
                 setter={setSkill}
               />
             </ComboBox>
@@ -190,7 +192,14 @@ const MainGatheringSection = () => {
             section === 'respecter' ? (
               <RespecterCard data={data as RespectCard} />
             ) : (
-              <NormalGatherigCard data={data as GatheringCard} />
+              <NormalGatherigCard
+                data={data as GatheringCard}
+                link={
+                  section === 'study'
+                    ? `/gathering/study/${data.id}`
+                    : `/gathering/project/${data.id}`
+                }
+              />
             ),
           ),
         )}

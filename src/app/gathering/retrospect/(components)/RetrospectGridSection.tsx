@@ -50,14 +50,6 @@ const RetrospectGridSection = () => {
       <h3 className="text-[26px] font-bold">
         완성된 프로젝트 회고를 만나보세요
       </h3>
-      <div className="flex max-w-[296px] gap-4 mt-5">
-        <ComboBox>
-          <ComboBox.Select selectName="ways" options={['직군']} />
-        </ComboBox>
-        <ComboBox>
-          <ComboBox.Select selectName="capacity" options={['포지션']} />
-        </ComboBox>
-      </div>
       <div className="flex justify-between mt-12 mb-3">
         <span className="">총 {data?.size}건</span>
         <span className="flex gap-6 text-neutral-30">
@@ -109,13 +101,12 @@ const RetrospectGridSection = () => {
             <button
               key={num}
               className={clsx(
-                page === num && [
-                  'text-neutral-0',
-                  'bg-primary-100',
-                  'rounded-[50%]',
-                ],
+                page === num
+                  ? ['text-neutral-0', 'bg-primary-100']
+                  : 'hover:bg-neutral-5',
                 'w-10',
                 'h-10',
+                'rounded-[50%]',
               )}
               onClick={() => setPage(num)}
             >

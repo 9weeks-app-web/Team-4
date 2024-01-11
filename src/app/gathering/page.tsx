@@ -16,7 +16,7 @@ interface GatheringPageProps {
 }
 
 const GatheringPage = ({ searchParams }: GatheringPageProps) => {
-  const { section } = searchParams;
+  const { section = 'all' } = searchParams;
 
   return (
     <>

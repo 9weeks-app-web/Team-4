@@ -3,7 +3,9 @@ import { RespectCard } from '@/types/gathering';
 import ChipSmall from '../chip/ChipSmall';
 
 interface SmallRespecterCardProps {
-  data?: RespectCard;
+  data?: Omit<RespectCard, 'minor' | 'portfolioImages' | 'badge'> & {
+    projects?: number;
+  };
 }
 
 const SmallRespecterCard = ({
@@ -13,36 +15,13 @@ const SmallRespecterCard = ({
     nickname: '사용자닉네임',
     profileImage: 'https://dummyimage.com/100x100/74afe3/fff',
     spectrumImage: '/images/gathering/spectrum.svg',
-    portfolioImages: [
-      'https://dummyimage.com/100x100/74afe3/fff',
-      'https://dummyimage.com/100x100/74afe3/fff',
-      'https://dummyimage.com/100x100/74afe3/fff',
-    ],
     major: 'UX/UI',
-    minor: '웹디자인',
-    badge: [
-      '/images/gathering/spectrum.svg',
-      '/images/gathering/spectrum.svg',
-      '/images/gathering/spectrum.svg',
-      '/images/gathering/spectrum.svg',
-    ],
     following: 999,
     follower: 999,
   },
 }: SmallRespecterCardProps) => {
-  const {
-    id,
-    userId,
-    nickname,
-    major,
-    minor,
-    profileImage,
-    spectrumImage,
-    portfolioImages,
-    badge,
-    following,
-    follower,
-  } = data;
+  const { nickname, major, profileImage, spectrumImage, following, follower } =
+    data;
 
   return (
     <div className="relative w-full px-[22px] py-5 border border-stroke-10 bg-neutral-0 rounded-xl hover:border-2 hover:border-primary-100 hover:shadow-[0_0_20px_0_rgba(123,137,163,0.12)] hover:px-[21px] hover:py-[19px] cursor-pointer">

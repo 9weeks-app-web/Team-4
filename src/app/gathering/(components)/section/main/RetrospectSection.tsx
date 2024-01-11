@@ -49,6 +49,7 @@ const RetrospectSection = () => {
                 <ThumbnailGatheringCard
                   data={data as RetrospectCard & PortfolioCard}
                   button="프로젝트 회고 보기"
+                  link={`/gathering/retrospect/${data.id}/`}
                 />
               </div>
               <RetrospectPreview retrospectId={data.id} />
@@ -99,7 +100,7 @@ const RetrospectPreview = ({ retrospectId }: RetrospectPreviewProps) => {
               >
                 <Image
                   className={clsx(
-                    'rounded-[50%] border-2 border-neutral-20',
+                    'aspect-square rounded-[50%] border-2 border-neutral-20 hover:scale-110 transition-all',
                     focusMemberId === userId && 'border-primary-100',
                   )}
                   src={userProfile}
@@ -116,7 +117,7 @@ const RetrospectPreview = ({ retrospectId }: RetrospectPreviewProps) => {
         <div className="flex items-center gap-[10px] ml-10">
           <Image
             className="rounded-[50%]"
-            src="https://dummyimage.com/100x100/74afe3/fff"
+            src={focusMember?.userProfile || '/images/gathering/profile.svg'}
             width={72}
             height={72}
             alt="profile"
@@ -150,7 +151,7 @@ const RetrospectPreview = ({ retrospectId }: RetrospectPreviewProps) => {
             alt="open double quote"
           />
           <p className="w-[413px] text-xl text-neutral-70 font-medium">
-            {data?.retrospect.retrospect}
+            {focusMember?.retrospect}
           </p>
           <Image
             className="self-start"

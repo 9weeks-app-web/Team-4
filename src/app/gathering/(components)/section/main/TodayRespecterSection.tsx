@@ -1,13 +1,13 @@
 'use client';
 
 import Image from 'next/image';
+import { Children, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { apiRequest } from '@/utils/api';
 import { RespectCard, RetrospectCard } from '@/types/gathering';
 import { PortfolioCard } from '@/types/portfolio';
 import ThumbnailGatheringCard from '../../card/ThumbnailGatheringCard';
 import SmallRespecterCard from '../../card/SmallRespecterCard';
-import { Children, useState } from 'react';
 
 const TodayRespecterSection = () => {
   const [focusCard, setfocusCard] = useState(0);
@@ -65,7 +65,7 @@ const FocusRespecter = ({ data }: FocusRespecter) => {
       <div className="flex flex-col items-center flex-1 min-w-[686px] px-[116px] py-[38px] border border-neutral-10 rounded-2xl shadow-[0_0_20px_0_rgba(123,137,163,0.12)]">
         <Image
           className="my-[34px] rounded-[50%]"
-          src="https://dummyimage.com/100x100/74afe3/fff"
+          src={respecter.profileImage}
           width={72}
           height={72}
           alt="profile"
@@ -120,6 +120,7 @@ const FocusRespecter = ({ data }: FocusRespecter) => {
       <div className="flex-1 px-[73px] py-10 border border-neutral-10 rounded-2xl shadow-[0_0_20px_0_rgba(123,137,163,0.12)]">
         <ThumbnailGatheringCard
           data={portfolio as RetrospectCard & PortfolioCard}
+          link={`/gathering/retrospect/${data.portfolio.id}/`}
           button="포트폴리오 보기"
         />
       </div>
