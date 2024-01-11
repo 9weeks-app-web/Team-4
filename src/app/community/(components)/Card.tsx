@@ -26,7 +26,13 @@ const Card: React.FC<CardProps> = ({ dummy, category }) => {
           <div className=" text-neutral-60 text-sm">{dummy.nickname}</div>
         </div>
         <div className=" text-neutral-30 text-sm">
-          {dummy.createdAt.toISOString().split('T')[0]}
+          {new Date(dummy.createdAt).toLocaleDateString('en-US', {
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false,
+          })}
         </div>
       </div>
       <Link href={`/community/${category}/${dummy.id}`}>

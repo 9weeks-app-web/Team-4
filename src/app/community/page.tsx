@@ -35,6 +35,7 @@ const Community = () => {
   const [activeJobCategory, setActiveJobCategory] = useState('UX/UI');
   const [activeJobChatCategory, setActiveJobChatCategory] = useState('전체');
   const [activeQnACategory, setActiveQnACategory] = useState('포트폴리오');
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const filteredJobDummys = JobDummys.filter(dummy =>
     activeJobCategory === 'UX/UI' ||
@@ -66,7 +67,21 @@ const Community = () => {
   const allDummys = [...CommunityDummys, ...QnADummys, ...JobDummys];
   const sortByHitDesc = (a: CommunityDetail, b: CommunityDetail) =>
     b.likes - a.likes;
-  const hotDummys = allDummys.sort(sortByHitDesc).slice(0, 6);
+  const hotDummys = allDummys.sort(sortByHitDesc);
+
+  const handleNextClick = () => {
+    const nextIndex = currentIndex + 6;
+    if (nextIndex < hotDummys.length) {
+      setCurrentIndex(nextIndex);
+    }
+  };
+
+  const handlePrevClick = () => {
+    const prevIndex = currentIndex - 6;
+    if (prevIndex >= 0) {
+      setCurrentIndex(prevIndex);
+    }
+  };
 
   return (
     <div className="flex justify-center items-center font-sans">
@@ -76,17 +91,27 @@ const Community = () => {
             <h1 className="font-bold text-[26px] mb-8">핫한 게시글</h1>
             <div className="flex items-center">
               <div className="w-6 h-6 mr-4">
-                <div className="text-2xl"> &#60;</div>
+                <button className="text-2xl" onClick={handlePrevClick}>
+                  &#60;
+                </button>
               </div>
               <div className="w-6 h-6">
-                <div className="text-2xl"> &#62;</div>
+                <button className="text-2xl" onClick={handleNextClick}>
+                  &#62;
+                </button>
               </div>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-[30px] ">
-            {hotDummys.slice(0, 6).map((dummy, index) => (
-              <HotBoard key={dummy.id} dummy={dummy} index={index + 1} />
-            ))}
+            {hotDummys
+              .slice(currentIndex, currentIndex + 6)
+              .map((dummy, index) => (
+                <HotBoard
+                  key={dummy.id}
+                  dummy={dummy}
+                  index={index + currentIndex + 1}
+                />
+              ))}
           </div>
         </section>
         <section className="mb-20">

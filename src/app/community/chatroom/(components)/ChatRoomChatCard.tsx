@@ -14,7 +14,7 @@ const ChatRoomChatCard: React.FC<ChatRoomProps> = ({ dummy }) => {
       <div>
         <div className="flex ml-[10px]">
           <div className="mr-[6px]">{dummy.id}</div>
-          <BadgeImage src="/images/community/badge_1.png" />
+          <BadgeImage src={dummy.badge} />
         </div>
         <div className="p-[14px] bg-primary-5 ">{dummy.content}</div>
       </div>

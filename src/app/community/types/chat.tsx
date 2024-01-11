@@ -3,6 +3,7 @@ export interface Content {
   content: string;
   date: Date;
   profileImg: string;
+  badge: string;
 }
 
 export interface ChatCard {

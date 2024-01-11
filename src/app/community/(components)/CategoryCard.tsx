@@ -12,6 +12,7 @@ import EmojiModal from './emojiModal/EmojiModal';
 import Link from 'next/link';
 import getCategory from './FindCategory';
 import ProfileImage from './imageComponents/Profile';
+import TimeCal from './TimeCal';
 
 export interface BoardProps {
   post: CommunityDetail;
@@ -62,7 +63,7 @@ const FreeCard: React.FC<BoardProps> = ({ post }) => {
             <div className="flex text-neutral-40 font-medium ">
               <div>{post.major}</div>
               <div>・</div>
-              <div>{post.createdAt.toISOString().split('T')[0]}</div>
+              <TimeCal createdAt={post.createdAt} />
             </div>
           </div>
         </div>

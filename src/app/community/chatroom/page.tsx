@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ChatDummy from '../api/community/(dummys)/chat';
 import ChatRoomCard from './(components)/ChatRoomCard';
 import { ChatCard } from '../types/chat';
@@ -25,6 +25,12 @@ const ChatRoom = () => {
   const handleChatCardClick = (chat: ChatCard) => {
     setSelectedChat(chat);
   };
+
+  useEffect(() => {
+    if (activeInvolved === '참여중' || activeInvolved === '둘러보기') {
+      setSelectedChat(null);
+    }
+  }, [activeInvolved]);
 
   return (
     <div className=" my-8">
@@ -72,18 +78,6 @@ const ChatRoom = () => {
             ))}
           </div>
         </div>
-        {/* {selectedChat && activeInvolved === '둘러보기' ? (
-          <SelectedChatCard selectedChat={selectedChat} />
-        ) : selectedChat && activeInvolved === '참여중' ? (
-          <SelectedChatRoomCard selectedChat={selectedChat} />
-        ) : (
-          <div className="flex justify-center items-center p-[30px] w-[585px] border border-neutral-10 rounded-[20px] text-neutral-80 font-medium text-lg">
-            <div className=" text-center">
-              좌측의 채팅방 리스트에서
-              <br /> 참여하고 싶은 채팅방을 클릭해 주세요.
-            </div>
-          </div>
-        )} */}
 
         {selectedChat && activeInvolved === '둘러보기' ? (
           <SelectedChatCard selectedChat={selectedChat} />

@@ -16,6 +16,7 @@ import BookMarkButton from '../../(components)/imageComponents/Bookmark';
 import EmojiModal from '../../(components)/emojiModal/EmojiModal';
 import { DummyComment } from '../../api/community/(dummys)/comment';
 import CommentCard from '../../(components)/Comment';
+import ShareIcon from '../../(components)/imageComponents/shareIcons';
 
 const Details = () => {
   const pathname = usePathname();
@@ -120,31 +121,45 @@ const Details = () => {
 
             <button onClick={handleShareClick}>공유하기</button>
             {shareDropdownOpen && (
-              <div className="absolute top-full right-0 bg-white border rounded shadow-md mt-2 bg-neutral-0">
-                <button
-                  className=" px-4 py-2 w-full text-left"
-                  onClick={handleCopyLink}
-                >
-                  링크 복사
-                </button>
-                <button
-                  className=" px-4 py-2 w-full text-left"
-                  onClick={handleFacebookShare}
-                >
-                  페이스북에 공유
-                </button>
-                <button
-                  className=" px-4 py-2 w-full text-left"
-                  onClick={handleTwitterShare}
-                >
-                  트위터에 공유
-                </button>
-                <button
-                  className=" px-4 py-2 w-full text-left"
-                  onClick={handleLinkedInShare}
-                >
-                  링크드인에 공유
-                </button>
+              <div className="absolute w-[170px] h-[224px] py-5 top-full bg-white border border-neutral-10 rounded-xl shadow-md bg-neutral-0 flex flex-col justify-center items-center text-neutral-40 font-medium text-lg">
+                <div className="w-[170px]">
+                  <div className="flex justify-center items-center px-5 py-[6px] ">
+                    <ShareIcon item="link" />
+                    <button
+                      className=" w-full text-left"
+                      onClick={handleCopyLink}
+                    >
+                      링크 복사
+                    </button>
+                  </div>
+                  <div className="flex justify-center items-center px-5 py-[6px] ">
+                    <ShareIcon item="kakao" />
+                    <button
+                      className=" w-full text-left"
+                      onClick={handleFacebookShare}
+                    >
+                      카카오톡 공유
+                    </button>
+                  </div>
+                  <div className="flex justify-center items-center px-5 py-[6px] ">
+                    <ShareIcon item="facebook" />
+                    <button
+                      className="  w-full text-left"
+                      onClick={handleTwitterShare}
+                    >
+                      페이스북 공유
+                    </button>
+                  </div>
+                  <div className="flex justify-center items-center px-5 py-[6px]">
+                    <ShareIcon item="x_fill" />
+                    <button
+                      className=" w-full text-left"
+                      onClick={handleLinkedInShare}
+                    >
+                      엑스 공유
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -176,7 +191,7 @@ const Details = () => {
             </button>
           </div>
         </div>
-        <div className="flex justify-around border rounded-2xl border-neutral-30 p-[10px] mb-[47px] h-[68px] z-10">
+        <div className="flex justify-center border rounded-2xl border-neutral-30 p-[10px] mb-[47px] h-[68px] z-10">
           <div className="flex items-center h-12 justify-evenly  text-neutral-60 font-medium text-lg relative">
             <LikeButton postLikes={dummy.likes} onLikeClick={handleLikeClick} />
 
