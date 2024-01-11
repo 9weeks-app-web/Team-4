@@ -1,18 +1,26 @@
+import Link from 'next/link';
 import Image from 'next/image';
+import { Children } from 'react';
 import { GatheringCard } from '@/types/gathering';
 import ChipBasic from '../chip/ChipBasic';
 import ChipPrimary from '../chip/ChipPrimary';
-import Link from 'next/link';
 
 interface NormalGatherigCardProps {
   data?: GatheringCard;
-  link?: string;
+  link: string;
 }
 
 const TYPE_MAPPER = {
   project: '프로젝트',
   study: '스터디',
 };
+
+const POSITION_MAPPER = {
+  PM: '기획자',
+  frontEnd: '프론트엔드',
+  backEnd: '백엔드',
+  designer: '디자이너',
+} as { [index: string]: string };
 
 const NormalGatherigCard = ({
   data = {
@@ -34,17 +42,15 @@ const NormalGatherigCard = ({
     comments: 812,
     hits: 812,
   },
-  link = '/gathering/project/12',
+  link,
 }: NormalGatherigCardProps) => {
   const {
-    id,
     type,
     Dday,
     title,
     content,
     subject,
     teamName,
-    tag,
     member,
     capacity,
     deadline,
@@ -74,38 +80,15 @@ const NormalGatherigCard = ({
         <div className="w-full">
           <div className="pt-9 text-xs text-neutral-70">
             <span className="mr-2 text-neutral-80 font-semibold">모집인원</span>
-            {member?.planner && (
-              <span>
-                기획자{' '}
-                <span className="text-primary-100">{member.planner}</span>
-              </span>
-            )}
-            {member?.PM && (
-              <span>
-                <span className="px-[6px]">·</span>
-                PM <strong className="text-primary-100">{member.PM}</strong>
-              </span>
-            )}
-            {member?.designer && (
-              <span>
-                <span className="px-[6px]">·</span>
-                디자이너{' '}
-                <span className="text-primary-100">{member.designer}</span>
-              </span>
-            )}
-            {member?.frontEnd && (
-              <span>
-                <span className="px-[6px]">·</span>
-                프론트엔드{' '}
-                <span className="text-primary-100">{member.frontEnd}</span>
-              </span>
-            )}
-            {member?.backEnd && (
-              <span>
-                <span className="px-[6px]">·</span>
-                백엔드{' '}
-                <span className="text-primary-100">{member.backEnd}</span>
-              </span>
+            {Children.toArray(
+              member &&
+                Object.entries(member).map(([key, value], i, self) => (
+                  <span>
+                    {POSITION_MAPPER[key]}{' '}
+                    <span className="text-primary-100">{value}</span>
+                    {self.length - 1 > i && <span className="px-[6px]">·</span>}
+                  </span>
+                )),
             )}
             {capacity && (
               <span>

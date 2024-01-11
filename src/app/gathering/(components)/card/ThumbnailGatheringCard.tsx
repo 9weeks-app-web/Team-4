@@ -6,6 +6,7 @@ import { RetrospectCard } from '@/types/gathering';
 import { PortfolioCard } from '@/types/portfolio';
 import ButtonBasic from '../button/ButtonBasic';
 import ChipSmall from '../chip/ChipSmall';
+import { Children } from 'react';
 
 interface ThumbnailGatheringCardProps {
   data?: RetrospectCard & PortfolioCard;
@@ -29,7 +30,7 @@ const ThumbnailGatheringCard = ({
     hits: 812,
   },
   button,
-  link = '/gathering/retrospect/12/',
+  link,
 }: ThumbnailGatheringCardProps) => {
   const {
     id,
@@ -43,25 +44,36 @@ const ThumbnailGatheringCard = ({
     profileImage,
     likes,
     hits,
+    tags,
   } = data;
 
   return (
     <>
-      <Link href={link} className={`${button && 'cursor-default'}`}>
+      <Link href={link || ''}>
         <div
           className={`flex flex-col rounded-xl overflow-hidden font-normal ${
             content && 'border bg-neutral-0 border-neutral-10'
           }`}
         >
-          <Image
-            className={`aspect-[4/3] w-full ${content || 'rounded-xl mb-6'}`}
-            src={profileImage || thumbnail}
-            alt="thumbnail"
-            width={380}
-            height={285}
-          />
-          <div className={`${content && 'pt-[24px] px-[22px] pb-[32px]'}`}>
-            <ChipSmall content="교육" />
+          <div className="overflow-hidden mb-6 rounded-xl">
+            <Image
+              className={`aspect-[4/3] w-full h-fit ${
+                content || 'rounded-xl'
+              } hover:scale-110 transition-all`}
+              src={thumbnail || profileImage}
+              alt="thumbnail"
+              width={380}
+              height={285}
+            />
+          </div>
+          <div className={`${content && 'px-[22px] pb-[32px]'}`}>
+            <div className="flex gap-2">
+              {tags ? (
+                Children.toArray(tags.map(tag => <ChipSmall content={tag} />))
+              ) : (
+                <ChipSmall content="교육" />
+              )}
+            </div>
             <h3 className="my-3 font-semibold text-lg">{title}</h3>
             {content && (
               <p className="w-full mb-3 text-neutral-70 text-sm line-clamp-2 ">

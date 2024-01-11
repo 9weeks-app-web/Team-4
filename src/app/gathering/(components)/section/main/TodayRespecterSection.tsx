@@ -65,7 +65,7 @@ const FocusRespecter = ({ data }: FocusRespecter) => {
       <div className="flex flex-col items-center flex-1 min-w-[686px] px-[116px] py-[38px] border border-neutral-10 rounded-2xl shadow-[0_0_20px_0_rgba(123,137,163,0.12)]">
         <Image
           className="my-[34px] rounded-[50%]"
-          src="https://dummyimage.com/100x100/74afe3/fff"
+          src={respecter.profileImage}
           width={72}
           height={72}
           alt="profile"

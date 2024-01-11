@@ -1,6 +1,6 @@
 'use client';
 
-import { Children } from 'react';
+import { Children, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -8,18 +8,26 @@ import { apiRequest } from '@/utils/api';
 import { GatheringCard } from '@/types/gathering';
 import NormalGatherigCard from '../../card/NormalGatheringCard';
 import ButtonRound from '../../button/ButtonRound';
+import { useSearchParams } from 'next/navigation';
 
 const RecommendGatheringSection = () => {
-  const { data } = useQuery({
+  const search = useSearchParams();
+  const section = search.get('section');
+
+  const { data, refetch } = useQuery({
     queryKey: ['RecommendCardList'],
     queryFn: async () => {
       const res = await apiRequest<{ cardList: GatheringCard[] }>(
-        '/gathering/recommend',
+        `/gathering/deadline?type=${section === 'study' ? 'study' : 'project'}`,
       );
 
       return res;
     },
   });
+
+  useEffect(() => {
+    refetch();
+  }, [refetch, section]);
 
   return (
     <>
@@ -34,7 +42,7 @@ const RecommendGatheringSection = () => {
           <ButtonRound content="교육 강좌 보러가기" theme="primary" />
         </div>
       </div>
-      <section className="w-screen py-[50px] bg-primary-80">
+      <section className="w-full py-[50px] bg-primary-80">
         <div className="flex flex-col px-[calc((100%-1200px)/2)]">
           <p className="text-primary-30 text-lg font-bold">신규 모임</p>
           <h3 className="w-56 py-4 text-2xl text-neutral-0 font-bold break-keep">
@@ -50,7 +58,14 @@ const RecommendGatheringSection = () => {
             {Children.toArray(
               data?.cardList.map(data => (
                 <SwiperSlide>
-                  <NormalGatherigCard data={data} />
+                  <NormalGatherigCard
+                    data={data}
+                    link={
+                      section === 'study'
+                        ? `/gathering/study/${data.id}`
+                        : `/gathering/project/${data.id}`
+                    }
+                  />
                 </SwiperSlide>
               )),
             )}

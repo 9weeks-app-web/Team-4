@@ -20,6 +20,7 @@ export async function GET(req: Request) {
         profileImage,
         likes,
         hits,
+        tags,
       }) => ({
         id,
         type,
@@ -29,6 +30,7 @@ export async function GET(req: Request) {
         profileImage,
         likes,
         hits,
+        tags,
       }),
     );
 

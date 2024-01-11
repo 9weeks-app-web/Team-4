@@ -7,6 +7,7 @@ import { Navigation } from 'swiper/modules';
 import { useQuery } from '@tanstack/react-query';
 import { apiRequest } from '@/utils/api';
 import { RetrospectCard } from '@/types/gathering';
+import { PortfolioCard } from '@/types/portfolio';
 import ThumbnailGatheringCard from '../../(components)/card/ThumbnailGatheringCard';
 
 const RetrospectBannerSection = () => {
@@ -48,7 +49,9 @@ const RetrospectBannerSection = () => {
           {Children.toArray(
             data?.cardList.map(data => (
               <SwiperSlide>
-                <ThumbnailGatheringCard data={data} />
+                <ThumbnailGatheringCard
+                  data={data as RetrospectCard & PortfolioCard}
+                />
               </SwiperSlide>
             )),
           )}

@@ -69,6 +69,7 @@ export interface RetrospectCard {
   profileImage: string;
   likes: number;
   hits: number;
+  tags?: string[];
 }
 
 export interface RespectCard {
@@ -135,9 +136,10 @@ export interface Retrospect {
     level?: number;
     position?: string;
     isLeader?: boolean;
+    retrospect?: string;
   }[];
   introduction: string;
-  retrospect: string;
+  retrospect?: string;
   skills: string[];
   tags?: string[];
 }

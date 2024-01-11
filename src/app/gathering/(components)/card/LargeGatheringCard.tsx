@@ -1,12 +1,13 @@
+import Link from 'next/link';
 import Image from 'next/image';
+import { Children } from 'react';
 import { GatheringCard } from '@/types/gathering';
 import ChipBasic from '../chip/ChipBasic';
 import ChipPrimary from '../chip/ChipPrimary';
-import Link from 'next/link';
 
 interface LargeGatherigCardProps {
   data: GatheringCard;
-  link?: string;
+  link: string;
 }
 
 const TYPE_MAPPER = {
@@ -14,10 +15,14 @@ const TYPE_MAPPER = {
   study: '스터디',
 };
 
-const LargeGatherigCard = ({
-  data,
-  link = '/gathering/project/12',
-}: LargeGatherigCardProps) => {
+const POSITION_MAPPER = {
+  PM: '기획자',
+  frontEnd: '프론트엔드',
+  backEnd: '백엔드',
+  designer: '디자이너',
+} as { [index: string]: string };
+
+const LargeGatherigCard = ({ data, link }: LargeGatherigCardProps) => {
   const {
     id,
     type,
@@ -36,7 +41,7 @@ const LargeGatherigCard = ({
 
   return (
     <Link href={link}>
-      <div className="relative min-w-[585px] h-[360px] px-6 py-3 mr-[300px] border border-stroke-10 rounded-2xl hover:border-2 hover:border-primary-100 hover:shadow-[0_0_20px_0_rgba(123,137,163,0.12)] hover:px-[23px] hover:py-[11px]">
+      <div className="relative min-w-[585px] h-[360px] px-6 py-3 border border-stroke-10 rounded-2xl hover:border-2 hover:border-primary-100 hover:shadow-[0_0_20px_0_rgba(123,137,163,0.12)] hover:px-[23px] hover:py-[11px]">
         <div className="flex justify-between">
           <div className="flex gap-2">
             <ChipBasic content={TYPE_MAPPER[type as 'project' | 'study']} />
@@ -55,38 +60,15 @@ const LargeGatherigCard = ({
         <div className="w-full">
           <div className="pt-9 text-xs text-neutral-70">
             <span className="mr-2 text-neutral-80 font-semibold">모집인원</span>
-            {member?.planner && (
-              <span>
-                기획자{' '}
-                <span className="text-primary-100">{member.planner}</span>
-              </span>
-            )}
-            {member?.PM && (
-              <span>
-                PM <strong className="text-primary-100">{member.PM}</strong>
-                <span className="px-[6px]">·</span>
-              </span>
-            )}
-            {member?.designer && (
-              <span>
-                <span className="px-[6px]">·</span>
-                디자이너{' '}
-                <span className="text-primary-100">{member.designer}</span>
-              </span>
-            )}
-            {member?.frontEnd && (
-              <span>
-                <span className="px-[6px]">·</span>
-                프론트엔드{' '}
-                <span className="text-primary-100">{member.frontEnd}</span>
-              </span>
-            )}
-            {member?.backEnd && (
-              <span>
-                <span className="px-[6px]">·</span>
-                백엔드{' '}
-                <span className="text-primary-100">{member.backEnd}</span>
-              </span>
+            {Children.toArray(
+              member &&
+                Object.entries(member).map(([key, value], i, self) => (
+                  <span>
+                    {POSITION_MAPPER[key]}{' '}
+                    <span className="text-primary-100">{value}</span>
+                    {self.length - 1 > i && <span className="px-[6px]">·</span>}
+                  </span>
+                )),
             )}
           </div>
           <div className="pt-3 text-xs">
