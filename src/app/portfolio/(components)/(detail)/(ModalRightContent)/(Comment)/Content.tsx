@@ -4,6 +4,7 @@ import dateFormat from '@/utils/dateFormat';
 import Image from 'next/image';
 import { useState } from 'react';
 import CommentInput from './Input';
+import useScroll from '@/hooks/useScroll';
 
 const RightContentComment = ({
   userId,
@@ -23,6 +24,7 @@ const RightContentComment = ({
   bookmarks?: string[];
 }) => {
   const [reply, setReply] = useState(false);
+  const { moveToSection } = useScroll();
   return (
     <div
       className={`w-[310px] ${
@@ -49,11 +51,21 @@ const RightContentComment = ({
         </div>
       </div>
       <div className="py-[9px] mt-[10px] mb-[6px]">
-        <div>
-          {bookmarks.map((e, index) => (
-            <div key={index}></div>
-          ))}
-        </div>
+        {bookmarks.length > 0 && (
+          <div className="w-full flex my-[16px]">
+            {bookmarks.map((e, index) => (
+              <button
+                onClick={() => {
+                  moveToSection(e);
+                }}
+                key={index}
+                className="py-[12px] px-[20px] rounded-full border border-neutral-10 mr-[8px]"
+              >
+                {e}
+              </button>
+            ))}
+          </div>
+        )}
         <div className="text-base font-normal text-neutral-70 -tracking-[.96px] ">
           {content}
         </div>

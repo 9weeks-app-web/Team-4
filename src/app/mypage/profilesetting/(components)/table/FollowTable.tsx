@@ -1,11 +1,11 @@
 'use strict';
-import Image from "next/image";
-import BasicButton from "@/app/mypage/(components)/button/BasicButton";
+import Image from 'next/image';
+import BasicButton from '@/app/mypage/(components)/button/BasicButton';
 
 const FollowTable = () => {
-    return (
-        <>
-            {/* <table className="w-full h-[418px] flex-col" style={{ borderTop: "1px #E6E6E6", borderBottom: "1px solid" }}>
+  return (
+    <>
+      {/* <table className="w-full h-[418px] flex-col" style={{ borderTop: "1px #E6E6E6", borderBottom: "1px solid" }}>
                 <tr className="bg-[#FAFAFA] h-[67px]" style={{ borderBottom: "1px #E6E6E6" }}>
                     <th><input type="checkbox" />전체선택</th>
                     <th>사용자 목록</th>
@@ -29,8 +29,8 @@ const FollowTable = () => {
                     <td>돌고래</td>
                 </tr>
             </table > */}
-        </>
-    )
-}
+    </>
+  );
+};
 
-export default FollowTable
+export default FollowTable;

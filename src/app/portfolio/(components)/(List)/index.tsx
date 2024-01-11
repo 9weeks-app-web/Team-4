@@ -4,6 +4,7 @@ import { useState } from 'react';
 import PortfolioCategory from './Category';
 import { PortfolioPageCategory } from '@/types/portfolio';
 import PortfolioListContents from './Contents';
+import Image from 'next/image';
 
 const PortfolioListContainer = () => {
   const [category, setCategory] = useState<PortfolioPageCategory>('전체');
@@ -16,7 +17,15 @@ const PortfolioListContainer = () => {
       <div className="w-full">
         <PortfolioListContents category={category} />
       </div>
-      <div className="w-full h-[500px]">배너영역</div>
+      <div className="w-full h-[500px] mt-[80px]">
+        <Image
+          src={'/portfolios/banner.png'}
+          alt="배너"
+          width={1200}
+          height={373.75}
+          className="rounded-xl"
+        />
+      </div>
     </div>
   );
 };

@@ -16,16 +16,16 @@ export const portfolioDummy: PortfolioDetail = {
   portfolio: [
     {
       type: 'image',
-      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+      content: '/portfolios/full/3.jpg',
     },
   ],
-  thumbnail: 'https://dummyimage.com/278X208/000/fff.jpg&text=thumbnail',
+  thumbnail: '/portfolios/small/4.png',
   createAt: new Date('2024-01-01'),
   hit: 0,
   like: 0,
   userId: 0,
   nickname: '홍길동',
-  profileImg: 'https://dummyimage.com/24X24/000/fff.jpg&text=Pro',
+  profileImg: '/portfolios/profile.svg',
 };
 
 export const portfolioDummy2: PortfolioDetail = {
@@ -44,16 +44,16 @@ export const portfolioDummy2: PortfolioDetail = {
   portfolio: [
     {
       type: 'image',
-      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+      content: '/portfolios/full/2.png',
     },
   ],
-  thumbnail: 'https://dummyimage.com/278X208/000/fff.jpg&text=thumbnail',
+  thumbnail: '/portfolios/small/1.png',
   createAt: new Date('2024-01-01'),
   hit: 223,
   like: 992,
   userId: 1,
   nickname: '홍길동',
-  profileImg: 'https://dummyimage.com/24X24/000/fff.jpg&text=Pro',
+  profileImg: '/portfolios/profile.svg',
 };
 
 export const portfolioDummy3: PortfolioDetail = {
@@ -72,16 +72,16 @@ export const portfolioDummy3: PortfolioDetail = {
   portfolio: [
     {
       type: 'image',
-      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+      content: '/portfolios/full/1.jpg',
     },
   ],
-  thumbnail: 'https://dummyimage.com/278X208/000/fff.jpg&text=thumbnail',
+  thumbnail: '/portfolios/small/2.png',
   createAt: new Date('2024-01-01'),
   hit: 999,
   like: 333,
   userId: 0,
   nickname: '홍길동',
-  profileImg: 'https://dummyimage.com/24X24/000/fff.jpg&text=Pro',
+  profileImg: '/portfolios/profile.svg',
 };
 
 export const portfolioDummy4: PortfolioDetail = {
@@ -94,44 +94,56 @@ export const portfolioDummy4: PortfolioDetail = {
     tools: ['figma', 'Photoshop'],
     programs: 'UIUX 인턴형 프로그램 과정',
     collaborators: ['홍길동'],
-    bookmark: ['test', 'test', 'test', 'test', 'test', 'test'],
+    bookmark: ['데스크 리서치', '유저 리서치', '퍼소나'],
   },
   job: 'UXUI디자인',
   portfolio: [
     {
-      type: 'image',
-      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+      type: 'text',
+      content: '데스크 리서치',
     },
     {
       type: 'image',
-      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+      content: '/portfolios/full/1.jpg',
     },
     {
       type: 'image',
-      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+      content: '/portfolios/full/2.png',
+    },
+    {
+      type: 'text',
+      content: '유저 리서치',
     },
     {
       type: 'image',
-      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+      content: '/portfolios/full/3.jpg',
     },
     {
       type: 'image',
-      content: 'https://dummyimage.com/800X450/000/fff.jpg&text=dummys',
+      content: '/portfolios/full/4.png',
+    },
+    {
+      type: 'text',
+      content: '퍼소나',
+    },
+    {
+      type: 'image',
+      content: '/portfolios/full/5.png',
     },
   ],
-  thumbnail: 'https://dummyimage.com/278X208/000/fff.jpg&text=thumbnail',
+  thumbnail: '/portfolios/small/3.png',
   createAt: new Date('2024-01-03'),
   hit: 1,
   like: 2,
   userId: 0,
   nickname: '홍길동',
-  profileImg: 'https://dummyimage.com/24X24/000/fff.jpg&text=Pro',
+  profileImg: '/portfolios/profile.svg',
 };
 
 // export const portfolioDummys: Omit<PortfolioDetail, 'content' | 'portfolio'>[] =
 //   [portfolioDummy, portfolioDummy2, portfolioDummy3, portfolioDummy4];
 export const portfolioDummys: PortfolioDetail[] = Array.from(
-  { length: 30 },
+  { length: 15 },
   (_, index) => ({
     ...portfolioDummy,
     portfolioId: portfolioDummy.portfolioId + index,

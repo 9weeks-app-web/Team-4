@@ -1,14 +1,10 @@
-import ProfileSettingPage from "./profilesetting/page";
+import ProfileSettingPage from './profilesetting/page';
 const MyPagePage = () => {
-    return (
-        <div>
-            <ProfileSettingPage />
-        </div>
-    )
-}
+  return (
+    <div>
+      <ProfileSettingPage />
+    </div>
+  );
+};
 
 export default MyPagePage;
-
-
-
-

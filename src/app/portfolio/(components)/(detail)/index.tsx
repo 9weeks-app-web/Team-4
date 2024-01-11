@@ -8,6 +8,7 @@ import Image from 'next/image';
 import UserOtherPortfolios from './UserOtherPortfolios';
 import ModalRightContent from './(ModalRightContent)';
 import { Dispatch, SetStateAction } from 'react';
+import useScroll from '@/hooks/useScroll';
 
 const PortfolioDetail = ({
   portfolioId,
@@ -26,13 +27,14 @@ const PortfolioDetail = ({
       return response;
     },
   });
+  const { moveToSection } = useScroll();
 
   if (isFetching) {
     return <div>로딩중...</div>;
   } else if (data !== undefined) {
     return (
-      <div className="w-full h-full flex">
-        <div className="w-full">
+      <div className="w-full h-full flex relative" id="topScroll">
+        <div className="w-full ">
           {/* 헤더 영역 */}
           <div className="flex p-6">
             <div className="w-16 h-16 relative">
@@ -50,14 +52,18 @@ const PortfolioDetail = ({
           </div>
           <div className="w-full border-t-2 border-neutral-20"></div>
           {/* 태그 영역 */}
-          <div className="flex p-[12px] h-[76px] items-center sticky -top-[40px] z-10 bg-neutral-0 border-b-2 border-neutral-20">
+          <div className="flex p-[12px] shadow-lg h-[76px] items-center sticky -top-[40px] bg-neutral-0 border-b-2 border-neutral-20">
             {data.content.bookmark.map((e, index) => (
-              <div
+              <button
+                onClick={() => {
+                  moveToSection(e);
+                }}
                 className="mr-2 flex px-[20px] p-3 border h-8 items-center border-neutral-10 w-fit rounded-full"
                 key={index}
+                // id={e}
               >
                 {e}
-              </div>
+              </button>
             ))}
           </div>
           {/* 컨텐츠 영역 */}
@@ -70,6 +76,11 @@ const PortfolioDetail = ({
                     alt="포트폴리오 이미지"
                     className="w-full h-auto"
                   />
+                )}
+                {e.type === 'text' && (
+                  <div className="w-[0px] h-[0px] invisible" id={e.content}>
+                    {e.content}
+                  </div>
                 )}
               </div>
             ))}
@@ -141,14 +152,15 @@ const PortfolioDetail = ({
             </div>
           </div>
           {/* 해당 유저의 다른 포트폴리오 영역 */}
-          <div className="w-full h-[671px] bg-neutral-90">
+          <div className="w-full h-[671px] bg-neutral-90 relative">
             <div className="flex h-[72px] p-8 mb-14">
-              <div className="w-[72px] h-[72px] relative">
+              <div className="w-[72px] h-[72px]">
                 <Image
                   src={data.profileImg}
                   alt="프로필 이미지"
                   className="rounded-full"
-                  fill
+                  width={72}
+                  height={72}
                 />
               </div>
               <div className="flex h-[72px] items-center ml-6 text-base font-bold text-neutral-0">
@@ -176,7 +188,7 @@ const PortfolioDetail = ({
             </div>
           </div>
           {/* 하단 푸터 영역 */}
-          <div className="w-full h-[949px] bg-background-5 flex px-[63px] pt-[51px]">
+          <div className="w-full h-[949px] bg-background-5 flex px-[63px] pt-[51px] relative">
             <div className={`flex flex-col mr-[30px]`}>
               <div
                 className={`text-lg font-medium mb-5 p-8 w-[706px] border-neutral-10 border rounded-xl h-[142px] bg-neutral-0`}
@@ -227,19 +239,24 @@ const PortfolioDetail = ({
                 <div>한 줄 피드백에 참여해 주세요.</div>
                 <div className="text-sm">
                   <button className="flex mt-[24px] px-[24px] border h-12 items-center border-neutral-10 w-fit rounded-full">
-                    📋 기획이 탄탄해요
+                    📋 기획이 탄탄해요{' '}
+                    <div className="text-neutral-30 ml-1">999</div>
                   </button>
                   <button className="flex mt-[12px] px-[24px] border h-12 items-center border-neutral-10 w-fit rounded-full">
                     ⭐ 비주얼이 멋져요
+                    <div className="text-neutral-30 ml-1">999</div>
                   </button>
                   <button className="flex mt-[12px] px-[24px] border h-12 items-center border-neutral-10 w-fit rounded-full">
                     👍 완성도가 높아요
+                    <div className="text-neutral-30 ml-1">999</div>
                   </button>
                   <button className="flex mt-[12px] px-[24px] border h-12 items-center border-neutral-10 w-fit rounded-full">
                     💡 이해가 잘 돼요
+                    <div className="text-neutral-30 ml-1">999</div>
                   </button>
                   <button className="flex mt-[12px] px-[24px] border h-12 items-center border-neutral-10 w-fit rounded-full">
                     🔥 흐름이 자연스러워요
+                    <div className="text-neutral-30 ml-1">999</div>
                   </button>
                 </div>
                 <button className="mt-auto mr-auto font-bold text-neutral-40">
@@ -257,7 +274,11 @@ const PortfolioDetail = ({
                       className="flex mt-[24px] px-[24px] border h-12 items-center border-neutral-10 w-fit rounded-full"
                     >
                       <div className="w-[24px] relative h-[24px] flex items-center overflow-hidden rounded-full border border-neutral-10 mr-2">
-                        <Image src="/next.svg" alt="이미지" fill />
+                        <Image
+                          src="/images/gathering/figma.svg"
+                          alt="이미지"
+                          fill
+                        />
                       </div>
                       <div>{e}</div>
                     </div>
