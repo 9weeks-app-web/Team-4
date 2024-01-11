@@ -1,5 +1,5 @@
 import clock from '/public/images/mypage/clock_icon.png';
-import activeBookmark from '/public/images/active_bookmark.png';
+import activeBookmark from '/public/images/mypage/active_bookmark.png';
 import Image from 'next/image';
 
 const RecruitCard = () => {
