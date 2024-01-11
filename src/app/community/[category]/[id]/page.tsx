@@ -17,6 +17,7 @@ import EmojiModal from '../../(components)/emojiModal/EmojiModal';
 import { DummyComment } from '../../api/community/(dummys)/comment';
 import CommentCard from '../../(components)/Comment';
 import ShareIcon from '../../(components)/imageComponents/shareIcons';
+import TimeCal from '../../(components)/TimeCal';
 
 const Details = () => {
   const pathname = usePathname();
@@ -99,7 +100,7 @@ const Details = () => {
           <div className="flex text-neutral-40 font-medium ">
             <div>{dummy.major}</div>
             <div>・</div>
-            <div>{dummy.createdAt.toISOString().split('T')[0]}</div>
+            <TimeCal createdAt={dummy.createdAt} />
           </div>
         </div>
       </div>
