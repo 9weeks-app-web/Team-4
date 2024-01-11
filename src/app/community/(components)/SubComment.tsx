@@ -85,7 +85,7 @@ const SubCommentCard: React.FC<CommentCardProps> = ({ subDummyComment }) => {
                 <input
                   type="text"
                   placeholder="대댓글을 입력하세요"
-                  className="py-[10px] pr-[10px] pl-[90px] w-full rounded-2xl bg-background-5"
+                  className="py-[10px] pr-[10px] pl-[130px] w-full rounded-2xl bg-background-5"
                   value={replyState.content}
                   onChange={e =>
                     setReplyState({ ...replyState, content: e.target.value })
