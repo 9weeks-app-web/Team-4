@@ -39,66 +39,51 @@ export interface GatheringCard {
   content: string;
   subject: string;
   tag: string;
-  member:
-    | {
-        planner?: number;
-        PM?: number;
-        designer?: number;
-        frontEnd?: number;
-        backEnd?: number;
-      }
-    | number; // type:"project" -> obeject, type:"study" -> number
+  member?: {
+    planner?: number;
+    PM?: number;
+    designer?: number;
+    frontEnd?: number;
+    backEnd?: number;
+  };
+  capacity?: number[];
   teamName: string;
+  deadline: Date;
   profileImage: string;
   comments: number;
   hits: number;
   bookmark?: boolean;
-}
-
-export interface GatheringCard {
-  id: number;
-  type: string;
-  Dday: number;
-  title: string;
-  content: string;
-  subject: string;
-  tag: string;
-  member:
-    | {
-        planner?: number;
-        PM?: number;
-        designer?: number;
-        frontEnd?: number;
-        backEnd?: number;
-      }
-    | number; // type:"project" -> obeject, type:"study" -> number
-  teamName: string;
-  profileImage: string;
-  comments: number;
-  hits: number;
-  bookmark?: boolean;
+  skills?: string[];
+  jobs?: string[];
+  positions?: string[];
+  way?: '온/오프라인' | '온라인' | '오프라인';
 }
 
 export interface RetrospectCard {
   id: number;
   type: string;
   title: string;
-  content: string;
+  content?: string;
   teamName: string;
   thumbnail: string;
   profileImage: string;
-  like: number;
+  likes: number;
   hits: number;
+  tags?: string[];
 }
 
-export interface respectUser {
+export interface RespectCard {
   id: number;
   userId: number;
   nickname: string;
   major: string;
   minor: string;
   profileImage: string;
-  portfolioImages: string[];
+  spectrumImage: string;
+  portfolioImages?: string[];
+  badge?: string[];
+  following: number;
+  follower: number;
 }
 [];
 
@@ -144,15 +129,17 @@ export interface Retrospect {
   teamName: string;
   thumbnail: string;
   members: {
-    userId: string;
+    userId: number;
     name: string;
     userProfile: string;
+    spectrumImage?: string;
     level?: number;
     position?: string;
     isLeader?: boolean;
+    retrospect?: string;
   }[];
   introduction: string;
-  retrospect: string;
+  retrospect?: string;
   skills: string[];
-  tags: string[];
+  tags?: string[];
 }

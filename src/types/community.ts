@@ -1,3 +1,4 @@
+import Image from 'next/image';
 // 커뮤니티
 export interface CommunityPost {
   id: number;
@@ -49,35 +50,35 @@ export interface CommunityCategoryList {
   type: 'popular' | 'poll' | 'QnA' | 'new' | 'any' | 'all';
   page: number;
   endPage: number;
-  postList: [
-    {
-      nickname: string;
-      major: string;
-      createdAt: Date;
-      title: string;
-      thumbnail: string[]; //최대 3개까지
-      pictureCount: number; //사진의 개수 3개 이상인 경우 표현하기 위함
-      content: string;
-      commentCounts: number;
-      likes: number;
-      hits: number;
-      bookmarks: number;
-      poll:
-        | {
-            link: string;
-            time: number;
-            target: string;
-            endDate: Date;
-          }
-        | undefined; // 설문조사가 아닌 경우 undefined로 도착
-      category: string;
-    },
-  ];
+  postList: {
+    nickname: string;
+    major: string;
+    createdAt: Date;
+    title: string;
+    thumbnail: string[];
+    pictureCount: number;
+    content: string;
+    commentCounts: number;
+    likes: number;
+    hits: number;
+    bookmarks: number;
+    poll:
+      | {
+          link: string;
+          time: number;
+          target: string;
+          endDate: Date;
+        }
+      | undefined;
+    category: string;
+  }[];
 }
 
 export interface CommunityDetail {
   id: number;
   nickname: string;
+  profileImg: string;
+  badge: string;
   major: string;
   createdAt: Date;
   title: string;
@@ -95,6 +96,10 @@ export interface CommunityDetail {
   isLike: boolean;
   hits: number;
   bookmarks: number;
+  type?: string;
+  tags?: string[];
+  open: string;
+  category: string;
 }
 
 export interface CommunityPostUpload {
