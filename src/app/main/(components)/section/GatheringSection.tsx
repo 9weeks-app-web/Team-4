@@ -15,15 +15,15 @@ const GatheringSection = () => {
     const { data } = useQuery({
         queryKey: ['GatheringCardList'],
         queryFn: async () => {
-            const res = await apiRequest<{ gatheringCardDummy: GatheringCard[] }>(
-                '/gathering/deadline',
+            const res = await apiRequest<{ cardList: GatheringCard[] }>(
+                '/gathering/deadline?type=study',
             );
 
             return res;
         },
     });
 
-    const limitedData = data?.gatheringCardDummy?.slice(0, 2);
+    const limitedData = data?.cardList?.slice(0, 2);
 
     return (
         <div className="w-[1200px] h-[740px]">
