@@ -22,7 +22,7 @@ const MyMarkdownEditor: React.FC<MyMarkdownEditorProps> = ({
 
   return (
     <MarkdownEditor
-      className="h-[575px] mb-5"
+      className="h-[575px] mb-5 rounded-xl"
       value={value}
       onChange={handleEditorChange}
       renderHTML={text => mdParser.render(text)}

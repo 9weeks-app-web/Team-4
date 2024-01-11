@@ -5,6 +5,7 @@ import ProfileImage from './imageComponents/Profile';
 import CommentLikeButton from './imageComponents/CommentLike';
 import CommentButton from './imageComponents/Comment';
 import { CommentType } from '@/types/comment';
+import TimeCal from './TimeCal';
 
 interface CommentCardProps {
   subDummyComment: CommentType[];
@@ -51,7 +52,7 @@ const SubCommentCard: React.FC<CommentCardProps> = ({ subDummyComment }) => {
               </div>
               <div className="flex text-neutral-40">
                 <div>{dummy.major}・</div>
-                <div>{dummy.createdAt.toISOString().split('T')[0]}</div>
+                <TimeCal createdAt={dummy.createdAt} />
               </div>
             </div>
           </div>

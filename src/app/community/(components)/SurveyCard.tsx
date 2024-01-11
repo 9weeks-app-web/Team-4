@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { clsx } from 'clsx';
+import ProfileImage from './imageComponents/Profile';
+import TimeCal from './TimeCal';
 const SurveyCard = () => {
   const perPage = 5;
   const [page, setPage] = useState(1);
@@ -14,18 +16,12 @@ const SurveyCard = () => {
   const slicedDummys = surveyDummyData.slice(startIndex, endIndex);
 
   return (
-    <div className="my-11">
+    <div>
       <div className=" font-bold text-[28px] my-8">설문조사</div>
       {slicedDummys.map(survey => (
-        <div key={survey.id}>
+        <div key={survey.id} className="my-11">
           <div className="flex mb-5">
-            <Image
-              src={survey.profileImg}
-              alt={survey.nickname}
-              width={12}
-              height={12}
-              className=" mr-[10px] w-12 h-12 rounded-full"
-            />
+            <ProfileImage src={survey.profileImg} alt={survey.nickname} />
 
             <div>
               <div className="flex items-center mb-0.5">
@@ -42,8 +38,9 @@ const SurveyCard = () => {
               </div>
               <div className="flex text-neutral-40">
                 <div>{survey.major}</div>
-                <div suppressHydrationWarning={true}>
-                  ・{survey.date.toISOString().split('T')[0]}
+                <div>・</div>
+                <div>
+                  <TimeCal createdAt={survey.date} />
                 </div>
               </div>
             </div>

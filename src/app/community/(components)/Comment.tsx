@@ -7,6 +7,7 @@ import CommentButton from './imageComponents/Comment';
 import { CommentType } from '@/types/comment';
 import { SubDummyComment } from '../api/community/(dummys)/comment';
 import SubCommentCard from '../(components)/SubComment';
+import TimeCal from './TimeCal';
 
 interface CommentCardProps {
   dummyComment: CommentType[];
@@ -22,29 +23,30 @@ const CommentCard: React.FC<CommentCardProps> = ({ dummyComment }) => {
   });
 
   const [isCommentOpen, setIsCommentOpen] = useState<boolean>(false);
+  const [showReply, setShowReply] = useState<boolean>(false);
 
   const [replyCount, setReplyCount] = useState<number[]>(
     dummyComment.map(() => 0),
   );
 
   useEffect(() => {
-    // 처음 렌더링 될 때 SubDummyComment[0].id와 비교하여 초기화
-    if (
-      dummyComment.length > 0 &&
-      dummyComment[0].id === SubDummyComment[0].id
-    ) {
-      const updatedReplyCount = dummyComment.map(() => SubDummyComment.length);
-      setReplyCount(updatedReplyCount);
-    }
+    const updatedReplyCount = dummyComment.map((comment, index) =>
+      comment.id === SubDummyComment[index]?.id ? SubDummyComment.length : 0,
+    );
+
+    setReplyCount(updatedReplyCount);
   }, [dummyComment]);
 
-  const handleReplyClick = (commentId: number) => {
+  const handleCommentClick = (commentId: number) => {
     setReplyState({ id: commentId, content: '' });
     setIsCommentOpen(prev => !prev);
   };
+  const handleReplyClick = (commentId: number) => {
+    setReplyState({ id: commentId, content: '' });
+    setShowReply(prev => !prev);
+  };
 
   const handleCommentSubmit = () => {
-    console.log('대댓글 작성:', replyState);
     setReplyState({ id: null, content: '' });
     setIsCommentOpen(false);
   };
@@ -64,7 +66,7 @@ const CommentCard: React.FC<CommentCardProps> = ({ dummyComment }) => {
               </div>
               <div className="flex text-neutral-40">
                 <div>{dummy.major}・</div>
-                <div>{dummy.createdAt.toISOString().split('T')[0]}</div>
+                <TimeCal createdAt={dummy.createdAt} />
               </div>
             </div>
           </div>
@@ -78,26 +80,10 @@ const CommentCard: React.FC<CommentCardProps> = ({ dummyComment }) => {
               <div className="flex mb-4">
                 <CommentLikeButton />
                 <CommentButton
-                  onClick={() => handleReplyClick(dummy.id)}
+                  onClick={() => handleCommentClick(dummy.id)}
                   isCommentOpen={isCommentOpen && replyState.id === dummy.id}
                 />
               </div>
-
-              <span
-                className="ml-3 cursor-pointer text-primary-80"
-                onClick={() => handleReplyClick(dummy.id)}
-              >
-                {replyCount[index] > 0
-                  ? `${replyCount[index]}개의 댓글 보기 `
-                  : null}
-              </span>
-
-              {isCommentOpen && replyState.id === dummy.id && (
-                <div className="mt-4">
-                  <SubCommentCard subDummyComment={SubDummyComment} />
-                </div>
-              )}
-
               {isCommentOpen && replyState.id === dummy.id && (
                 <div className="flex items-center mb-12 relative">
                   <p className="bg-primary-10 text-primary-80 rounded-[6px] absolute p-1 left-2">
@@ -105,11 +91,14 @@ const CommentCard: React.FC<CommentCardProps> = ({ dummyComment }) => {
                   </p>
                   <input
                     type="text"
-                    placeholder="대댓글을 입력하세요"
-                    className="py-[10px] pr-[10px] pl-[90px] w-full rounded-2xl bg-background-5"
+                    placeholder="댓글을 입력하세요"
+                    className={`py-[10px] pr-[10px] w-full rounded-2xl bg-background-5 text-neutral-100 pl-[130px]`}
                     value={replyState.content}
                     onChange={e =>
-                      setReplyState({ ...replyState, content: e.target.value })
+                      setReplyState({
+                        ...replyState,
+                        content: e.target.value,
+                      })
                     }
                   />
                   <Image
@@ -120,6 +109,23 @@ const CommentCard: React.FC<CommentCardProps> = ({ dummyComment }) => {
                     className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
                     onClick={handleCommentSubmit}
                   />
+                </div>
+              )}
+
+              {replyCount[index] > 0 && (
+                <span
+                  className="ml-3 cursor-pointer text-primary-80"
+                  onClick={() => handleReplyClick(dummy.id)}
+                >
+                  {showReply
+                    ? `${replyCount[index]}개의 댓글 닫기`
+                    : `${replyCount[index]}개의 댓글 보기`}
+                </span>
+              )}
+
+              {showReply && replyState.id === dummy.id && (
+                <div className="mt-4">
+                  <SubCommentCard subDummyComment={SubDummyComment} />
                 </div>
               )}
             </div>

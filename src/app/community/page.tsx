@@ -10,10 +10,11 @@ import {
   CommunityDummys,
   JobDummys,
 } from './api/community/(dummys)';
+import ChatDummy from './api/community/(dummys)/chat';
 import Link from 'next/link';
 import { CommunityDetail } from '@/types/community';
-import Image from 'next/image';
 import RightArrow from './(components)/imageComponents/Right';
+import ChatCard from './(components)/ChatCard';
 
 const Community = () => {
   const jobCategories: string[] = [
@@ -22,10 +23,19 @@ const Community = () => {
     '웹 디자인',
     '편집 디자인',
   ];
+  const jobChatCategories: string[] = [
+    '전체',
+    'UX/UI',
+    '서비스 기획',
+    '웹 디자인',
+    '편집 디자인',
+  ];
   const qnaCategories: string[] = ['포트폴리오', '커리어'];
 
   const [activeJobCategory, setActiveJobCategory] = useState('UX/UI');
+  const [activeJobChatCategory, setActiveJobChatCategory] = useState('전체');
   const [activeQnACategory, setActiveQnACategory] = useState('포트폴리오');
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const filteredJobDummys = JobDummys.filter(dummy =>
     activeJobCategory === 'UX/UI' ||
@@ -34,6 +44,18 @@ const Community = () => {
     activeJobCategory === '편집 디자인'
       ? dummy.type === activeJobCategory
       : false,
+  );
+
+  const filteredJobChatDummys = ChatDummy.filter(dummy =>
+    activeJobChatCategory === '전체'
+      ? activeJobChatCategory === '전체' ||
+        ['UX/UI', '서비스 기획', '웹 디자인', '편집 디자인'].includes(dummy.tag)
+      : activeJobChatCategory === 'UX/UI' ||
+          activeJobChatCategory === '서비스 기획' ||
+          activeJobChatCategory === '웹 디자인' ||
+          activeJobChatCategory === '편집 디자인'
+        ? dummy.tag === activeJobChatCategory
+        : false,
   );
 
   const filteredQnADummys = QnADummys.filter(dummy =>
@@ -45,7 +67,21 @@ const Community = () => {
   const allDummys = [...CommunityDummys, ...QnADummys, ...JobDummys];
   const sortByHitDesc = (a: CommunityDetail, b: CommunityDetail) =>
     b.likes - a.likes;
-  const hotDummys = allDummys.sort(sortByHitDesc).slice(0, 6);
+  const hotDummys = allDummys.sort(sortByHitDesc);
+
+  const handleNextClick = () => {
+    const nextIndex = currentIndex + 6;
+    if (nextIndex < hotDummys.length) {
+      setCurrentIndex(nextIndex);
+    }
+  };
+
+  const handlePrevClick = () => {
+    const prevIndex = currentIndex - 6;
+    if (prevIndex >= 0) {
+      setCurrentIndex(prevIndex);
+    }
+  };
 
   return (
     <div className="flex justify-center items-center font-sans">
@@ -55,17 +91,27 @@ const Community = () => {
             <h1 className="font-bold text-[26px] mb-8">핫한 게시글</h1>
             <div className="flex items-center">
               <div className="w-6 h-6 mr-4">
-                <div className="text-2xl"> &#60;</div>
+                <button className="text-2xl" onClick={handlePrevClick}>
+                  &#60;
+                </button>
               </div>
               <div className="w-6 h-6">
-                <div className="text-2xl"> &#62;</div>
+                <button className="text-2xl" onClick={handleNextClick}>
+                  &#62;
+                </button>
               </div>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-[30px] ">
-            {hotDummys.slice(0, 6).map((dummy, index) => (
-              <HotBoard key={dummy.id} dummy={dummy} index={index + 1} />
-            ))}
+            {hotDummys
+              .slice(currentIndex, currentIndex + 6)
+              .map((dummy, index) => (
+                <HotBoard
+                  key={dummy.id}
+                  dummy={dummy}
+                  index={index + currentIndex + 1}
+                />
+              ))}
           </div>
         </section>
         <section className="mb-20">
@@ -173,9 +219,35 @@ const Community = () => {
         </section>
         <section className="mb-20">
           <h1 className="font-bold text-3xl mb-4">직무별 채팅방</h1>
-          <div className="grid grid-cols-4 gap-4">
-            {jobCategories.map((category, index) => (
-              <Chat key={index} category={category} />
+          <div className="flex justify-between mb-6">
+            <div className="flex">
+              {jobChatCategories.map(category => (
+                <button
+                  key={category}
+                  className={`flex justify-center items-center h-10 mr-[10px] px-4 py-[11px] border ${
+                    category === activeJobChatCategory
+                      ? 'bg-primary-20 border-primary-60 text-primary-100'
+                      : 'border-neutral-10 text-neutral-60'
+                  } rounded-full`}
+                  onClick={() => setActiveJobChatCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            <Link
+              href="/community/chatroom"
+              className="text-lg text-neutral-50"
+            >
+              <div className="flex justify-center   px-4 py-3 rounded-[10px] hover:bg-neutral-5 transition ease-in-out duration-500">
+                더보기
+                <RightArrow />
+              </div>
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-[30px]">
+            {filteredJobChatDummys.slice(0, 2).map(job => (
+              <ChatCard key={job.id} dummy={job} />
             ))}
           </div>
         </section>
